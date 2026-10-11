@@ -12,7 +12,7 @@ requires-python = ">=3.11"
 dependencies = [
     "process-bigraph>=1.8.5",
     "bigraph-schema",
-    "pbg-superpowers",
+    "viva-superpowers",
     "lammps",
     "numpy",
     "matplotlib",
@@ -23,7 +23,7 @@ dependencies = [
 dev = ["pytest", "bigraph-viz"]
 
 [tool.uv.sources]
-pbg-superpowers = { git = "https://github.com/vivarium-collective/pbg-superpowers.git", branch = "main" }
+viva-superpowers = { git = "https://github.com/vivarium-collective/viva-superpowers.git", branch = "main" }
 
 [tool.setuptools.packages.find]
 include = ["pbg_lammps*"]
