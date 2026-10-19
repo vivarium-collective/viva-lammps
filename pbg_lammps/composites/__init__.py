@@ -25,6 +25,7 @@ from process_bigraph import allocate_core
 from process_bigraph.emitter import RAMEmitter
 
 from pbg_lammps.processes import LAMMPSProcess, PIDController, OscillatingForce
+from pbg_lammps.model import LammpsModelProcess
 
 
 # ---------------------------------------------------------------------------
@@ -223,6 +224,7 @@ def register_lammps(core=None):
     core.register_link('LAMMPSProcess', LAMMPSProcess)
     core.register_link('PIDController', PIDController)
     core.register_link('OscillatingForce', OscillatingForce)
+    core.register_link('LammpsModelProcess', LammpsModelProcess)
     core.register_link('ram-emitter', RAMEmitter)
     # Register Visualization Steps so composites can wire them by name.
     from pbg_lammps.visualizations import LAMMPSThermoPlots

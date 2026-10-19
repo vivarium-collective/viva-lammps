@@ -1,0 +1,63 @@
+name: lj-box-model
+description: "Model-plugin seam demo: the general `LammpsModelProcess` driving the registered `lj-box` LennardJonesBox plugin. Same tiny LJ NVE box as lj-nve-demo, but built through the model seam instead of a hand-written input script. Emits temperature and the three energies each step."
+tags: [lammps, molecular-dynamics, demo, model-seam]
+
+requires:
+  processes: [LammpsModelProcess, RAMEmitter]
+
+parameters:
+  interval:
+    type: float
+    default: 0.5
+    description: "Process interval in LJ time units. The process issues `run N` calls sized to fit this window."
+  lattice_size:
+    type: int
+    default: 3
+    description: "Lattice replications per side; the box holds lattice_size**3 atoms."
+  lattice_density:
+    type: float
+    default: 0.5
+    description: "Reduced density of the simple-cubic lattice used to seed atoms."
+  initial_temperature:
+    type: float
+    default: 1.0
+    description: "Reduced temperature for initial Maxwell-Boltzmann sampling."
+
+state:
+  lammps:
+    _type: process
+    address: "local:LammpsModelProcess"
+    config:
+      model: "lj-box"
+      params:
+        n: "${lattice_size}"
+        density: "${lattice_density}"
+        temperature: "${initial_temperature}"
+    inputs: {}
+    outputs:
+      temperature: ["stores", "temperature"]
+      potential_energy: ["stores", "potential_energy"]
+      kinetic_energy: ["stores", "kinetic_energy"]
+      total_energy: ["stores", "total_energy"]
+      num_atoms: ["stores", "num_atoms"]
+    interval: "${interval}"
+  stores:
+    temperature: 0.0
+    potential_energy: 0.0
+    kinetic_energy: 0.0
+    total_energy: 0.0
+    num_atoms: 0
+  emitter:
+    _type: step
+    address: "local:ram-emitter"
+    config:
+      emit:
+        temperature: "float"
+        potential_energy: "float"
+        kinetic_energy: "float"
+        total_energy: "float"
+    inputs:
+      temperature: ["stores", "temperature"]
+      potential_energy: ["stores", "potential_energy"]
+      kinetic_energy: ["stores", "kinetic_energy"]
+      total_energy: ["stores", "total_energy"]
