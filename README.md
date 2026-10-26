@@ -1,4 +1,4 @@
-# pbg-lammps
+# viva-lammps
 
 Process-bigraph wrapper for the [LAMMPS](https://www.lammps.org/) molecular dynamics simulator.
 
@@ -7,8 +7,8 @@ Process-bigraph wrapper for the [LAMMPS](https://www.lammps.org/) molecular dyna
 ## Installation
 
 ```bash
-git clone https://github.com/vivarium-collective/pbg-lammps.git
-cd pbg-lammps
+git clone https://github.com/vivarium-collective/viva-lammps.git
+cd viva-lammps
 uv venv .venv && source .venv/bin/activate
 uv pip install -e ".[dev]"
 # LAMMPS Python bindings
