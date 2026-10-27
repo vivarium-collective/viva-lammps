@@ -1,0 +1,1 @@
+{"name": "viva-lammps", "description": "", "imports": {}, "investigations": [{"name": "lammps-lennard-jones-molecular-dynamics", "title": "Lammps lennard jones molecular dynamics", "status": "planning", "description": "Scaffolded from 2 composite generator(s) via `investigation-from-wrapper`. Fill in the narrative."}]}
