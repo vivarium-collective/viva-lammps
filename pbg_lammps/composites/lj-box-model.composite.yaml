@@ -49,7 +49,7 @@ state:
     num_atoms: 0
   emitter:
     _type: step
-    address: "local:ram-emitter"
+    address: "local:RAMEmitter"
     config:
       emit:
         temperature: "float"

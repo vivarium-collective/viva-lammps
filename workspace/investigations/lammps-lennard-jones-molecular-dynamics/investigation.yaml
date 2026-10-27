@@ -1,0 +1,45 @@
+schema_version: 2
+name: lammps-lennard-jones-molecular-dynamics
+title: Lammps lennard jones molecular dynamics
+created: '2026-10-27'
+status: planning
+question: TBD — what overarching question ties these studies together?
+hypothesis: TBD — what do we expect the composed studies to show?
+description: Scaffolded from 2 composite generator(s) via `investigation-from-wrapper`. Fill in the narrative.
+studies:
+- lj-nve-demo
+- lj-nve-demo-with-viz
+executive:
+  what_is_this: TBD — one paragraph, for a reader who has never seen this.
+  verdict: TBD — fill in once studies are run.
+  verdict_status: in-progress
+  verdict_detail: TBD
+  decisions_needed: []
+  computed_verdict_status: passing-with-caveats
+  computed_acceptance:
+    criteria:
+    - study: lj-nve-demo
+      behavior: lj-nve-demo-behaves
+      result: passing-with-caveats
+    - study: lj-nve-demo-with-viz
+      behavior: lj-nve-demo-with-viz-behaves
+      result: passing-with-caveats
+    unmet:
+    - study: lj-nve-demo
+      behavior: lj-nve-demo-behaves
+      result: passing-with-caveats
+    - study: lj-nve-demo-with-viz
+      behavior: lj-nve-demo-with-viz-behaves
+      result: passing-with-caveats
+    diverges_from_authored: true
+scientific_argument:
+  main_claim: TBD — the one-sentence claim this investigation supports.
+  evidence_for: []
+  evidence_against: []
+  key_figures: []
+  caveats: []
+acceptance_criteria:
+- study: lj-nve-demo
+  behavior: lj-nve-demo-behaves
+- study: lj-nve-demo-with-viz
+  behavior: lj-nve-demo-with-viz-behaves

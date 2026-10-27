@@ -1,0 +1,46 @@
+{
+  "count_split": {
+    "acceptance_criteria": {
+      "fail": 0,
+      "pass": 0,
+      "total": 0
+    },
+    "committed_rerunnable": 1,
+    "expected_fail": {
+      "behaved": 0,
+      "total": 0
+    },
+    "label": "pins: 0/0; acceptance: 0/0; unclassified: 1",
+    "narrated": 0,
+    "regression_pins": {
+      "fail": 0,
+      "pass": 0,
+      "total": 0
+    },
+    "unclassified": 1
+  },
+  "n_fail": 0,
+  "n_pass": 0,
+  "n_total": 1,
+  "overall": "drift",
+  "schema": "behavior_test_card/v1",
+  "tests": [
+    {
+      "band": "",
+      "band_basis": "",
+      "cites": [],
+      "detail": "observable 'TBD' not resolvable",
+      "en": "TBD \u2014 plain-language statement of the expected behavior.",
+      "expected_fail": false,
+      "gate_class": null,
+      "margin": null,
+      "measured_value": null,
+      "meter": null,
+      "name": "lj-nve-demo-with-viz-behaves",
+      "result": "SKIP",
+      "severity": null,
+      "units": "",
+      "verdict": null
+    }
+  ]
+}

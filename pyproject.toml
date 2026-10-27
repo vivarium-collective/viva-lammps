@@ -8,7 +8,7 @@ version = "0.1.1"
 description = "Process-bigraph wrapper for LAMMPS molecular dynamics simulator"
 readme = "README.md"
 license = { text = "MIT" }
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 dependencies = [
     "process-bigraph>=1.8.5",
     "bigraph-schema",
@@ -17,9 +17,16 @@ dependencies = [
     "numpy",
     "matplotlib",
     "pyyaml",
+    "bigraph-viz>=2.0.3",
+    "jsonschema[format-nongpl]>=4.21",
+    "jinja2>=3.1",
+    "pypdf>=4.0",
+    "plotly",
+    "vivarium-workbench",
 ]
 
 [project.optional-dependencies]
+cli = ["typer", "rich"]
 dev = ["pytest", "bigraph-viz"]
 
 [tool.uv.sources]
@@ -30,3 +37,6 @@ include = ["pbg_lammps*"]
 
 [tool.setuptools.package-data]
 "pbg_lammps.composites" = ["*.composite.yaml"]
+
+[project.scripts]
+viva-lammps = "pbg_lammps.cli.__main__:main"
