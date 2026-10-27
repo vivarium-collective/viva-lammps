@@ -81,6 +81,9 @@ jobs:
           # template-init.sh (">=3.12" -> "3.12", otherwise "3.11"). A
           # 3.12-only workspace must test on 3.12, not a hardcoded 3.11.
           python-version: "3.12"
+      - name: Install MPICH runtime (the lammps wheel links libmpi.so.12)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq libmpich12
+
       - name: Install uv
         run: pip install uv
       - name: Set up venv and install
