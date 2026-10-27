@@ -90,7 +90,7 @@ def _emitter_node(scalar_ports, controls=()):
         inputs[c] = ['controls', c]
     return {
         '_type': 'step',
-        'address': 'local:ram-emitter',
+        'address': 'local:RAMEmitter',
         'config': {'emit': emit_schema},
         'inputs': inputs,
     }

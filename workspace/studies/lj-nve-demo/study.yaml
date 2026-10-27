@@ -1,0 +1,130 @@
+schema_version: 4
+name: lj-nve-demo
+title: Lj nve demo
+created: '2026-10-27'
+status: planned
+execution_status: planned
+verdict:
+phase: Design
+question: TBD — what question does this study answer?
+experiment: TBD — describe what pbg_lammps.composites.lj-nve-demo is expected to demonstrate.
+description: Wraps the `pbg_lammps.composites.lj-nve-demo` composite generator as a study. Fill in.
+baseline:
+- name: baseline
+  composite: pbg_lammps.composites.lj-nve-demo
+  params: {}
+variants: []
+behavior_tests:
+- name: lj-nve-demo-behaves
+  classification: primary
+  description: TBD — plain-language statement of the expected behavior.
+  measure:
+    kind: derived_scalar
+    field: TBD
+  pass_if:
+    op: <
+    value:
+  requires_simulation: baseline
+pipeline_gate:
+  prerequisites: []
+  enables: []
+  gate_evaluator:
+    result: blocked
+    blocked_by:
+    - lj-nve-demo-behaves
+    evaluated_by: code
+    diverges_from_authored: false
+canonical_runs:
+- name: default
+  script: studies/lj-nve-demo/sims/run.py
+  args: []
+  label: lj-nve-demo
+  default: true
+visualizations:
+- name: lj-nve-demo-world
+  view: world
+  status: stub
+  description: 'Fill in: the environment/state the study runs in.'
+- name: lj-nve-demo-mechanism
+  view: mechanism
+  status: stub
+  description: 'Fill in: the mechanism/trajectory that drives the result.'
+- name: lj-nve-demo-decision
+  view: decision
+  phase_map: true
+  grid_artifact: studies/lj-nve-demo/grid/phase_map.parquet
+  status: stub
+  description: 'Fill in: phase map identifying PASS and FAILURE regions across a swept grid (not a single run). Built by sims/run.py''s grid sweep; persisted to grid_artifact.'
+findings: []
+confidence: Planned
+report:
+  verdict:
+result:
+runs:
+- name: pbg_lammps.composites.lj-nve-demo__1793127237__568462
+  status: completed
+  timestamp: 1793127239.776614
+  emitter:
+    kind: unknown
+  env_id: d5e083da8024d420
+  params: '{}'
+  computed_outcomes:
+    lj-nve-demo-behaves:
+      evaluated_by: agent
+      reason: observable 'TBD' not resolvable
+      reconcile: no_authored
+  provenance:
+    params:
+      n_steps:
+        value: 20
+        source: resolved
+    params_captured_at: '2026-10-27'
+    params_source: dashboard-runner
+  outcomes:
+    lj-nve-demo-behaves:
+      result: SKIP
+      evaluated_by: agent
+      note: observable 'TBD' not resolvable
+      auto_evaluated: true
+- name: pbg_lammps.composites.lj-nve-demo__1793127221__cd67a7
+  status: failed
+  timestamp: 1793127223.7133582
+  emitter:
+    kind: unknown
+  env_id: d5e083da8024d420
+  params: '{}'
+  computed_outcomes:
+    lj-nve-demo-behaves:
+      evaluated_by: agent
+      reason: observable 'TBD' not resolvable
+      reconcile: no_authored
+- name: pbg_lammps.composites.lj-nve-demo__1793127207__1c4df0
+  status: failed
+  timestamp: 1793127209.9974148
+  emitter:
+    kind: unknown
+  env_id: d5e083da8024d420
+  params: '{}'
+  computed_outcomes:
+    lj-nve-demo-behaves:
+      evaluated_by: agent
+      reason: observable 'TBD' not resolvable
+      reconcile: no_authored
+- name: pbg_lammps.composites.lj-nve-demo__1793127198__fb799e
+  status: failed
+  timestamp: 1793127200.402314
+  emitter:
+    kind: unknown
+  env_id: d5e083da8024d420
+  params: '{}'
+  computed_outcomes:
+    lj-nve-demo-behaves:
+      evaluated_by: agent
+      reason: observable 'TBD' not resolvable
+      reconcile: no_authored
+simulation_set:
+- name: baseline-baseline
+  kind: single
+  base_model: pbg_lammps.composites.lj-nve-demo
+  is_baseline: true
+  status: ran
