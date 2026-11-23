@@ -1,7 +1,6 @@
 {
   "mode": "snapshot",
-  "smsApiBase": "",
   "repo": "https://github.com/vivarium-collective/viva-lammps",
-  "commit": "eaf45c310c17fb06aa45e76b037cb0caede5ff4a",
+  "commit": "ed831ea25e9d25d03e39ea52a43b72666d4f47a3",
   "generated_from_ref": "main"
 }

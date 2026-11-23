@@ -207,6 +207,10 @@ a:hover{text-decoration:underline}
   text-transform:uppercase;color:var(--warn);background:var(--warn-soft);padding:3px 10px;border-radius:999px}
 .claim{font-family:var(--serif);font-size:16.5px;color:var(--ink);margin:8px 0 2px;max-width:none;font-style:italic}
 .biology{color:var(--ink-2);font-size:14px;margin:8px 0 4px;max-width:none}
+.study-thesis{color:var(--ink);font-size:14px;line-height:1.5;margin:8px 0 4px;max-width:none}
+.study-result{margin:10px 0 4px;max-width:none}
+.study-result .ov-k{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2px}
+.study-result>*:not(.ov-k){color:var(--ink);font-size:14px;line-height:1.5;margin:0}
 
 /* spine stage */
 .stage{margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
@@ -234,6 +238,15 @@ a:hover{text-decoration:underline}
 .ttable .tname{font-weight:600}
 .ttable .texp{color:var(--ink-3);font-family:var(--mono);font-size:12px}
 .ttable .tv{text-align:right;white-space:nowrap}
+/* compact, uniform test rows (statement + verdict chip + one muted meta line) */
+.tests-list{margin-top:4px}
+.test-row{padding:7px 0;border-top:1px solid var(--line)}
+.test-row:first-child{border-top:none}
+.test-head{display:flex;gap:10px;align-items:baseline;justify-content:space-between}
+.test-desc{font-weight:600;font-size:12.5px;color:var(--ink-2)}
+.test-row .fmeta{margin-top:3px;font-size:11px;color:var(--ink-3);line-height:1.5}
+.test-row .fmeta .mono{font-family:var(--mono);font-size:10.5px;color:var(--ink-3)}
+.test-row .fmeta .sep{color:var(--line-2);margin:0 2px}
 
 /* decision box */
 .decbox{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;background:var(--sunken);
@@ -275,6 +288,44 @@ figcaption{color:var(--ink-2);font-size:12.5px;margin-top:8px;max-width:none}
    and its (often full-document) CSS can't leak into the report. onload sizes it
    to content; this is the pre-resize default. */
 .viz-frame{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--surface);height:460px;display:block}
+/* report card (SIM vs EXPT): inline verdict table + SVG chart gallery */
+.report-card{margin:8px 0}
+.rc-badge{display:inline-block;margin:4px 0 10px;padding:4px 12px;border-radius:999px;background:var(--surface-2,#eef0f2);font-weight:600;font-size:13px}
+.rc-table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px}
+.rc-table th{text-align:left;color:var(--ink-3);font-weight:600;border-bottom:1px solid var(--line);padding:4px 8px}
+.rc-table td{padding:5px 8px;border-bottom:1px solid var(--line-2,var(--line));vertical-align:baseline}
+.rc-table tr.rc-grp td{font-weight:700;background:var(--surface-2,#f6f8fa);color:var(--ink);padding-top:8px}
+.rc-table .rc-ax{width:42%}
+.rc-meter{color:var(--ink-2);font-size:12px;margin-left:4px}
+.rc-charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:10px}
+.rc-chart{margin:0;border:1px solid var(--line);border-radius:10px;padding:8px;background:var(--surface,#fff);break-inside:avoid;page-break-inside:avoid}
+.rc-chart svg{width:100%;height:auto;display:block}
+/* overview table-of-contents (replaces the dependency graph) */
+.toc{margin:4px 0}
+.toc-row{display:flex;gap:14px;padding:13px 0;border-top:1px solid var(--line)}
+.toc-row:first-child{border-top:none}
+.toc-num{font-family:var(--mono);font-size:13px;color:var(--ink-3);font-weight:600;text-decoration:none;padding-top:2px;min-width:22px;flex:none}
+.toc-num:hover{color:var(--accent)}
+.toc-body{flex:1;min-width:0}
+.toc-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+.toc-title{font-weight:650;font-size:15px;color:var(--ink);text-decoration:none}
+.toc-title:hover{color:var(--accent)}
+.toc-status{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600}
+.toc-status .g{width:7px;height:7px;border-radius:50%;display:inline-block;flex:none}
+.toc-ctrl{font-size:11px;color:var(--warn)}
+.toc-line{display:flex;gap:6px;font-size:13px;line-height:1.45;margin-top:3px;color:var(--ink-2)}
+.toc-find{color:var(--ink)}
+.toc-k{flex:none;min-width:34px;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);padding-top:2px}
+/* finding block: narrative forward, markers + provenance code subtle */
+.finding-traceability{margin:11px 0}
+.finding-traceability .rationale{color:var(--ink);font-size:14px;line-height:1.5;margin-top:0}
+.finding-traceability .fmeta{margin-top:4px;font-size:11.5px;color:var(--ink-3);line-height:1.5}
+.finding-traceability .fid{font-weight:600;color:var(--ink-2)}
+.finding-traceability .fmeta .etier{font-size:10px;font-weight:600;padding:1px 6px;opacity:.85}
+.finding-traceability .fmeta code{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);background:none;padding:0}
+.finding-traceability .fmeta .trace-link{color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line-2)}
+.finding-traceability .fmeta .trace-link:hover{color:var(--accent)}
+.finding-traceability .fmeta .sep{color:var(--line-2);margin:0 2px}
 /* embedded REAL bigraph-loom (primary Model view) */
 .loom-real-slot{position:relative;border:1px solid var(--line);border-radius:12px;background:var(--surface);height:560px;overflow:hidden;resize:vertical;min-height:280px}
 .loom-real-slot iframe{width:100%;height:100%;border:0;display:block}
@@ -322,8 +373,20 @@ details.exp .body{font-size:13.5px;color:var(--ink-2);margin-top:8px;max-width:n
 .ho-dir{font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--ink-2);white-space:nowrap}
 .ho-who{color:var(--ink-3);font-weight:600}
 .ho-items{display:flex;gap:5px;flex-wrap:wrap}
-.tech-record{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line-2)}
-.tech-record>.body{margin-top:12px}
+.tech-record{margin-top:14px;padding-top:10px;border-top:1px dashed var(--line-2)}
+.tech-record>summary{font-size:11.5px;font-weight:600;color:var(--ink-3);letter-spacing:.02em}
+/* the technical record is supporting material — render it compact + muted */
+.tech-record>.body{margin-top:10px;font-size:12.5px;color:var(--ink-2)}
+.tech-record>.body .kicker{font-size:10.5px;color:var(--ink-3)}
+.tech-record>.body .texp,.tech-record>.body .mono{font-size:11.5px;color:var(--ink-3)}
+.tech-record>.body .kv .rationale{font-size:12px;color:var(--ink-2)}
+/* inline technical record (no dropdown) — same compact/muted supporting-material look */
+.tech-record-inline{margin-top:14px;padding-top:10px;border-top:1px dashed var(--line-2)}
+.tech-record-inline>.sec-sub{font-size:11.5px;font-weight:600;color:var(--ink-3);letter-spacing:.02em;text-transform:uppercase}
+.tech-record-inline>.body{margin-top:10px;font-size:12.5px;color:var(--ink-2)}
+.tech-record-inline>.body .kicker{font-size:10.5px;color:var(--ink-3)}
+.tech-record-inline>.body .texp,.tech-record-inline>.body .mono{font-size:11.5px;color:var(--ink-3)}
+.tech-record-inline>.body .kv .rationale{font-size:12px;color:var(--ink-2)}
 
 /* appendix */
 .appendix{margin:52px 0 24px}
@@ -567,21 +630,848 @@ footer .wrap{display:flex;flex-direction:column;gap:6px}
 <div class="topbar"><div class="wrap">
   <span class="brand">Vivarium <span class="dot">·</span> Workbench</span>
   <span class="switch-label" id="wsname"></span>
+  <button id="dl-html-btn" onclick="__dlPageHtml()" title="Download this report as a self-contained .html file"
+          style="font:inherit;font-size:12.5px;line-height:1;cursor:pointer;border:1px solid var(--line);background:none;color:var(--ink-2);border-radius:8px;padding:7px 11px;white-space:nowrap">&#8595; HTML</button>
   <button class="themebtn" id="themebtn" title="Toggle theme">◐</button>
 </div></div>
+<script>
+// Download-at-the-top: save THIS page as a self-contained .html without going
+// back to the Export menu. Serializes the live DOM (no network — the report is
+// fully self-contained, and this works live or opened from a file).
+function __dlPageHtml(){
+  var name = (document.title || 'report').replace(/\s+[—-]\s+report$/i,'').replace(/[^\w.-]+/g,'_') || 'report';
+  try {
+    var html = '<!doctype html>\n' + document.documentElement.outerHTML;
+    var b = new Blob([html], {type:'text/html'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(b); a.download = name + '.html';
+    document.body.appendChild(a); a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 4000);
+  } catch(e){ /* ignore */ }
+}
+</script>
 
 <main id="app"></main>
 
-<button class="fbfloat" id="fbfloat">Review &amp; export <span class="cnt" id="fbcnt">0</span></button>
-<div class="modal-bg" id="modalbg"><div class="modal">
-  <h3>Feedback report</h3>
-  <div class="sub">Your notes across the report, as a YAML feedback document — the same shape the workbench ingests. Copy it, or select all and save.</div>
-  <textarea id="fbyaml" spellcheck="false" readonly></textarea>
-  <div class="mfoot">
-    <button id="fbcopy">Copy YAML</button>
-    <button class="primary" id="fbclose">Close</button>
-  </div>
-</div></div>
+<!-- Inline expert-feedback: the shared engine (single source:
+     static/study-feedback.js) decorates every `.fbsection` and study card with a
+     hover-corner 💬 and shows a bottom-right export button once notes exist. The
+     engine source is inlined by render_html (token below) so the downloaded
+     report stays self-contained; it emits the canonical meta+annotations YAML. -->
+<script>window.__VIVA_FB_META__ = {"investigation": "lammps-lennard-jones-molecular-dynamics", "title": "Lammps lennard jones molecular dynamics"};</script>
+<script>
+window.__VIVA_FB_CONFIG__ = (function () {
+  function slugify(s) { return (String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 48)) || "x"; }
+  function meta() { return window.__VIVA_FB_META__ || {}; }
+  function cardOf(el) { return el.closest && el.closest('section.card[id^="s-"]'); }
+  function cardSlug(card) { return card ? (card.id || "").replace(/^s-/, "") : ""; }
+  function cardTitle(card) { var t = card && card.querySelector(".ctitle"); return (t && t.textContent.trim()) || cardSlug(card); }
+  function localKey(el) {
+    var id = (el.id || "").trim();
+    if (id) return slugify(id);
+    var sl = el.querySelector(":scope > .slabel"); if (sl) return slugify(sl.textContent);
+    var h = el.querySelector(".sec-h h2, h2, h3, figcaption"); if (h) return slugify(h.textContent);
+    return "section";
+  }
+  function sectionLabel(el) {
+    var h = el.querySelector(":scope > .slabel, .sec-h h2, h2, h3, figcaption");
+    return (h && h.textContent.trim().slice(0, 80)) || localKey(el);
+  }
+  return {
+    context: "investigation",
+    observeRoot: "#app",
+    title: "Feedback on " + ((meta().title) || meta().investigation || "investigation"),
+    meta: { investigation: function () { return meta().investigation || ""; } },
+    storeId: "inv." + slugify(meta().investigation || "investigation"),
+    allowInvestigationEdit: false,
+    noSave: true,
+    groups: [{ id: "studies", name: "Per-study" }, { id: "investigation", name: "Investigation" }],
+    regions: [
+      { sel: 'section.card[id^="s-"]', group: "studies",
+        sid: function (el) { return "study-" + slugify(cardSlug(el)); },
+        label: function (el) { return "Study: " + cardTitle(el); } },
+      { sel: ".fbsection",
+        group: function (el) { return cardOf(el) ? "studies" : "investigation"; },
+        sid: function (el) { var c = cardOf(el); return c ? "study-" + slugify(cardSlug(c)) + "-" + localKey(el) : "investigation-" + localKey(el); },
+        label: function (el) { var c = cardOf(el); return c ? cardTitle(c) + " · " + sectionLabel(el) : sectionLabel(el); } }
+    ]
+  };
+})();
+</script>
+<script>/* study-feedback.js — inline expert-feedback capture engine.
+ *
+ * ONE config-driven engine shared by two surfaces:
+ *   1. the study detail page (loaded as an external /study-feedback.js) — a
+ *      default config decorates every region across the six study tabs;
+ *   2. the investigation report (this same source inlined into the
+ *      self-contained downloadable HTML) — which sets window.__VIVA_FB_CONFIG__
+ *      before this runs, with its own region selectors.
+ *
+ * A reviewer hovers any region, clicks the corner 💬, leaves a disposition
+ * (👍 / ✏️) and a note. Notes collect into ONE YAML. The floating export
+ * button appears in the bottom-right ONLY once something is saved, showing the
+ * count; it opens a tray with Export / Copy and (live only) Save to workspace.
+ *
+ * Works identically on the LIVE workbench and the READ-ONLY published bundle /
+ * downloaded report: collection + export are pure client-side (localStorage);
+ * only "Save to workspace" needs the backend and hides in snapshot mode.
+ *
+ * The exported YAML is the canonical ingest shape read by
+ * viva_superpowers.feedback_import / feedback_tracking / feedback_actions and
+ * the /viva-* responder skills:
+ *
+ *   meta: {investigation, study?, reviewer, generated_at, source}
+ *   annotations:
+ *     <section-id>:
+ *       - {author, text, ts, disposition, region, group}
+ *
+ * Section ids prefixed `study-<slug>` attribute to that study
+ * (study_feedback_actions matches `study-<slug>` and `study-<slug>-*`);
+ * investigation-level sections use other prefixes and stay as report-level
+ * notes.
+ */
+(function () {
+  "use strict";
+
+  if (window.__vivaStudyFeedbackLoaded) return;
+  window.__vivaStudyFeedbackLoaded = true;
+
+  // ── generic helpers ──────────────────────────────────────────────────────────
+  function val(x) {
+    return typeof x === "function" ? x() : x;
+  }
+  function isSnapshot() {
+    try {
+      if (document.body && document.body.classList.contains("snapshot")) return true;
+      var c = window.__DASH_CONFIG__;
+      if (c && c.mode === "snapshot") return true;
+    } catch (e) {}
+    return false;
+  }
+  function nowIso() {
+    return new Date().toISOString().replace(/\.\d+Z$/, "Z");
+  }
+  function slugify(s) {
+    return (
+      String(s || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "")
+        .slice(0, 48) || "x"
+    );
+  }
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+  function cssEscape(s) {
+    return String(s).replace(/"/g, '\\"');
+  }
+  // The study detail page renders inside a full-height iframe in the SPA (the
+  // outer page scrolls, not the iframe), so position:fixed would pin the
+  // floating button to the iframe's document — i.e. the bottom of the content,
+  // not the screen. When embedded in a same-origin iframe, mount the viewport
+  // chrome (FAB + tray + toast) into the TOP window so it's fixed to the screen.
+  // Standalone pages (direct study page, report, published bundle) are not
+  // framed, so topDoc() === document and behavior is unchanged.
+  function topDoc() {
+    try {
+      if (window.self !== window.top && window.top && window.top.document) return window.top.document;
+    } catch (e) {}
+    return document;
+  }
+  function headingText(el) {
+    var h = el.querySelector(
+      "h1,h2,h3,h4,.card-h,.card-title,.figure-title,.finding-statement,.expert-question-title,.di-card-title,.followup-title,.sec-h,summary"
+    );
+    var t = (h && h.textContent) || el.getAttribute("aria-label") || "";
+    return t.replace(/\s+/g, " ").trim().slice(0, 80);
+  }
+  function textKey(el, fallback) {
+    return slugify(headingText(el) || fallback || "");
+  }
+
+  function reviewerName() {
+    try {
+      return localStorage.getItem("viva.fb.reviewer") || "";
+    } catch (e) {
+      return "";
+    }
+  }
+  function setReviewerName(v) {
+    try {
+      localStorage.setItem("viva.fb.reviewer", v || "");
+    } catch (e) {}
+  }
+
+  // ── default (study-detail) config ────────────────────────────────────────────
+  function studySlug() {
+    return (
+      (window._study && (window._study.name || window._study.slug)) ||
+      window._studyName ||
+      "study"
+    );
+  }
+  function studyInvestigation() {
+    var s = window._study || {};
+    var remembered = "";
+    try {
+      remembered = localStorage.getItem("viva.fb.inv." + slugify(studySlug())) || "";
+    } catch (e) {}
+    var cand =
+      window.__STUDY_INVESTIGATION__ ||
+      remembered ||
+      s.investigation ||
+      (Array.isArray(s.investigations) && s.investigations[0]) ||
+      (window.__DASH_CONFIG__ && window.__DASH_CONFIG__.investigation) ||
+      "";
+    if (cand && typeof cand === "object") cand = cand.slug || cand.name || "";
+    return cand || "";
+  }
+
+  var STUDY_TABS = {
+    overview: { panel: "#panel-overview", name: "Overview", regions: [
+      { sel: ".finding-card", key: function (el) { var i = el.querySelector(".finding-id"); return "finding-" + slugify((i && i.textContent) || textKey(el, "finding")); }, label: function (el) { var i = el.querySelector(".finding-id"); return "Finding " + (((i && i.textContent) || "").trim() || headingText(el)); } },
+      { sel: ".ctr-block", key: function (el) { return "block-" + textKey(el, "block"); }, label: function (el) { return headingText(el) || "Overview block"; } },
+      { sel: ".ov-src", key: function (el) { return "source-" + slugify((el.id || "").replace(/^sref-/, "") || textKey(el, "source")); }, label: function (el) { return "Source " + ((el.id || "").replace(/^sref-/, "") || headingText(el)); } },
+    ] },
+    visualize: { panel: "#panel-visualize", name: "Visualizations", regions: [
+      { sel: ".figure-card", key: function (el) { var t = el.querySelector(".figure-title"); var r = el.querySelector("[data-run-id]"); return "figure-" + slugify(((t && t.textContent) || "") + "-" + ((r && r.getAttribute("data-run-id")) || "")); }, label: function (el) { var t = el.querySelector(".figure-title"); return "Figure: " + (((t && t.textContent) || "").trim() || "untitled"); } },
+    ] },
+    compose: { panel: "#panel-compose", name: "Model", regions: [
+      { sel: ".cond-block", key: function (el) { return "model-" + slugify(el.getAttribute("data-model-composite") || textKey(el, "model")); }, label: function (el) { return "Model: " + (el.getAttribute("data-model-composite") || headingText(el) || "composite"); } },
+      { sel: "#model-composite-cards > *", key: function (el) { return "composite-" + textKey(el, "composite"); }, label: function (el) { return "Composite: " + (headingText(el) || "card"); } },
+      { sel: "#model-readouts-section", key: function () { return "readouts"; }, label: function () { return "Model readouts"; } },
+    ] },
+    simulate: { panel: "#panel-simulate", name: "Simulations", regions: [
+      { sel: "#study-sim-table", key: function () { return "runs"; }, label: function () { return "Simulation runs"; } },
+      { sel: "#results-summary", key: function () { return "results-summary"; }, label: function () { return "Results summary"; } },
+      { sel: "#gate-results", key: function () { return "gate-results"; }, label: function () { return "Gate results"; } },
+      { sel: "#study-analyses-list", key: function () { return "analyses"; }, label: function () { return "Analyses"; } },
+    ] },
+    audit: { panel: "#panel-audit", name: "Audit", regions: [
+      { sel: ".expected-behavior-item", key: function (el) { return "test-" + slugify((el.id || "").replace(/^bt-/, "") || el.getAttribute("data-pytest-node") || textKey(el, "test")); }, label: function (el) { return "Test: " + ((el.id || "").replace(/^bt-/, "") || el.getAttribute("data-pytest-node") || headingText(el)); } },
+      { sel: ".report-card-block", key: function (el) { return "report-card-" + textKey(el, "card"); }, label: function (el) { return "Report card: " + (headingText(el) || "card"); } },
+      { sel: ".audit-check-item", key: function (el) { var c = el.querySelector("code"); return "check-" + slugify((c && c.textContent) || textKey(el, "check")); }, label: function (el) { var c = el.querySelector("code"); return "Check: " + (((c && c.textContent) || "").trim() || headingText(el)); } },
+    ] },
+    conclusions: { panel: "#panel-conclusions", name: "Decisions", regions: [
+      { sel: "[data-narrative-card='conclusion_verdicts']", key: function () { return "verdicts"; }, label: function () { return "Three-track verdict"; } },
+      { sel: ".expert-question-card", key: function (el) { var i = el.querySelector(".expert-question-id"); return "debt-" + slugify((i && i.textContent) || textKey(el, "debt")); }, label: function (el) { var i = el.querySelector(".expert-question-id"); return "Open debt " + (((i && i.textContent) || "").trim() || headingText(el)); } },
+      { sel: ".di-card", key: function (el) { return "implication-" + textKey(el, "implication"); }, label: function (el) { return "Implication: " + (headingText(el) || "card"); } },
+      { sel: ".followup-card", key: function (el) { return "followup-" + textKey(el, "followup"); }, label: function (el) { return "Follow-up: " + (headingText(el) || "study"); } },
+    ] },
+  };
+
+  function defaultStudyConfig() {
+    var slug = studySlug();
+    var groups = [];
+    var regions = [];
+    Object.keys(STUDY_TABS).forEach(function (tab) {
+      var t = STUDY_TABS[tab];
+      groups.push({ id: tab, name: t.name });
+      t.regions.forEach(function (cfg) {
+        regions.push({
+          scope: t.panel,
+          sel: cfg.sel,
+          group: tab,
+          sid: (function (c, tabId) {
+            return function (el) {
+              return "study-" + slugify(slug) + "-" + tabId + "-" + c.key(el);
+            };
+          })(cfg, tab),
+          label: cfg.label,
+        });
+      });
+    });
+    return {
+      context: "study",
+      meta: { investigation: studyInvestigation, study: slug },
+      storeId: "study." + slugify(slug),
+      title: "Feedback on " + slug,
+      allowInvestigationEdit: true,
+      groups: groups,
+      regions: regions,
+      groupSwitch: function (gid) {
+        if (typeof window._setStudyTab === "function") {
+          try { window._setStudyTab(gid); } catch (e) {}
+        }
+      },
+    };
+  }
+
+  var CONFIG = window.__VIVA_FB_CONFIG__ || defaultStudyConfig();
+
+  function metaInvestigation() {
+    return val(CONFIG.meta && CONFIG.meta.investigation) || "";
+  }
+  function metaStudy() {
+    return val(CONFIG.meta && CONFIG.meta.study) || "";
+  }
+  function groupName(gid) {
+    var g = (CONFIG.groups || []).filter(function (x) { return x.id === gid; })[0];
+    return (g && g.name) || gid || "Other";
+  }
+
+  // ── store (localStorage) ──────────────────────────────────────────────────────
+  // Each surface (a study, the report, the SPA investigation view) persists its
+  // own store keyed `viva.fb.store.<ws>.<storeId>`, with meta under
+  // `viva.fb.meta.<ws>.<storeId>`. localStorage is shared across same-origin
+  // frames, so the single shared button AGGREGATES every store in the workspace
+  // — one count, one export ("all at once"), even when a study detail iframe and
+  // the SPA investigation view are on screen together.
+  // FB (this surface) = { sectionId: {note, disposition, label, group, ts} }
+  var FB = {};
+  // Guarantee unique section ids by checking the LIVE DOM — removed/re-rendered
+  // elements don't inflate the suffix, so ids stay stable across re-renders
+  // (only genuine same-view duplicates, e.g. Question + Hypothesis, get a -2).
+  function uniqueSid(sid) {
+    var base = sid, n = 1;
+    while (document.querySelector('[data-fb-sid="' + cssEscape(sid) + '"]')) {
+      n++;
+      sid = base + "-" + n;
+    }
+    return sid;
+  }
+  var STORE_PREFIX = "viva.fb.store.";
+  var META_PREFIX = "viva.fb.meta.";
+  function WS() {
+    return slugify((window.__DASH_CONFIG__ && window.__DASH_CONFIG__.workspace) || "");
+  }
+  function storeId() {
+    return val(CONFIG.storeId) || "x";
+  }
+  function storeKey() {
+    return STORE_PREFIX + WS() + "." + storeId();
+  }
+  function metaKey() {
+    return META_PREFIX + WS() + "." + storeId();
+  }
+  var _loadedKey = null;
+  function loadStore() {
+    _loadedKey = storeKey();
+    try {
+      FB = JSON.parse(localStorage.getItem(_loadedKey) || "{}") || {};
+    } catch (e) {
+      FB = {};
+    }
+  }
+  // The SPA investigation instance is long-lived across investigation switches
+  // (storeId is a function of the current slug) — reload FB when it changes.
+  function ensureStore() {
+    if (storeKey() !== _loadedKey) loadStore();
+  }
+  function persistMeta() {
+    try {
+      localStorage.setItem(metaKey(), JSON.stringify({
+        investigation: metaInvestigation(),
+        study: metaStudy(),
+        title: val(CONFIG.title) || "",
+        context: CONFIG.context || "",
+        noSave: !!CONFIG.noSave,
+        storeId: storeId(),
+      }));
+    } catch (e) {}
+  }
+  function saveStore() {
+    try {
+      localStorage.setItem(storeKey(), JSON.stringify(FB));
+    } catch (e) {}
+    persistMeta();
+    refreshChrome();
+  }
+  function setFB(key, patch) {
+    FB[key] = Object.assign({}, FB[key] || {}, patch);
+    if (!FB[key].note && !FB[key].disposition) delete FB[key];
+    saveStore();
+  }
+  // Aggregate every store for this workspace (investigation first, then studies).
+  function allStores() {
+    var pfx = STORE_PREFIX + WS() + ".";
+    var out = [];
+    try {
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (!k || k.indexOf(pfx) !== 0) continue;
+        var entries = {};
+        try { entries = JSON.parse(localStorage.getItem(k) || "{}") || {}; } catch (e) { entries = {}; }
+        if (!Object.keys(entries).length) continue;
+        var storeId = k.slice(pfx.length);
+        var meta = {};
+        try { meta = JSON.parse(localStorage.getItem(META_PREFIX + WS() + "." + storeId) || "{}") || {}; } catch (e) {}
+        out.push({ storeId: storeId, meta: meta, entries: entries });
+      }
+    } catch (e) {}
+    out.sort(function (a, b) {
+      var ai = a.meta.context === "investigation" ? 0 : 1;
+      var bi = b.meta.context === "investigation" ? 0 : 1;
+      if (ai !== bi) return ai - bi;
+      return String(a.meta.title || a.storeId).localeCompare(String(b.meta.title || b.storeId));
+    });
+    return out;
+  }
+  function totalCount() {
+    return allStores().reduce(function (n, s) { return n + Object.keys(s.entries).length; }, 0);
+  }
+  function pickInvestigation() {
+    var stores = allStores();
+    for (var i = 0; i < stores.length; i++) if (stores[i].meta.context === "investigation" && stores[i].meta.investigation) return stores[i].meta.investigation;
+    for (var j = 0; j < stores.length; j++) if (stores[j].meta.investigation) return stores[j].meta.investigation;
+    return metaInvestigation();
+  }
+  function anySaveable() {
+    return allStores().some(function (s) { return !s.meta.noSave; });
+  }
+
+  // ── decoration: hover 💬 corners on every region ──────────────────────────────
+  function decorateRegion(el, region) {
+    if (!el || el.__fbDecorated) return;
+    if (el.closest(".fb-corner") || el.closest(".fb-pop") || el.closest("#fb-tray")) return;
+    el.__fbDecorated = true;
+    var sid, label, group;
+    try { sid = region.sid(el); } catch (e) { sid = "x"; }
+    sid = uniqueSid(sid);
+    try { label = region.label(el); } catch (e) { label = ""; }
+    group = typeof region.group === "function" ? region.group(el) : region.group || "";
+    el.classList.add("fb-region");
+    el.setAttribute("data-fb-sid", sid);
+    el.setAttribute("data-fb-label", label || sid);
+    el.setAttribute("data-fb-group", group);
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "fb-corner";
+    btn.setAttribute("data-fb-sid", sid);
+    btn.setAttribute("title", "Leave feedback on: " + (label || sid));
+    btn.setAttribute("aria-label", "Leave feedback on " + (label || sid));
+    btn.textContent = "💬";
+    el.appendChild(btn);
+    markCorner(sid);
+  }
+  function decorateAll() {
+    ensureStore();
+    (CONFIG.regions || []).forEach(function (region) {
+      var roots = region.scope ? document.querySelectorAll(region.scope) : [document];
+      for (var r = 0; r < roots.length; r++) {
+        var nodes = roots[r].querySelectorAll(region.sel);
+        for (var i = 0; i < nodes.length; i++) decorateRegion(nodes[i], region);
+      }
+    });
+  }
+  function markCorner(sid) {
+    var has = !!FB[sid];
+    document.querySelectorAll('.fb-corner[data-fb-sid="' + cssEscape(sid) + '"]').forEach(function (b) {
+      b.classList.toggle("has", has);
+      b.textContent = has ? "📝" : "💬";
+    });
+    var reg = document.querySelector('.fb-region[data-fb-sid="' + cssEscape(sid) + '"]');
+    if (reg) reg.classList.toggle("fb-has", has);
+  }
+
+  // ── inline editor popover ──────────────────────────────────────────────────────
+  var curPop = null;
+  function closePop() {
+    if (curPop) { curPop.remove(); curPop = null; }
+  }
+  function openEditor(sid, label, group, anchorBtn) {
+    closePop();
+    var f = FB[sid] || {};
+    var pop = document.createElement("div");
+    pop.className = "fb-pop";
+    pop.innerHTML =
+      '<div class="fb-pop-h">' + esc(label) + "</div>" +
+      '<div class="fb-disp">' +
+      '<button type="button" data-disp="ok" class="' + (f.disposition === "ok" ? "on-ok" : "") + '">👍 Looks right</button>' +
+      '<button type="button" data-disp="revise" class="' + (f.disposition === "revise" ? "on-rev" : "") + '">✏️ Needs revision</button>' +
+      "</div>" +
+      '<textarea class="fb-note" rows="4" placeholder="Note for the team / AI agent…">' + esc(f.note || "") + "</textarea>" +
+      '<div class="fb-pop-foot">' +
+      '<button type="button" class="fb-clear">Clear</button>' +
+      '<span class="fb-spacer"></span>' +
+      '<button type="button" class="fb-done">Done</button>' +
+      "</div>";
+    document.body.appendChild(pop);
+    curPop = pop;
+    pop._anchor = anchorBtn;
+    positionPop(pop, anchorBtn);
+
+    var ta = pop.querySelector(".fb-note");
+    ta.focus();
+    ta.setSelectionRange(ta.value.length, ta.value.length);
+    ta.addEventListener("input", function () {
+      setFB(sid, { note: ta.value, label: label, group: group, ts: f.ts || nowIso() });
+      markCorner(sid);
+    });
+    pop.querySelectorAll(".fb-disp button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var d = b.getAttribute("data-disp");
+        var cur = (FB[sid] || {}).disposition;
+        var nd = cur === d ? null : d;
+        setFB(sid, { disposition: nd, label: label, group: group, ts: (FB[sid] || {}).ts || nowIso() });
+        pop.querySelectorAll(".fb-disp button").forEach(function (x) { x.classList.remove("on-ok", "on-rev"); });
+        if (nd === "ok") pop.querySelector('[data-disp="ok"]').classList.add("on-ok");
+        if (nd === "revise") pop.querySelector('[data-disp="revise"]').classList.add("on-rev");
+        markCorner(sid);
+      });
+    });
+    pop.querySelector(".fb-clear").addEventListener("click", function () {
+      delete FB[sid]; saveStore(); markCorner(sid); closePop();
+    });
+    pop.querySelector(".fb-done").addEventListener("click", closePop);
+  }
+  function positionPop(pop, anchor) {
+    var r = anchor.getBoundingClientRect();
+    var w = 320;
+    var left = Math.max(12, Math.min(r.right - w, window.innerWidth - w - 12));
+    var top = r.bottom + 8;
+    var maxTop = window.innerHeight - pop.offsetHeight - 12;
+    if (top > maxTop) top = Math.max(12, r.top - pop.offsetHeight - 8);
+    pop.style.left = left + "px";
+    pop.style.top = top + window.scrollY + "px";
+  }
+
+  // ── floating button + tray (singleton in the TOP window; aggregates stores) ───
+  function buildChrome() {
+    var TD = topDoc();
+    if (TD.getElementById("fb-fab")) { refreshChrome(); return; } // one shared button
+    var fab = TD.createElement("button");
+    fab.id = "fb-fab";
+    fab.type = "button";
+    fab.title = "Review & export collected feedback";
+    fab.innerHTML = '💬 Feedback <span id="fb-count">0</span>';
+    fab.addEventListener("click", toggleTray);
+    TD.body.appendChild(fab);
+    var tray = TD.createElement("div");
+    tray.id = "fb-tray";
+    tray.hidden = true;
+    TD.body.appendChild(tray);
+    refreshChrome();
+  }
+  function refreshChrome() {
+    var TD = topDoc();
+    var n = totalCount();
+    var fab = TD.getElementById("fb-fab");
+    if (fab) {
+      fab.style.display = n > 0 ? "flex" : "none"; // appears only when there's feedback
+      var c = fab.querySelector("#fb-count");
+      if (c) c.textContent = n;
+    }
+    var tray = TD.getElementById("fb-tray");
+    if (tray) {
+      if (n === 0) tray.hidden = true;
+      if (!tray.hidden) renderTray();
+    }
+  }
+  function toggleTray() {
+    var tray = topDoc().getElementById("fb-tray");
+    if (!tray) return;
+    tray.hidden = !tray.hidden;
+    if (!tray.hidden) renderTray();
+  }
+  function renderTray() {
+    var tray = topDoc().getElementById("fb-tray");
+    if (!tray) return;
+    var stores = allStores();
+
+    var html = '<div class="fb-tray-h"><b>Feedback</b>' +
+      '<button type="button" class="fb-tray-x" title="Close">✕</button></div>';
+    html += '<div class="fb-tray-meta"><label>Reviewer <input id="fb-reviewer" type="text" value="' +
+      esc(reviewerName()) + '" placeholder="your name"></label></div>';
+
+    if (!stores.length) {
+      html += '<div class="fb-tray-empty">No notes yet. Hover any region (a figure, a finding, a tab section…) and click the 💬 in its corner.</div>';
+    } else {
+      html += '<div class="fb-tray-list">';
+      stores.forEach(function (s) {
+        var gtitle = s.meta.title || (s.meta.study ? "Study: " + s.meta.study : s.meta.investigation || s.storeId);
+        html += '<div class="fb-tray-group">' + esc(gtitle) + "</div>";
+        Object.keys(s.entries).sort().forEach(function (sid) {
+          var e = s.entries[sid];
+          var disp = e.disposition === "ok" ? "👍" : e.disposition === "revise" ? "✏️" : "•";
+          html += '<div class="fb-item" data-store="' + esc(s.storeId) + '" data-sid="' + esc(sid) + '">' +
+            '<span class="fb-item-disp">' + disp + "</span>" +
+            '<span class="fb-item-body"><span class="fb-item-label">' + esc(e.region || e.label || sid) + "</span>" +
+            '<span class="fb-item-note">' + esc(e.note != null ? e.note : e.text || "(no note)") + "</span></span>" +
+            '<button type="button" class="fb-item-del" title="Remove">✕</button></div>';
+        });
+      });
+      html += "</div>";
+    }
+
+    html += '<div class="fb-tray-actions">' +
+      '<button type="button" id="fb-export">⬇ Export .yaml</button>' +
+      '<button type="button" id="fb-copy">⧉ Copy</button>' +
+      (!isSnapshot() && anySaveable() ? '<button type="button" id="fb-save" class="primary">⤴ Save to workspace</button>' : "") +
+      "</div>";
+    tray.innerHTML = html;
+
+    tray.querySelector(".fb-tray-x").addEventListener("click", toggleTray);
+    var rev = tray.querySelector("#fb-reviewer");
+    if (rev) rev.addEventListener("input", function () { setReviewerName(rev.value); });
+    tray.querySelectorAll(".fb-item").forEach(function (row) {
+      var sid = row.getAttribute("data-sid");
+      var store = row.getAttribute("data-store");
+      row.querySelector(".fb-item-body").addEventListener("click", function () { jumpTo(store, sid); });
+      row.querySelector(".fb-item-del").addEventListener("click", function (ev) {
+        ev.stopPropagation(); deleteItem(store, sid);
+      });
+    });
+    tray.querySelector("#fb-export").addEventListener("click", exportYaml);
+    tray.querySelector("#fb-copy").addEventListener("click", copyYaml);
+    var saveBtn = tray.querySelector("#fb-save");
+    if (saveBtn) saveBtn.addEventListener("click", saveToWorkspace);
+  }
+  function deleteItem(store, sid) {
+    var key = STORE_PREFIX + WS() + "." + store;
+    try {
+      var o = JSON.parse(localStorage.getItem(key) || "{}") || {};
+      delete o[sid];
+      if (Object.keys(o).length) localStorage.setItem(key, JSON.stringify(o));
+      else localStorage.removeItem(key);
+    } catch (e) {}
+    if (store === (CONFIG.storeId || "x")) delete FB[sid];
+    markCorner(sid);
+    refreshChrome();
+    renderTray();
+  }
+  function jumpTo(store, sid) {
+    // Only this surface's regions are reachable from its own engine instance;
+    // items from another frame/surface simply don't scroll (cross-frame).
+    var reg = document.querySelector('.fb-region[data-fb-sid="' + cssEscape(sid) + '"]');
+    if (!reg) return;
+    var e = FB[sid];
+    if (e && e.group && typeof CONFIG.groupSwitch === "function") CONFIG.groupSwitch(e.group);
+    setTimeout(function () {
+      reg.scrollIntoView({ behavior: "smooth", block: "center" });
+      reg.classList.add("fb-flash");
+      setTimeout(function () { reg.classList.remove("fb-flash"); }, 1400);
+    }, 120);
+  }
+
+  // ── YAML emit (canonical meta + annotations) ──────────────────────────────────
+  function yq(s) {
+    return '"' + String(s == null ? "" : s).replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\n/g, " ") + '"';
+  }
+  function payloadObj() {
+    // Aggregate every store in the workspace into ONE canonical payload. Section
+    // ids are globally unique (study-<slug>-… / investigation-…), so study notes
+    // attribute to their study and investigation notes stay report-level.
+    var author = reviewerName() || "reviewer";
+    var annotations = {};
+    var stores = allStores();
+    stores.forEach(function (s) {
+      Object.keys(s.entries).sort().forEach(function (sid) {
+        var e = s.entries[sid];
+        var entry = { author: author, text: e.note != null ? e.note : e.text || "", ts: e.ts || nowIso() };
+        if (e.disposition) entry.disposition = e.disposition;
+        if (e.region || e.label) entry.region = e.region || e.label;
+        if (e.group) entry.group = e.group;
+        annotations[sid] = [entry];
+      });
+    });
+    var meta = {
+      investigation: pickInvestigation(),
+      reviewer: author,
+      generated_at: nowIso(),
+      source: "workbench-inline-feedback",
+    };
+    // Single study in scope (no investigation store) → keep the study hint.
+    if (stores.length === 1 && stores[0].meta.study) meta.study = stores[0].meta.study;
+    return { meta: meta, annotations: annotations };
+  }
+  function genYaml() {
+    var p = payloadObj();
+    var L = ["meta:"];
+    L.push("  investigation: " + yq(p.meta.investigation));
+    if (p.meta.study) L.push("  study: " + yq(p.meta.study));
+    L.push("  reviewer: " + yq(p.meta.reviewer));
+    L.push("  generated_at: " + yq(p.meta.generated_at));
+    L.push("  source: " + yq(p.meta.source));
+    L.push("annotations:");
+    var keys = Object.keys(p.annotations);
+    if (!keys.length) {
+      L.push("  {}  # no notes — hover a region and click 💬");
+    } else {
+      keys.forEach(function (sid) {
+        var e = p.annotations[sid][0];
+        L.push("  " + sid + ":");
+        L.push("    - author: " + yq(e.author));
+        L.push("      text: " + yq(e.text));
+        L.push("      ts: " + yq(e.ts));
+        if (e.disposition) L.push("      disposition: " + yq(e.disposition));
+        if (e.region) L.push("      region: " + yq(e.region));
+        if (e.group) L.push("      group: " + yq(e.group));
+      });
+    }
+    return L.join("\n") + "\n";
+  }
+  function exportName() {
+    return "feedback-" + slugify(pickInvestigation() || "report") + ".yaml";
+  }
+  function download(name, text) {
+    var TD = topDoc();
+    var blob = new Blob([text], { type: "application/x-yaml" });
+    var url = URL.createObjectURL(blob);
+    var a = TD.createElement("a");
+    a.href = url;
+    a.download = name;
+    TD.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  }
+  function toast(msg, ok) {
+    if (window.Toast && typeof window.Toast.show === "function") {
+      window.Toast.show(msg, ok === false ? "error" : "success");
+      return;
+    }
+    var TD = topDoc();
+    var t = TD.createElement("div");
+    t.className = "fb-toast" + (ok === false ? " err" : "");
+    t.textContent = msg;
+    TD.body.appendChild(t);
+    setTimeout(function () { t.classList.add("in"); }, 10);
+    setTimeout(function () { t.classList.remove("in"); setTimeout(function () { t.remove(); }, 300); }, 2600);
+  }
+  function exportYaml() {
+    download(exportName(), genYaml());
+    toast("Feedback YAML downloaded");
+  }
+  function copyYaml() {
+    var y = genYaml();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(y).then(
+        function () { toast("YAML copied to clipboard"); },
+        function () { download(exportName(), y); }
+      );
+    } else {
+      download(exportName(), y);
+    }
+  }
+  function saveToWorkspace(){}
+
+  // ── styles ─────────────────────────────────────────────────────────────────────
+  function injectStyle() {
+    if (document.getElementById("fb-style")) return;
+    var css = [
+      ".fb-region{position:relative;}",
+      ".fb-corner{position:absolute;top:4px;right:4px;z-index:6;width:26px;height:26px;padding:0;border:none;border-radius:7px;",
+      "  background:var(--card,#fff);box-shadow:0 1px 4px rgba(0,0,0,.18);cursor:pointer;font-size:14px;line-height:26px;text-align:center;",
+      "  opacity:0;transform:translateY(-2px);transition:opacity .12s,transform .12s;}",
+      ".fb-region:hover>.fb-corner,.fb-corner:focus{opacity:.92;transform:none;}",
+      ".fb-corner:hover{opacity:1;box-shadow:0 2px 8px rgba(0,0,0,.28);}",
+      ".fb-corner.has{opacity:1;background:#2d6cdf;}",
+      ".fb-region.fb-has{box-shadow:inset 0 0 0 1.5px rgba(45,108,223,.45);border-radius:8px;}",
+      ".fb-region.fb-flash{outline:2px solid #2d6cdf;outline-offset:2px;transition:outline .2s;}",
+      ".fb-pop{position:absolute;z-index:99999;width:320px;max-width:calc(100vw - 24px);background:var(--card,#fff);color:var(--ink,#111);",
+      "  border:1px solid var(--line,#ddd);border-radius:12px;box-shadow:0 10px 34px rgba(0,0,0,.28);padding:12px;font-size:13px;}",
+      ".fb-pop-h{font-weight:600;margin-bottom:8px;font-size:13px;line-height:1.3;}",
+      ".fb-disp{display:flex;gap:6px;margin-bottom:8px;}",
+      ".fb-disp button{flex:1;padding:6px 4px;border:1px solid var(--line,#ddd);border-radius:7px;background:var(--bg,#f7f7f8);cursor:pointer;font-size:12px;color:var(--ink,#111);}",
+      ".fb-disp button.on-ok{background:#1f9d55;border-color:#1f9d55;color:#fff;}",
+      ".fb-disp button.on-rev{background:#e0a106;border-color:#e0a106;color:#1a1a1a;}",
+      ".fb-note{width:100%;box-sizing:border-box;border:1px solid var(--line,#ddd);border-radius:8px;padding:7px 9px;font:inherit;resize:vertical;background:var(--bg,#fff);color:var(--ink,#111);}",
+      ".fb-pop-foot{display:flex;align-items:center;gap:8px;margin-top:9px;}",
+      ".fb-pop-foot .fb-spacer{flex:1;}",
+      ".fb-pop-foot button{padding:6px 12px;border:1px solid var(--line,#ddd);border-radius:7px;background:var(--bg,#f2f2f4);cursor:pointer;font-size:12px;color:var(--ink,#111);}",
+      ".fb-pop-foot .fb-done{background:#2d6cdf;border-color:#2d6cdf;color:#fff;}",
+      "#fb-fab{position:fixed;right:18px;bottom:18px;z-index:99998;padding:10px 15px;border:none;border-radius:22px;",
+      "  background:#2d6cdf;color:#fff;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 4px 16px rgba(45,108,223,.4);display:none;gap:7px;align-items:center;}",
+      "#fb-fab #fb-count{background:rgba(255,255,255,.26);border-radius:10px;padding:0 7px;min-width:14px;text-align:center;font-size:12px;}",
+      "#fb-tray{position:fixed;right:18px;bottom:66px;z-index:99998;width:360px;max-width:calc(100vw - 24px);max-height:72vh;overflow:auto;",
+      "  background:var(--card,#fff);color:var(--ink,#111);border:1px solid var(--line,#ddd);border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.3);}",
+      ".fb-tray-h{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--line,#eee);position:sticky;top:0;background:var(--card,#fff);}",
+      ".fb-tray-x{border:none;background:none;cursor:pointer;font-size:15px;color:var(--ink-2,#666);}",
+      ".fb-tray-meta{display:flex;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line,#eee);}",
+      ".fb-tray-meta label{flex:1;font-size:11px;color:var(--ink-2,#666);display:flex;flex-direction:column;gap:3px;}",
+      ".fb-tray-meta input{border:1px solid var(--line,#ddd);border-radius:6px;padding:5px 7px;font:inherit;font-size:12px;background:var(--bg,#fff);color:var(--ink,#111);}",
+      ".fb-tray-list{padding:6px 8px;}",
+      ".fb-tray-group{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-2,#888);padding:9px 8px 3px;}",
+      ".fb-item{display:flex;gap:8px;align-items:flex-start;padding:7px 8px;border-radius:8px;cursor:pointer;}",
+      ".fb-item:hover{background:var(--bg,#f5f6f8);}",
+      ".fb-item-disp{font-size:13px;line-height:1.3;}",
+      ".fb-item-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;}",
+      ".fb-item-label{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}",
+      ".fb-item-note{font-size:12px;color:var(--ink-2,#666);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}",
+      ".fb-item-del{border:none;background:none;cursor:pointer;color:var(--ink-2,#999);font-size:12px;}",
+      ".fb-tray-actions{display:flex;gap:7px;padding:11px 14px;border-top:1px solid var(--line,#eee);position:sticky;bottom:0;background:var(--card,#fff);flex-wrap:wrap;}",
+      ".fb-tray-actions button{flex:1;min-width:92px;padding:8px 6px;border:1px solid var(--line,#ddd);border-radius:8px;background:var(--bg,#f2f2f4);cursor:pointer;font-size:12px;color:var(--ink,#111);}",
+      ".fb-tray-actions button.primary{background:#2d6cdf;border-color:#2d6cdf;color:#fff;}",
+      ".fb-toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(12px);z-index:100000;background:#1f9d55;color:#fff;",
+      "  padding:9px 16px;border-radius:9px;font-size:13px;box-shadow:0 6px 20px rgba(0,0,0,.3);opacity:0;transition:opacity .25s,transform .25s;}",
+      ".fb-toast.in{opacity:1;transform:translateX(-50%) translateY(0);}",
+      ".fb-toast.err{background:#d23f3f;}",
+      "@media print{.fb-corner,#fb-fab,#fb-tray,.fb-pop{display:none !important;}}",
+    ].join("\n");
+    // Inject into this document (regions/corners/popover live here) AND the top
+    // document (where the FAB/tray/toast are mounted when embedded in an iframe).
+    [document, topDoc()].forEach(function (doc) {
+      if (!doc || doc.getElementById("fb-style")) return;
+      var st = doc.createElement("style");
+      st.id = "fb-style";
+      st.textContent = css;
+      (doc.head || doc.documentElement).appendChild(st);
+    });
+  }
+
+  // ── wiring ───────────────────────────────────────────────────────────────────
+  var decorateTimer = null;
+  function scheduleDecorate() {
+    if (decorateTimer) return;
+    decorateTimer = setTimeout(function () { decorateTimer = null; decorateAll(); }, 150);
+  }
+  function init() {
+    if (!CONFIG || !CONFIG.regions || !CONFIG.regions.length) return;
+    // study page gate: only run on an actual study page for the default config
+    if (CONFIG.context === "study" && !document.querySelector("#panel-overview")) return;
+    injectStyle();
+    loadStore();
+    buildChrome();
+    decorateAll();
+    var root =
+      document.querySelector(CONFIG.observeRoot || "main.study-page") ||
+      document.querySelector("#app") ||
+      document.body;
+    new MutationObserver(scheduleDecorate).observe(root, { childList: true, subtree: true });
+
+    document.addEventListener("click", function (ev) {
+      var btn = ev.target.closest(".fb-corner");
+      if (btn) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        var sid = btn.getAttribute("data-fb-sid");
+        var reg = btn.closest(".fb-region");
+        var label = (reg && reg.getAttribute("data-fb-label")) || sid;
+        var group = (reg && reg.getAttribute("data-fb-group")) || "";
+        openEditor(sid, label, group, btn);
+        return;
+      }
+      if (curPop && !ev.target.closest(".fb-pop") && !ev.target.closest(".fb-corner")) closePop();
+    });
+    document.addEventListener("keydown", function (ev) { if (ev.key === "Escape") closePop(); });
+    // On resize, REPOSITION the open popover — never close it. The study page
+    // renders in an auto-growing iframe, and focusing the note textarea opens
+    // the mobile keyboard; both fire resize, and closing here made the popover
+    // vanish right after it opened (worse on mobile). Reposition to the anchor
+    // if it's still in the DOM; otherwise leave the popover where it is.
+    var _rzTimer = null;
+    window.addEventListener("resize", function () {
+      if (!curPop || _rzTimer) return;
+      _rzTimer = setTimeout(function () {
+        _rzTimer = null;
+        if (curPop && curPop._anchor && curPop._anchor.isConnected) positionPop(curPop, curPop._anchor);
+      }, 80);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+</script>
 
 <footer><div class="wrap">
   <div>Rendered from workspace <span class="mono" id="foot-ws"></span> · deterministic from investigation + study YAML.</div>
@@ -4211,7 +5101,7 @@ maplibre-gl/dist/maplibre-gl.mjs:
 window.Plotly = Plotly;
 return Plotly;
 }));</script>
-<script id="data" type="application/json">{"slug": "lammps-lennard-jones-molecular-dynamics", "title": "Lammps lennard jones molecular dynamics", "status": "planning", "question": "TBD — what overarching question ties these studies together?", "hypothesis": "TBD — what do we expect the composed studies to show?", "lead": null, "executive": {"what_is_this": "TBD — one paragraph, for a reader who has never seen this.", "verdict": "TBD — fill in once studies are run.", "verdict_status": "in-progress", "verdict_detail": "TBD", "decisions_needed": [], "computed_verdict_status": "passing-with-caveats", "computed_acceptance": {"criteria": [{"study": "lj-nve-demo", "behavior": "lj-nve-demo-behaves", "result": "passing-with-caveats"}, {"study": "lj-nve-demo-with-viz", "behavior": "lj-nve-demo-with-viz-behaves", "result": "passing-with-caveats"}], "unmet": [{"study": "lj-nve-demo", "behavior": "lj-nve-demo-behaves", "result": "passing-with-caveats"}, {"study": "lj-nve-demo-with-viz", "behavior": "lj-nve-demo-with-viz-behaves", "result": "passing-with-caveats"}], "diverges_from_authored": true}}, "scientific_argument": {"main_claim": "TBD — the one-sentence claim this investigation supports.", "evidence_for": [], "evidence_against": [], "key_figures": [], "caveats": []}, "biological_story": null, "glossary": null, "guidelines": null, "how_to_read": null, "created": "2026-10-27", "key_claims": null, "competing_frameworks": null, "at_a_glance": null, "acceptance_criteria": [{"study": "lj-nve-demo", "behavior": "lj-nve-demo-behaves"}, {"study": "lj-nve-demo-with-viz", "behavior": "lj-nve-demo-with-viz-behaves"}], "spine": {"verdict_dag": {"nodes": [{"slug": "lj-nve-demo", "title": "Lj nve demo", "verdict": "blocked", "counts": {"passed": 0, "skipped": 1, "failed": 0}, "depth": 0}, {"slug": "lj-nve-demo-with-viz", "title": "Lj nve demo with viz", "verdict": "blocked", "counts": {"passed": 0, "skipped": 1, "failed": 0}, "depth": 1}], "edges": [{"from": "lj-nve-demo", "to": "lj-nve-demo-with-viz"}]}, "acceptance": {"verdict_status": "passing-with-caveats", "criteria": [{"study": "lj-nve-demo", "behavior": "lj-nve-demo-behaves", "result": "passing-with-caveats"}, {"study": "lj-nve-demo-with-viz", "behavior": "lj-nve-demo-with-viz-behaves", "result": "passing-with-caveats"}], "unmet": [{"study": "lj-nve-demo", "behavior": "lj-nve-demo-behaves", "result": "passing-with-caveats"}, {"study": "lj-nve-demo-with-viz", "behavior": "lj-nve-demo-with-viz-behaves", "result": "passing-with-caveats"}], "diverges_from_authored": true}, "ac_matrix": {"investigation": "lammps-lennard-jones-molecular-dynamics", "verdict_status": "passing-with-caveats", "criteria": [{"behavior": "lj-nve-demo-behaves", "study": "lj-nve-demo", "result": "passing-with-caveats", "status": null, "covered_by": ["lj-nve-demo"], "gap": false}, {"behavior": "lj-nve-demo-with-viz-behaves", "study": "lj-nve-demo-with-viz", "result": "passing-with-caveats", "status": null, "covered_by": ["lj-nve-demo-with-viz"], "gap": false}], "gaps": []}, "plan_board": []}, "discovery": {"closed": true, "frontier_size": 4, "next_action": {"op": "revise", "kind": "validation_finding", "target": "lj-nve-demo"}, "opportunities": [{"source": "lj-nve-demo", "action": "test", "score": 0.2, "impact": 0.2, "enable": 0.0, "question": "gate 'lj-nve-demo-behaves' on lj-nve-demo is met by verdict (qualified) only — behavior SKIP; run it to verify the gate on evidence"}, {"source": "lj-nve-demo-with-viz", "action": "test", "score": 0.12, "impact": 0.0, "enable": 0.0, "question": "gate 'lj-nve-demo-with-viz-behaves' on lj-nve-demo-with-viz is met by verdict (qualified) only — behavior SKIP; run it to verify the gate on evidence"}, {"source": "lj-nve-demo", "action": "revise", "score": 0.11, "impact": 0.2, "enable": 0.0, "question": "[structural/study] missing authored prose: executive prose `claim`"}, {"source": "lj-nve-demo-with-viz", "action": "revise", "score": 0.03, "impact": 0.0, "enable": 0.0, "question": "[structural/study] missing authored prose: executive prose `claim`"}], "diagnosis": {"flags": ["validation_limited"], "validator_pass_rate": 0.0}, "execution_plan": [{"source": "lj-nve-demo", "action": "test", "score": 0.2, "consequence": "simulation", "command": "vivarium-workbench run study lj-nve-demo --workspace \u003cws>"}, {"source": "lj-nve-demo-with-viz", "action": "test", "score": 0.12, "consequence": "simulation", "command": "vivarium-workbench run study lj-nve-demo-with-viz --workspace \u003cws>"}, {"source": "lj-nve-demo", "action": "revise", "score": 0.11, "consequence": "review", "command": "\u003caddress the validator's recommendation>; discover resolve \u003cinv> validation_finding lj-nve-demo --rationale '…'"}, {"source": "lj-nve-demo-with-viz", "action": "revise", "score": 0.03, "consequence": "review", "command": "\u003caddress the validator's recommendation>; discover resolve \u003cinv> validation_finding lj-nve-demo-with-viz --rationale '…'"}], "suggestions": [], "validator_census": {"failed": 4, "passed": 1}, "drift": {"divergences": 0, "stale_validations": 0}}, "synthesis": {"studies_index": [{"slug": "lj-nve-demo", "title": "Lj nve demo", "stage": "lj-nve-demo", "run_status": "planned", "grade": "pending", "claim_status": "pending", "variant": false, "one_line": "TBD — describe what pbg_lammps.composites.lj-nve-demo is expected to demonstrate."}, {"slug": "lj-nve-demo-with-viz", "title": "Lj nve demo with viz", "stage": "lj-nve-demo-with-viz", "run_status": "planned", "grade": "pending", "claim_status": "pending", "variant": false, "one_line": "TBD — describe what pbg_lammps.composites.lj-nve-demo-with-viz is expected to demonstrate."}], "stages": [{"key": "lj-nve-demo", "label": "Lj nve demo", "studies": [{"slug": "lj-nve-demo", "title": "Lj nve demo", "grade": "pending", "claim_status": "pending", "variant": false, "one_line": "TBD — describe what pbg_lammps.composites.lj-nve-demo is expected to demonstrate.", "run_status": "planned"}], "model_dependence": false, "findings": []}, {"key": "lj-nve-demo-with-viz", "label": "Lj nve demo with viz", "studies": [{"slug": "lj-nve-demo-with-viz", "title": "Lj nve demo with viz", "grade": "pending", "claim_status": "pending", "variant": false, "one_line": "TBD — describe what pbg_lammps.composites.lj-nve-demo-with-viz is expected to demonstrate.", "run_status": "planned"}], "model_dependence": false, "findings": []}], "claim_evidence": [], "contradictions": [], "continuity": {"edges": [{"from": "lj-nve-demo", "to": "lj-nve-demo-with-viz"}], "external_inputs": []}, "quantitative": [], "roadmap": [{"priority": "P1", "item": "Lj nve demo", "basis": "TBD — describe what pbg_lammps.composites.lj-nve-demo is expected to demonstrate.", "source": "lj-nve-demo"}, {"priority": "P1", "item": "Lj nve demo with viz", "basis": "TBD — describe what pbg_lammps.composites.lj-nve-demo-with-viz is expected to demonstrate.", "source": "lj-nve-demo-with-viz"}], "figures_ranked": [{"slug": "lj-nve-demo", "study_title": "Lj nve demo", "name": "Lj nve demo decision", "caption": null, "score": 1}, {"slug": "lj-nve-demo-with-viz", "study_title": "Lj nve demo with viz", "name": "Lj nve demo with viz decision", "caption": null, "score": 1}], "headline": [], "counts": {"total": 2, "supported": 0, "qualified": 0, "refuted": 0, "planned": 2}, "validation": {"investigation": "lammps-lennard-jones-molecular-dynamics", "items": [{"kind": "diagnostic_branch_needed", "severity": "high", "study": "lj-nve-demo", "ref": "lj-nve-demo", "title": "Study 'lj-nve-demo' verdict is 'needs_calibration' with no diagnostic study seeded", "detail": "roll_up_verdict result is 'needs_calibration' but no conclusion_logic.if_primary_tests_fail.diagnose entry has a seeded_study.", "action_hint": "seed a diagnostic study"}, {"kind": "diagnostic_branch_needed", "severity": "high", "study": "lj-nve-demo-with-viz", "ref": "lj-nve-demo-with-viz", "title": "Study 'lj-nve-demo-with-viz' verdict is 'needs_calibration' with no diagnostic study seeded", "detail": "roll_up_verdict result is 'needs_calibration' but no conclusion_logic.if_primary_tests_fail.diagnose entry has a seeded_study.", "action_hint": "seed a diagnostic study"}], "summary": {"by_severity": {"high": 2, "medium": 0, "low": 0}, "by_kind": {"diagnostic_branch_needed": 2}, "total": 2, "member_count": 2, "ac_total": 2, "ac_covered": 2}, "checks": [{"kind": "uncovered_ac", "label": "Acceptance criteria covered", "mode": "coverage", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "unresolved_composite", "label": "Composites resolve in the registry", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "verdict_divergence", "label": "Verdicts match the authored gate", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "hard_gate", "label": "Hard gates passing", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "test_regression", "label": "No behavior-test regressions", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "diagnostic_branch_needed", "label": "Failed verdicts have a diagnostic study", "mode": "studies", "flagged": 2, "examined": 2, "passing": 0}, {"kind": "invariant_regression", "label": "No invariant regressions", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "open_feedback", "label": "Expert feedback addressed", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "param_drift", "label": "No parameter drift", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "unregistered_confirmatory", "label": "Confirmatory studies registered", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "stale_finding", "label": "No stale findings", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "env_stale", "label": "Run environments current", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "nondeterministic", "label": "Runs reproducible", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}], "report_lint": [{"study": "lj-nve-demo", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'behavior_tests[0].description'. Either fill in the content or remove the placeholder before publishing.", "field_path": "behavior_tests[0].description"}, {"study": "lj-nve-demo", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'behavior_tests[0].measure.field'. Either fill in the content or remove the placeholder before publishing.", "field_path": "behavior_tests[0].measure.field"}, {"study": "lj-nve-demo", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'experiment'. Either fill in the content or remove the placeholder before publishing.", "field_path": "experiment"}, {"study": "lj-nve-demo", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'question'. Either fill in the content or remove the placeholder before publishing.", "field_path": "question"}, {"study": "lj-nve-demo", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'runs[0].computed_outcomes.lj-nve-demo-behaves.reason'. Either fill in the content or remove the placeholder before publishing.", "field_path": "runs[0].computed_outcomes.lj-nve-demo-behaves.reason"}, {"study": "lj-nve-demo", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'runs[0].outcomes.lj-nve-demo-behaves.note'. Either fill in the content or remove the placeholder before publishing.", "field_path": "runs[0].outcomes.lj-nve-demo-behaves.note"}, {"study": "lj-nve-demo", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'runs[1].computed_outcomes.lj-nve-demo-behaves.reason'. Either fill in the content or remove the placeholder before publishing.", "field_path": "runs[1].computed_outcomes.lj-nve-demo-behaves.reason"}, {"study": "lj-nve-demo", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'runs[2].computed_outcomes.lj-nve-demo-behaves.reason'. Either fill in the content or remove the placeholder before publishing.", "field_path": "runs[2].computed_outcomes.lj-nve-demo-behaves.reason"}, {"study": "lj-nve-demo", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'runs[3].computed_outcomes.lj-nve-demo-behaves.reason'. Either fill in the content or remove the placeholder before publishing.", "field_path": "runs[3].computed_outcomes.lj-nve-demo-behaves.reason"}, {"study": "lj-nve-demo", "check": "status_out_of_date_vs_runs", "severity": "error", "message": "status: headline 'planned' still says planning, but the study has completed runs (1 completed run(s))", "field_path": "status"}, {"study": "lj-nve-demo-with-viz", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'behavior_tests[0].description'. Either fill in the content or remove the placeholder before publishing.", "field_path": "behavior_tests[0].description"}, {"study": "lj-nve-demo-with-viz", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'behavior_tests[0].measure.field'. Either fill in the content or remove the placeholder before publishing.", "field_path": "behavior_tests[0].measure.field"}, {"study": "lj-nve-demo-with-viz", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'experiment'. Either fill in the content or remove the placeholder before publishing.", "field_path": "experiment"}, {"study": "lj-nve-demo-with-viz", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'question'. Either fill in the content or remove the placeholder before publishing.", "field_path": "question"}, {"study": "lj-nve-demo-with-viz", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'runs[0].computed_outcomes.lj-nve-demo-with-viz-behaves.reason'. Either fill in the content or remove the placeholder before publishing.", "field_path": "runs[0].computed_outcomes.lj-nve-demo-with-viz-behaves.reason"}, {"study": "lj-nve-demo-with-viz", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'runs[0].outcomes.lj-nve-demo-with-viz-behaves.note'. Either fill in the content or remove the placeholder before publishing.", "field_path": "runs[0].outcomes.lj-nve-demo-with-viz-behaves.note"}, {"study": "lj-nve-demo-with-viz", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'runs[1].computed_outcomes.lj-nve-demo-with-viz-behaves.reason'. Either fill in the content or remove the placeholder before publishing.", "field_path": "runs[1].computed_outcomes.lj-nve-demo-with-viz-behaves.reason"}, {"study": "lj-nve-demo-with-viz", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'runs[2].computed_outcomes.lj-nve-demo-with-viz-behaves.reason'. Either fill in the content or remove the placeholder before publishing.", "field_path": "runs[2].computed_outcomes.lj-nve-demo-with-viz-behaves.reason"}, {"study": "lj-nve-demo-with-viz", "check": "status_out_of_date_vs_runs", "severity": "error", "message": "status: headline 'planned' still says planning, but the study has completed runs (1 completed run(s))", "field_path": "status"}, {"study": "lammps-lennard-jones-molecular-dynamics", "check": "investigation_narrative_spine_required", "severity": "warning", "message": "Investigation is missing the REQUIRED narrative section 'Biology — the mechanism' (`biological_story`). Author it for a reviewer-ready report, or — for a genuinely slim investigation — explicitly opt out by adding 'biological_story' to `narrative_spine_skip: [...]` (optionally with `narrative_spine_skip_reason`).", "field_path": "biological_story"}, {"study": "lammps-lennard-jones-molecular-dynamics", "check": "investigation_missing_adversarial", "severity": "warning", "message": "Investigation has no adversarial / ablation member study — a system that should FAIL the same gates (negative control / vent-specificity) or a feature ablation that removes a mechanism and shows the claim break. Add one (study `kind: adversarial` or `kind: ablation`), or opt out with `adversarial_coverage_skip: true` + a reason. A campaign that only passes is weak evidence.", "field_path": "studies"}, {"study": "lj-nve-demo", "check": "gate_class_missing", "severity": "warning", "message": "behavior_test 'lj-nve-demo-behaves' has no gate_class. Declare `gate_class: regression_pin | acceptance_criterion` — a threshold set AFTER seeing the run is a regression_pin (it pins current behavior and is never counted as acceptance evidence); a pre-stated directional prior committed BEFORE the run is an acceptance_criterion. The linter does not infer this — only the author knows whether the threshold predated the run.", "field_path": "behavior_tests[0].gate_class"}, {"study": "lj-nve-demo", "check": "authored_confidence_diverges", "severity": "warning", "message": "Authored confidence 'Planned' diverges from the derived value 'Investigating' (from the study's verdict/status). Reconcile the authored confidence with the evidence, or remove it and let the derived value stand so the graph node, rail dot, and badge agree.", "field_path": "confidence"}, {"study": "lj-nve-demo", "check": "status_legacy_only", "severity": "warning", "message": "Study uses the legacy `status: 'planned'` field with no multi-axis status set. The canonical fields are the six Pass A axes (design_status, implementation_status, simulation_status, evaluation_status, gate_status, expert_review_status). The dashboard still reads `status` as a back-compat fallback, but the legacy enum can't carry the orthogonal-axes semantics — e.g. a study can be simulation_status:ran AND evaluation_status:failed_evaluation simultaneously, which `status` alone cannot express.", "field_path": "status"}, {"study": "lj-nve-demo-with-viz", "check": "gate_class_missing", "severity": "warning", "message": "behavior_test 'lj-nve-demo-with-viz-behaves' has no gate_class. Declare `gate_class: regression_pin | acceptance_criterion` — a threshold set AFTER seeing the run is a regression_pin (it pins current behavior and is never counted as acceptance evidence); a pre-stated directional prior committed BEFORE the run is an acceptance_criterion. The linter does not infer this — only the author knows whether the threshold predated the run.", "field_path": "behavior_tests[0].gate_class"}, {"study": "lj-nve-demo-with-viz", "check": "authored_confidence_diverges", "severity": "warning", "message": "Authored confidence 'Planned' diverges from the derived value 'Investigating' (from the study's verdict/status). Reconcile the authored confidence with the evidence, or remove it and let the derived value stand so the graph node, rail dot, and badge agree.", "field_path": "confidence"}, {"study": "lj-nve-demo-with-viz", "check": "status_legacy_only", "severity": "warning", "message": "Study uses the legacy `status: 'planned'` field with no multi-axis status set. The canonical fields are the six Pass A axes (design_status, implementation_status, simulation_status, evaluation_status, gate_status, expert_review_status). The dashboard still reads `status` as a back-compat fallback, but the legacy enum can't carry the orthogonal-axes semantics — e.g. a study can be simulation_status:ran AND evaluation_status:failed_evaluation simultaneously, which `status` alone cannot express.", "field_path": "status"}, {"study": "lj-nve-demo", "check": "narrative_spine_completeness", "severity": "info", "message": "narrative incomplete: 11 of 15 v4 sections missing. ★ study_card, readouts, conclusion_verdicts · other: runtime, assumptions, enforced_params, biological_summary, literature_anchors, model_change, implementation_requirements, design_pivot_required. See docs/concepts/vivarium-workbench-model.md#v4-narrative-spine for the full pattern, or /viva-study fill-overview \u003cslug> --include-narrative to draft them from plan + expert PDFs.", "field_path": "(narrative spine)"}, {"study": "lj-nve-demo", "check": "missing_conditions_block", "severity": "info", "message": "Study has no `conditions:` block (or legacy `model_change` / `implementation_requirements`). The dashboard's study-detail Build tab renders from `conditions.{baseline,variants,model_settings}`. Without it the Build tab is BLANK for this study, even if v3 `baseline:` + `variants:` are populated. Add at minimum a `conditions.baseline.composite` value; see the study lint-checks + data-model reference in docs/concepts/vivarium-workbench-model.md.", "field_path": "conditions"}, {"study": "lj-nve-demo", "check": "baseline_config_carry", "severity": "info", "message": "the viewer shows composite defaults, not a reproducible spec; Run will not reproduce this study — add conditions.baseline.config_file or fill conditions.baseline.params", "field_path": "conditions.baseline"}, {"study": "lj-nve-demo", "check": "missing_readouts", "severity": "info", "message": "Study has no readouts declared. Describe what the study actually measures (the observables the expected_behavior tests evaluate against) so the expert reviewer has anchors for the test rows. Free-form string or list of strings.", "field_path": "readouts"}, {"study": "lj-nve-demo", "check": "missing_variants", "severity": "info", "message": "Study has no variants declared. Variants are the planned perturbations / configurations to be tested (parameter sweeps, alternative conditions, perturbation experiments). A study with no variants reads to a reviewer as 'design incomplete'. Scaffold ≥1 variant via /viva-study variant-add — even a single 'reference' variant with the published parameters is better than an empty list.", "field_path": "variants"}, {"study": "lj-nve-demo", "check": "visualization_address_missing", "severity": "info", "message": "Visualization 'lj-nve-demo-world' is a design-stage stub with no `address:` yet. Wire it to a class in \u003cpackage>/visualizations/ (address: local:\u003cClassName>) as the study is built, then drop `status: stub`.", "field_path": "visualizations[0].address"}, {"study": "lj-nve-demo", "check": "visualization_address_missing", "severity": "info", "message": "Visualization 'lj-nve-demo-mechanism' is a design-stage stub with no `address:` yet. Wire it to a class in \u003cpackage>/visualizations/ (address: local:\u003cClassName>) as the study is built, then drop `status: stub`.", "field_path": "visualizations[1].address"}, {"study": "lj-nve-demo", "check": "visualization_address_missing", "severity": "info", "message": "Visualization 'lj-nve-demo-decision' is a design-stage stub with no `address:` yet. Wire it to a class in \u003cpackage>/visualizations/ (address: local:\u003cClassName>) as the study is built, then drop `status: stub`.", "field_path": "visualizations[2].address"}, {"study": "lj-nve-demo-with-viz", "check": "narrative_spine_completeness", "severity": "info", "message": "narrative incomplete: 11 of 15 v4 sections missing. ★ study_card, readouts, conclusion_verdicts · other: runtime, assumptions, enforced_params, biological_summary, literature_anchors, model_change, implementation_requirements, design_pivot_required. See docs/concepts/vivarium-workbench-model.md#v4-narrative-spine for the full pattern, or /viva-study fill-overview \u003cslug> --include-narrative to draft them from plan + expert PDFs.", "field_path": "(narrative spine)"}, {"study": "lj-nve-demo-with-viz", "check": "missing_conditions_block", "severity": "info", "message": "Study has no `conditions:` block (or legacy `model_change` / `implementation_requirements`). The dashboard's study-detail Build tab renders from `conditions.{baseline,variants,model_settings}`. Without it the Build tab is BLANK for this study, even if v3 `baseline:` + `variants:` are populated. Add at minimum a `conditions.baseline.composite` value; see the study lint-checks + data-model reference in docs/concepts/vivarium-workbench-model.md.", "field_path": "conditions"}, {"study": "lj-nve-demo-with-viz", "check": "baseline_config_carry", "severity": "info", "message": "the viewer shows composite defaults, not a reproducible spec; Run will not reproduce this study — add conditions.baseline.config_file or fill conditions.baseline.params", "field_path": "conditions.baseline"}, {"study": "lj-nve-demo-with-viz", "check": "missing_readouts", "severity": "info", "message": "Study has no readouts declared. Describe what the study actually measures (the observables the expected_behavior tests evaluate against) so the expert reviewer has anchors for the test rows. Free-form string or list of strings.", "field_path": "readouts"}, {"study": "lj-nve-demo-with-viz", "check": "missing_variants", "severity": "info", "message": "Study has no variants declared. Variants are the planned perturbations / configurations to be tested (parameter sweeps, alternative conditions, perturbation experiments). A study with no variants reads to a reviewer as 'design incomplete'. Scaffold ≥1 variant via /viva-study variant-add — even a single 'reference' variant with the published parameters is better than an empty list.", "field_path": "variants"}, {"study": "lj-nve-demo-with-viz", "check": "visualization_address_missing", "severity": "info", "message": "Visualization 'lj-nve-demo-with-viz-world' is a design-stage stub with no `address:` yet. Wire it to a class in \u003cpackage>/visualizations/ (address: local:\u003cClassName>) as the study is built, then drop `status: stub`.", "field_path": "visualizations[0].address"}, {"study": "lj-nve-demo-with-viz", "check": "visualization_address_missing", "severity": "info", "message": "Visualization 'lj-nve-demo-with-viz-mechanism' is a design-stage stub with no `address:` yet. Wire it to a class in \u003cpackage>/visualizations/ (address: local:\u003cClassName>) as the study is built, then drop `status: stub`.", "field_path": "visualizations[1].address"}, {"study": "lj-nve-demo-with-viz", "check": "visualization_address_missing", "severity": "info", "message": "Visualization 'lj-nve-demo-with-viz-decision' is a design-stage stub with no `address:` yet. Wire it to a class in \u003cpackage>/visualizations/ (address: local:\u003cClassName>) as the study is built, then drop `status: stub`.", "field_path": "visualizations[2].address"}]}}, "references": {}, "inv_references": null, "catalog": null, "workspace": "viva-lammps", "provenance": "investigations/lammps-lennard-jones-molecular-dynamics/investigation.yaml · studies/*/study.yaml · loop-trajectory JSON", "studies": [{"title": "Lj nve demo", "confidence": "Planned", "question": "TBD — what question does this study answer?", "baseline": [{"name": "baseline", "composite": "pbg_lammps.composites.lj-nve-demo", "params": {}}], "behavior_tests": [{"name": "lj-nve-demo-behaves", "classification": "primary", "description": "TBD — plain-language statement of the expected behavior.", "measure": {"kind": "derived_scalar", "field": "TBD"}, "pass_if": {"op": "\u003c", "value": null}, "requires_simulation": "baseline"}], "runs": [{"name": "pbg_lammps.composites.lj-nve-demo__1793127237__568462", "status": "completed", "timestamp": 1793127239.776614, "emitter": {"kind": "unknown"}, "env_id": "d5e083da8024d420", "params": "{}", "computed_outcomes": {"lj-nve-demo-behaves": {"evaluated_by": "agent", "reason": "observable 'TBD' not resolvable", "reconcile": "no_authored"}}, "provenance": {"params": {"n_steps": {"value": 20, "source": "resolved"}}, "params_captured_at": "2026-10-27", "params_source": "dashboard-runner"}, "outcomes": {"lj-nve-demo-behaves": {"result": "SKIP", "evaluated_by": "agent", "note": "observable 'TBD' not resolvable", "auto_evaluated": true}}}, {"name": "pbg_lammps.composites.lj-nve-demo__1793127221__cd67a7", "status": "failed", "timestamp": 1793127223.7133582, "emitter": {"kind": "unknown"}, "env_id": "d5e083da8024d420", "params": "{}", "computed_outcomes": {"lj-nve-demo-behaves": {"evaluated_by": "agent", "reason": "observable 'TBD' not resolvable", "reconcile": "no_authored"}}}, {"name": "pbg_lammps.composites.lj-nve-demo__1793127207__1c4df0", "status": "failed", "timestamp": 1793127209.9974148, "emitter": {"kind": "unknown"}, "env_id": "d5e083da8024d420", "params": "{}", "computed_outcomes": {"lj-nve-demo-behaves": {"evaluated_by": "agent", "reason": "observable 'TBD' not resolvable", "reconcile": "no_authored"}}}, {"name": "pbg_lammps.composites.lj-nve-demo__1793127198__fb799e", "status": "failed", "timestamp": 1793127200.402314, "emitter": {"kind": "unknown"}, "env_id": "d5e083da8024d420", "params": "{}", "computed_outcomes": {"lj-nve-demo-behaves": {"evaluated_by": "agent", "reason": "observable 'TBD' not resolvable", "reconcile": "no_authored"}}}], "findings": [], "pipeline_gate": {"prerequisites": [], "enables": [], "gate_evaluator": {"result": "blocked", "blocked_by": ["lj-nve-demo-behaves"], "evaluated_by": "code", "diverges_from_authored": false}}, "experiment": "TBD — describe what pbg_lammps.composites.lj-nve-demo is expected to demonstrate.", "phase": "Design", "status": "planned", "slug": "lj-nve-demo", "execution_status": "planned", "baseline_composite": "pbg_lammps.composites.lj-nve-demo", "tests_counts": {"passed": 0, "skipped": 1, "failed": 0}, "figures_embedded": [{"name": "Lj nve demo decision", "html": "\u003cp style=\"color:#991b1b\">Failed to render \u003ccode>lj-nve-demo-decision\u003c/code>: \u003ccode>KeyError: 'address'\u003c/code>\u003c/p>"}, {"name": "Lj nve demo mechanism", "html": "\u003cp style=\"color:#991b1b\">Failed to render \u003ccode>lj-nve-demo-mechanism\u003c/code>: \u003ccode>KeyError: 'address'\u003c/code>\u003c/p>"}, {"name": "Lj nve demo world", "html": "\u003cp style=\"color:#991b1b\">Failed to render \u003ccode>lj-nve-demo-world\u003c/code>: \u003ccode>KeyError: 'address'\u003c/code>\u003c/p>"}, {"name": "Behavior tests", "html": "\u003cmeta name=\"viv-artifact\" content=\"report-card\">\n\u003cdiv style=\"font-family:system-ui,-apple-system,sans-serif;max-width:52rem\">\u003ch3 style=\"margin:0 0 2px 0;color:#0f172a\">Behavior tests — lj-nve-demo\u003c/h3>\u003cdiv style=\"color:var(--text-muted, #64748b);font-size:0.9em;margin-bottom:6px\">\u003cspan style=\"color:#166534;font-weight:600\">0 pass\u003c/span> · 1 total · \u003cspan style=\"color:var(--text-muted, #475569)\">pins: 0/0; acceptance: 0/0; unclassified: 1\u003c/span>\u003c/div>\u003cdiv style=\"padding:8px 0;border-top:1px solid var(--border-faint, #f1f5f9)\">\u003cdiv style=\"display:flex;gap:10px;align-items:baseline;flex-wrap:wrap\">\u003cspan style=\"display:inline-block;padding:2px 10px;border-radius:9999px;background:#f1f5f9;color:#475569;font-weight:700;font-size:0.82em\">SKIP\u003c/span>\u003cspan style=\"font-weight:600;color:#1e293b\">lj-nve-demo-behaves\u003c/span>\u003c/div>\u003cdiv style=\"color:var(--text-muted, #334155);font-size:0.9em\">TBD — plain-language statement of the expected behavior.\u003c/div>\u003cdiv style=\"color:var(--text-muted, #475569);font-size:0.85em;margin-top:3px\">\u003cstrong>measured:\u003c/strong> — (not yet graded)\u003c/div>\u003cdiv style=\"color:var(--text-muted, #64748b);font-size:0.8em;margin-top:2px\">observable &#x27;TBD&#x27; not resolvable\u003c/div>\u003c/div>\u003c/div>"}, {"name": "Conclusion", "html": "\u003c!doctype html>\u003chtml>\u003chead>\u003cmeta charset=\"utf-8\">\u003cmeta name=\"viv-artifact\" content=\"report-card\">\u003ctitle>lj-nve-demo — conclusion report card\u003c/title>\u003c/head>\u003cbody style=\"font-family:system-ui,sans-serif;max-width:720px;margin:24px auto;padding:0 16px;color:#0f172a\">\u003ch3 style=\"margin:0 0 4px 0\">Conclusion\u003c/h3>\u003cp style=\"color:#64748b;font-size:0.9em;margin:0 0 8px 0\">Three-track verdict, computed from canonical fields (gate evaluator, run status, finding tiers) and persisted at the end of each run.\u003c/p>\u003cdiv style=\"padding:8px 0;border-top:1px solid #f1f5f9\">\u003cdiv style=\"display:flex;gap:10px;align-items:baseline;flex-wrap:wrap\">\u003cspan style=\"display:inline-block;min-width:11em;font-weight:600;color:#1e293b\">Empirical validation\u003c/span>\u003cspan style=\"display:inline-block;padding:2px 10px;border-radius:9999px;background:#f1f5f9;color:#475569;font-weight:700;font-size:0.85em\">UNKNOWN:blocked\u003c/span>\u003cspan style=\"color:#94a3b8;font-size:0.82em\">from gate evaluator · computed\u003c/span>\u003c/div>\u003c/div>\u003cdiv style=\"padding:8px 0;border-top:1px solid #f1f5f9\">\u003cdiv style=\"display:flex;gap:10px;align-items:baseline;flex-wrap:wrap\">\u003cspan style=\"display:inline-block;min-width:11em;font-weight:600;color:#1e293b\">Regression compatibility\u003c/span>\u003cspan style=\"display:inline-block;padding:2px 10px;border-radius:9999px;background:#fee2e2;color:#991b1b;font-weight:700;font-size:0.85em\">FAIL\u003c/span>\u003cspan style=\"color:#94a3b8;font-size:0.82em\">from run status · computed\u003c/span>\u003c/div>\u003c/div>\u003cdiv style=\"padding:8px 0;border-top:1px solid #f1f5f9\">\u003cdiv style=\"display:flex;gap:10px;align-items:baseline;flex-wrap:wrap\">\u003cspan style=\"display:inline-block;min-width:11em;font-weight:600;color:#1e293b\">Explanatory gain\u003c/span>\u003cspan style=\"display:inline-block;padding:2px 10px;border-radius:9999px;background:#f1f5f9;color:#475569;font-weight:700;font-size:0.85em\">GAP\u003c/span>\u003cspan style=\"color:#94a3b8;font-size:0.82em\">from interpretation-tier findings · computed\u003c/span>\u003c/div>\u003c/div>\u003c/body>\u003c/html>"}], "model_topology": {"processes": [{"name": "lammps", "kind": "process", "address": "local:LAMMPSProcess", "inputs": [], "outputs": ["temperature", "potential_energy", "kinetic_energy", "total_energy", "pressure", "volume"], "doc": "", "compartments": ["stores"]}, {"name": "emitter", "kind": "step", "address": "local:RAMEmitter", "inputs": ["temperature", "potential_energy", "kinetic_energy", "total_energy", "pressure", "volume"], "outputs": [], "doc": "", "compartments": ["stores"]}], "stores": [{"name": "stores", "type": null, "children": []}], "edges": [{"p": "lammps", "c": "stores", "s": "temperature"}, {"p": "lammps", "c": "stores", "s": "potential_energy"}, {"p": "lammps", "c": "stores", "s": "kinetic_energy"}, {"p": "lammps", "c": "stores", "s": "total_energy"}, {"p": "lammps", "c": "stores", "s": "pressure"}, {"p": "lammps", "c": "stores", "s": "volume"}, {"p": "emitter", "c": "stores", "s": "temperature"}, {"p": "emitter", "c": "stores", "s": "potential_energy"}, {"p": "emitter", "c": "stores", "s": "kinetic_energy"}, {"p": "emitter", "c": "stores", "s": "total_energy"}, {"p": "emitter", "c": "stores", "s": "pressure"}, {"p": "emitter", "c": "stores", "s": "volume"}], "composite": "pbg_lammps.composites.lj-nve-demo"}, "verdict": "blocked", "verdict_counts": {"passed": 0, "skipped": 1, "failed": 0}, "computed_gate_verdict": {"result": "blocked", "blocked_by": ["lj-nve-demo-behaves"], "evaluated_by": "code", "diverges_from_authored": false}, "run_commands": {"baseline": "vwb run study lj-nve-demo", "variants": [], "simulations": [{"name": "baseline-baseline", "cmd": "vwb run study lj-nve-demo"}], "rerun_hint": "vwb rerun \u003crun-id>"}}, {"title": "Lj nve demo with viz", "confidence": "Planned", "question": "TBD — what question does this study answer?", "baseline": [{"name": "baseline", "composite": "pbg_lammps.composites.lj-nve-demo-with-viz", "params": {}}], "behavior_tests": [{"name": "lj-nve-demo-with-viz-behaves", "classification": "primary", "description": "TBD — plain-language statement of the expected behavior.", "measure": {"kind": "derived_scalar", "field": "TBD"}, "pass_if": {"op": "\u003c", "value": null}, "requires_simulation": "baseline"}], "runs": [{"name": "pbg_lammps.composites.lj-nve-demo-with-viz__1793127242__462fac", "status": "completed", "timestamp": 1793127244.857385, "emitter": {"kind": "unknown"}, "env_id": "d5e083da8024d420", "params": "{}", "computed_outcomes": {"lj-nve-demo-with-viz-behaves": {"evaluated_by": "agent", "reason": "observable 'TBD' not resolvable", "reconcile": "no_authored"}}, "provenance": {"params": {"n_steps": {"value": 20, "source": "resolved"}}, "params_captured_at": "2026-10-27", "params_source": "dashboard-runner"}, "outcomes": {"lj-nve-demo-with-viz-behaves": {"result": "SKIP", "evaluated_by": "agent", "note": "observable 'TBD' not resolvable", "auto_evaluated": true}}}, {"name": "pbg_lammps.composites.lj-nve-demo-with-viz__1793127224__00415c", "status": "failed", "timestamp": 1793127226.5760362, "emitter": {"kind": "unknown"}, "env_id": "d5e083da8024d420", "params": "{}", "computed_outcomes": {"lj-nve-demo-with-viz-behaves": {"evaluated_by": "agent", "reason": "observable 'TBD' not resolvable", "reconcile": "no_authored"}}}, {"name": "pbg_lammps.composites.lj-nve-demo-with-viz__1793127201__853470", "status": "failed", "timestamp": 1793127203.301557, "emitter": {"kind": "unknown"}, "env_id": "d5e083da8024d420", "params": "{}", "computed_outcomes": {"lj-nve-demo-with-viz-behaves": {"evaluated_by": "agent", "reason": "observable 'TBD' not resolvable", "reconcile": "no_authored"}}}], "findings": [], "pipeline_gate": {"prerequisites": [{"study": "lj-nve-demo", "condition": "tests-passed", "relation": "builds-on"}], "enables": [], "gate_evaluator": {"result": "blocked", "blocked_by": ["lj-nve-demo-with-viz-behaves"], "evaluated_by": "code", "diverges_from_authored": false}}, "experiment": "TBD — describe what pbg_lammps.composites.lj-nve-demo-with-viz is expected to demonstrate.", "phase": "Design", "status": "planned", "slug": "lj-nve-demo-with-viz", "execution_status": "planned", "baseline_composite": "pbg_lammps.composites.lj-nve-demo-with-viz", "tests_counts": {"passed": 0, "skipped": 1, "failed": 0}, "figures_embedded": [{"name": "Lj nve demo with viz decision", "html": "\u003cp style=\"color:#991b1b\">Failed to render \u003ccode>lj-nve-demo-with-viz-decision\u003c/code>: \u003ccode>KeyError: 'address'\u003c/code>\u003c/p>"}, {"name": "Lj nve demo with viz mechanism", "html": "\u003cp style=\"color:#991b1b\">Failed to render \u003ccode>lj-nve-demo-with-viz-mechanism\u003c/code>: \u003ccode>KeyError: 'address'\u003c/code>\u003c/p>"}, {"name": "Lj nve demo with viz world", "html": "\u003cp style=\"color:#991b1b\">Failed to render \u003ccode>lj-nve-demo-with-viz-world\u003c/code>: \u003ccode>KeyError: 'address'\u003c/code>\u003c/p>"}, {"name": "Behavior tests", "html": "\u003cmeta name=\"viv-artifact\" content=\"report-card\">\n\u003cdiv style=\"font-family:system-ui,-apple-system,sans-serif;max-width:52rem\">\u003ch3 style=\"margin:0 0 2px 0;color:#0f172a\">Behavior tests — lj-nve-demo-with-viz\u003c/h3>\u003cdiv style=\"color:var(--text-muted, #64748b);font-size:0.9em;margin-bottom:6px\">\u003cspan style=\"color:#166534;font-weight:600\">0 pass\u003c/span> · 1 total · \u003cspan style=\"color:var(--text-muted, #475569)\">pins: 0/0; acceptance: 0/0; unclassified: 1\u003c/span>\u003c/div>\u003cdiv style=\"padding:8px 0;border-top:1px solid var(--border-faint, #f1f5f9)\">\u003cdiv style=\"display:flex;gap:10px;align-items:baseline;flex-wrap:wrap\">\u003cspan style=\"display:inline-block;padding:2px 10px;border-radius:9999px;background:#f1f5f9;color:#475569;font-weight:700;font-size:0.82em\">SKIP\u003c/span>\u003cspan style=\"font-weight:600;color:#1e293b\">lj-nve-demo-with-viz-behaves\u003c/span>\u003c/div>\u003cdiv style=\"color:var(--text-muted, #334155);font-size:0.9em\">TBD — plain-language statement of the expected behavior.\u003c/div>\u003cdiv style=\"color:var(--text-muted, #475569);font-size:0.85em;margin-top:3px\">\u003cstrong>measured:\u003c/strong> — (not yet graded)\u003c/div>\u003cdiv style=\"color:var(--text-muted, #64748b);font-size:0.8em;margin-top:2px\">observable &#x27;TBD&#x27; not resolvable\u003c/div>\u003c/div>\u003c/div>"}, {"name": "Conclusion", "html": "\u003c!doctype html>\u003chtml>\u003chead>\u003cmeta charset=\"utf-8\">\u003cmeta name=\"viv-artifact\" content=\"report-card\">\u003ctitle>lj-nve-demo-with-viz — conclusion report card\u003c/title>\u003c/head>\u003cbody style=\"font-family:system-ui,sans-serif;max-width:720px;margin:24px auto;padding:0 16px;color:#0f172a\">\u003ch3 style=\"margin:0 0 4px 0\">Conclusion\u003c/h3>\u003cp style=\"color:#64748b;font-size:0.9em;margin:0 0 8px 0\">Three-track verdict, computed from canonical fields (gate evaluator, run status, finding tiers) and persisted at the end of each run.\u003c/p>\u003cdiv style=\"padding:8px 0;border-top:1px solid #f1f5f9\">\u003cdiv style=\"display:flex;gap:10px;align-items:baseline;flex-wrap:wrap\">\u003cspan style=\"display:inline-block;min-width:11em;font-weight:600;color:#1e293b\">Empirical validation\u003c/span>\u003cspan style=\"display:inline-block;padding:2px 10px;border-radius:9999px;background:#f1f5f9;color:#475569;font-weight:700;font-size:0.85em\">UNKNOWN:blocked\u003c/span>\u003cspan style=\"color:#94a3b8;font-size:0.82em\">from gate evaluator · computed\u003c/span>\u003c/div>\u003c/div>\u003cdiv style=\"padding:8px 0;border-top:1px solid #f1f5f9\">\u003cdiv style=\"display:flex;gap:10px;align-items:baseline;flex-wrap:wrap\">\u003cspan style=\"display:inline-block;min-width:11em;font-weight:600;color:#1e293b\">Regression compatibility\u003c/span>\u003cspan style=\"display:inline-block;padding:2px 10px;border-radius:9999px;background:#fee2e2;color:#991b1b;font-weight:700;font-size:0.85em\">FAIL\u003c/span>\u003cspan style=\"color:#94a3b8;font-size:0.82em\">from run status · computed\u003c/span>\u003c/div>\u003c/div>\u003cdiv style=\"padding:8px 0;border-top:1px solid #f1f5f9\">\u003cdiv style=\"display:flex;gap:10px;align-items:baseline;flex-wrap:wrap\">\u003cspan style=\"display:inline-block;min-width:11em;font-weight:600;color:#1e293b\">Explanatory gain\u003c/span>\u003cspan style=\"display:inline-block;padding:2px 10px;border-radius:9999px;background:#f1f5f9;color:#475569;font-weight:700;font-size:0.85em\">GAP\u003c/span>\u003cspan style=\"color:#94a3b8;font-size:0.82em\">from interpretation-tier findings · computed\u003c/span>\u003c/div>\u003c/div>\u003c/body>\u003c/html>"}, {"name": "Viz", "html": "\u003cdiv id=\"ltp\" style=\"height:380px\">\u003c/div>\u003cscript>Plotly.newPlot(\"ltp\",[{\"x\":[0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 16.0, 16.5, 17.0, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0],\"y\":[0.0, 1.0421788377254166, 1.055338472301479, 0.8463777769078876, 1.0738922352317315, 1.04620647548748, 1.1828921554477745, 1.052287620195811, 0.875250823696922, 1.0717966627937572, 0.8803658294111509, 0.8745795181154443, 1.0693778489134105, 1.000268535917996, 0.9901086085509303, 1.0738374449655939, 0.8883295319033669, 1.0275982788473201, 0.97810064835419, 0.949880665254853, 0.9012474533359065, 0.861746887241382, 1.0137422832985952, 1.0368416256820652, 1.109845485394988, 0.9820038837279489, 0.9686956588452771, 1.018411414424236, 1.1304262887868726, 0.9456903794376228, 1.0180817829583386, 1.0913861530699551, 1.0668940276710577, 1.168798582001356, 0.7775926070130538, 0.9143380859953997, 0.9909501211790033, 0.949069254834773, 1.0348217277167377, 1.0971204322085182, 1.1083163826156122],\"type\":\"scatter\",\"mode\":\"lines\",\"name\":\"temperature\"},{\"x\":[0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 16.0, 16.5, 17.0, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0],\"y\":[0.0, -2.9729020542400133, -2.99146428632025, -2.689780877045865, -3.0188511654895525, -2.978645105149062, -3.175763561834929, -2.987004767690487, -2.732133800919948, -3.0153296350253918, -2.7394380862042027, -2.7305257421370976, -3.0119545053354653, -2.912615621669774, -2.897739472308566, -3.0189246024685703, -2.7507819926412163, -2.9518367454698025, -2.8801866092705555, -2.8394797489881793, -2.768833018915273, -2.7116773730048243, -2.931834857077195, -2.9655265996904245, -3.0706820913185964, -2.8864050577594376, -2.8668427864028936, -2.9385826460090905, -3.100437418835454, -2.8337206448671357, -2.9382818486827653, -3.044461765652298, -3.0089640985662744, -3.155865459370208, -2.5901491451301504, -2.788398659941602, -2.899076945206279, -2.839273468845645, -2.962628000414851, -3.0528020114605927, -3.068676148339636],\"type\":\"scatter\",\"mode\":\"lines\",\"name\":\"potential_energy\"},{\"x\":[0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 16.0, 16.5, 17.0, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0],\"y\":[0.0, 1.5053694322700464, 1.5243777933243583, 1.2225456777558377, 1.551177673112501, 1.5111871312596934, 1.708622002313452, 1.5199710069495045, 1.2642511897844428, 1.5481507351465382, 1.2716395313716626, 1.263281526166753, 1.5446568928749262, 1.4448323296593275, 1.4301568790180104, 1.551098531616969, 1.2831426571937523, 1.4843086250016848, 1.412812047622719, 1.3720498498125655, 1.3018018770407538, 1.2447455037931074, 1.464294409209082, 1.4976601259852051, 1.603110145570538, 1.418450054273704, 1.3992270627765113, 1.4710387097238964, 1.6328379726921494, 1.3659972147432329, 1.4705625753842668, 1.5764466655454907, 1.5410691510804166, 1.6882646184464032, 1.1231893212410777, 1.3207105686600218, 1.4313723972585604, 1.3708778125391166, 1.4947424955908433, 1.5847295131900818, 1.6009014415558842],\"type\":\"scatter\",\"mode\":\"lines\",\"name\":\"kinetic_energy\"},{\"x\":[0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 16.0, 16.5, 17.0, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0],\"y\":[0.0, -1.467532621969967, -1.4670864929958916, -1.4672351992900274, -1.4676734923770514, -1.4674579738893687, -1.4671415595214772, -1.4670337607409825, -1.467882611135505, -1.4671788998788535, -1.46779855483254, -1.4672442159703447, -1.467297612460539, -1.4677832920104465, -1.4675825932905557, -1.4678260708516013, -1.467639335447464, -1.4675281204681176, -1.4673745616478364, -1.4674298991756138, -1.467031141874519, -1.4669318692117168, -1.4675404478681129, -1.4678664737052194, -1.4675719457480583, -1.4679550034857336, -1.4676157236263823, -1.467543936285194, -1.4675994461433048, -1.4677234301239028, -1.4677192732984985, -1.4680151001068074, -1.4678949474858578, -1.4676008409238048, -1.4669598238890726, -1.4676880912815804, -1.4677045479477187, -1.4683956563065284, -1.4678855048240076, -1.468072498270511, -1.4677747067837519],\"type\":\"scatter\",\"mode\":\"lines\",\"name\":\"total_energy\"},{\"x\":[0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 16.0, 16.5, 17.0, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0],\"y\":[0.0, -0.45715736689525066, -0.2733934967946559, 0.8728128097249892, -0.33406495080684684, -0.27031350609727084, -0.14873679568813955, -0.40109119527820825, 0.6531182183605184, -0.1455548246633923, 0.011233647479277341, -0.04856184827784315, -0.6813558708784059, -0.2230521343504435, 0.07999542527926479, -0.20025298087145046, 0.13416727274684564, 0.4056546716374944, 0.4613473029386895, -0.20766126623234732, -0.1582627756990901, 0.021953357133902607, 0.09873316962242532, 0.176894458412121, -0.3997559479542094, 0.2276030812146424, -0.0035792752704693342, 0.07297519294790004, -0.34238364783647113, 0.9285888187676754, 0.0675494783359588, -0.031190303279525957, 0.6985201946987128, -0.9552026353460035, 0.5664149641037114, -0.04531615320114428, -0.6044075987393478, -0.22499051071906212, -0.2046627573155912, -0.4364977235189227, -0.3247714518725222],\"type\":\"scatter\",\"mode\":\"lines\",\"name\":\"pressure\"}],{title:\"LAMMPS LJ NVE thermodynamics\",margin:{l:55,r:15,t:35,b:40},xaxis:{title:\"time\"},legend:{orientation:\"h\",y:-0.2}},{responsive:true,displayModeBar:false});\u003c/script>", "interactive": true}], "model_topology": {"processes": [{"name": "lammps", "kind": "process", "address": "local:LAMMPSProcess", "inputs": [], "outputs": ["temperature", "potential_energy", "kinetic_energy", "total_energy", "pressure", "volume"], "doc": "", "compartments": ["stores"]}, {"name": "viz", "kind": "step", "address": "local:LAMMPSThermoPlots", "inputs": ["temperature", "potential_energy", "kinetic_energy", "total_energy", "pressure", "time"], "outputs": ["html"], "doc": "", "compartments": ["stores"]}, {"name": "emitter", "kind": "step", "address": "local:RAMEmitter", "inputs": ["temperature", "potential_energy", "kinetic_energy", "total_energy", "pressure", "volume"], "outputs": [], "doc": "", "compartments": ["stores"]}], "stores": [{"name": "stores", "type": null, "children": []}], "edges": [{"p": "lammps", "c": "stores", "s": "temperature"}, {"p": "lammps", "c": "stores", "s": "potential_energy"}, {"p": "lammps", "c": "stores", "s": "kinetic_energy"}, {"p": "lammps", "c": "stores", "s": "total_energy"}, {"p": "lammps", "c": "stores", "s": "pressure"}, {"p": "lammps", "c": "stores", "s": "volume"}, {"p": "viz", "c": "stores", "s": "temperature"}, {"p": "viz", "c": "stores", "s": "potential_energy"}, {"p": "viz", "c": "stores", "s": "kinetic_energy"}, {"p": "viz", "c": "stores", "s": "total_energy"}, {"p": "viz", "c": "stores", "s": "pressure"}, {"p": "viz", "c": "stores", "s": "viz_html"}, {"p": "emitter", "c": "stores", "s": "temperature"}, {"p": "emitter", "c": "stores", "s": "potential_energy"}, {"p": "emitter", "c": "stores", "s": "kinetic_energy"}, {"p": "emitter", "c": "stores", "s": "total_energy"}, {"p": "emitter", "c": "stores", "s": "pressure"}, {"p": "emitter", "c": "stores", "s": "volume"}], "composite": "pbg_lammps.composites.lj-nve-demo-with-viz"}, "verdict": "blocked", "verdict_counts": {"passed": 0, "skipped": 1, "failed": 0}, "computed_gate_verdict": {"result": "blocked", "blocked_by": ["lj-nve-demo-with-viz-behaves"], "evaluated_by": "code", "diverges_from_authored": false}, "run_commands": {"baseline": "vwb run study lj-nve-demo-with-viz", "variants": [], "simulations": [{"name": "baseline-baseline", "cmd": "vwb run study lj-nve-demo-with-viz"}], "rerun_hint": "vwb rerun \u003crun-id>"}}], "loom_embed": {"loom": "../bigraph-loom/index.html", "state": "../api/composite-state/"}}</script>
+<script id="data" type="application/json">{"slug": "lammps-lennard-jones-molecular-dynamics", "title": "Lammps lennard jones molecular dynamics", "status": "planning", "question": "TBD — what overarching question ties these studies together?", "hypothesis": "TBD — what do we expect the composed studies to show?", "lead": null, "executive": {"what_is_this": "TBD — one paragraph, for a reader who has never seen this.", "verdict": "TBD — fill in once studies are run.", "verdict_status": "in-progress", "verdict_detail": "TBD", "decisions_needed": [], "computed_verdict_status": "passing-with-caveats", "computed_acceptance": {"criteria": [{"study": "lj-nve-demo", "behavior": "lj-nve-demo-behaves", "result": "passing-with-caveats"}, {"study": "lj-nve-demo-with-viz", "behavior": "lj-nve-demo-with-viz-behaves", "result": "passing-with-caveats"}], "unmet": [{"study": "lj-nve-demo", "behavior": "lj-nve-demo-behaves", "result": "passing-with-caveats"}, {"study": "lj-nve-demo-with-viz", "behavior": "lj-nve-demo-with-viz-behaves", "result": "passing-with-caveats"}], "diverges_from_authored": true}}, "scientific_argument": {"main_claim": "TBD — the one-sentence claim this investigation supports.", "evidence_for": [], "evidence_against": [], "key_figures": [], "caveats": []}, "biological_story": null, "glossary": null, "guidelines": null, "how_to_read": null, "created": "2026-10-27", "key_claims": null, "competing_frameworks": null, "at_a_glance": null, "acceptance_criteria": [{"study": "lj-nve-demo", "behavior": "lj-nve-demo-behaves"}, {"study": "lj-nve-demo-with-viz", "behavior": "lj-nve-demo-with-viz-behaves"}], "spine": {"verdict_dag": {"nodes": [{"slug": "lj-nve-demo", "title": "Lj nve demo", "verdict": "blocked", "counts": {"passed": 0, "skipped": 1, "failed": 0}, "depth": 0}, {"slug": "lj-nve-demo-with-viz", "title": "Lj nve demo with viz", "verdict": "blocked", "counts": {"passed": 0, "skipped": 1, "failed": 0}, "depth": 1}], "edges": [{"from": "lj-nve-demo", "to": "lj-nve-demo-with-viz"}]}, "acceptance": {"verdict_status": "passing-with-caveats", "criteria": [{"study": "lj-nve-demo", "behavior": "lj-nve-demo-behaves", "result": "passing-with-caveats"}, {"study": "lj-nve-demo-with-viz", "behavior": "lj-nve-demo-with-viz-behaves", "result": "passing-with-caveats"}], "unmet": [{"study": "lj-nve-demo", "behavior": "lj-nve-demo-behaves", "result": "passing-with-caveats"}, {"study": "lj-nve-demo-with-viz", "behavior": "lj-nve-demo-with-viz-behaves", "result": "passing-with-caveats"}], "diverges_from_authored": true, "freshness": null}, "ac_matrix": {"investigation": "lammps-lennard-jones-molecular-dynamics", "verdict_status": "passing-with-caveats", "criteria": [{"behavior": "lj-nve-demo-behaves", "study": "lj-nve-demo", "result": "passing-with-caveats", "status": null, "covered_by": ["lj-nve-demo"], "gap": false}, {"behavior": "lj-nve-demo-with-viz-behaves", "study": "lj-nve-demo-with-viz", "result": "passing-with-caveats", "status": null, "covered_by": ["lj-nve-demo-with-viz"], "gap": false}], "gaps": []}, "plan_board": []}, "discovery": {"closed": true, "frontier_size": 6, "closure_blocking": 0, "next_action": {"op": "test", "kind": "pending_gate", "target": "lj-nve-demo"}, "opportunities": [{"source": "lj-nve-demo", "action": "test", "score": 0.2, "impact": 0.2, "enable": 0.0, "question": "gate 'lj-nve-demo-behaves' on lj-nve-demo is met by verdict (qualified) only — behavior SKIP; run it to verify the gate on evidence"}, {"source": "lj-nve-demo", "action": "critique", "score": 0.14, "impact": 0.2, "enable": 0.0, "question": "authored confidence badge disagrees with the derived confidence — reads as spin"}, {"source": "lj-nve-demo-with-viz", "action": "test", "score": 0.12, "impact": 0.0, "enable": 0.0, "question": "gate 'lj-nve-demo-with-viz-behaves' on lj-nve-demo-with-viz is met by verdict (qualified) only — behavior SKIP; run it to verify the gate on evidence"}, {"source": "lj-nve-demo", "action": "revise", "score": 0.11, "impact": 0.2, "enable": 0.0, "question": "[structural/study] missing authored prose: executive prose `claim`"}, {"source": "lj-nve-demo-with-viz", "action": "critique", "score": 0.06, "impact": 0.0, "enable": 0.0, "question": "authored confidence badge disagrees with the derived confidence — reads as spin"}, {"source": "lj-nve-demo-with-viz", "action": "revise", "score": 0.03, "impact": 0.0, "enable": 0.0, "question": "[structural/study] missing authored prose: executive prose `claim`"}], "diagnosis": {"flags": ["validation_limited"], "validator_pass_rate": 0.0}, "execution_plan": [{"source": "lj-nve-demo", "action": "test", "score": 0.2, "consequence": "simulation", "command": "vivarium-workbench run study lj-nve-demo --workspace \u003cws>"}, {"source": "lj-nve-demo", "action": "critique", "score": 0.14, "consequence": "review", "command": "discover critique \u003cinv> lj-nve-demo --from \u003creport.yaml>"}, {"source": "lj-nve-demo-with-viz", "action": "test", "score": 0.12, "consequence": "simulation", "command": "vivarium-workbench run study lj-nve-demo-with-viz --workspace \u003cws>"}, {"source": "lj-nve-demo", "action": "revise", "score": 0.11, "consequence": "review", "command": "\u003caddress the validator's recommendation>; discover resolve \u003cinv> validation_finding lj-nve-demo --rationale '…'"}, {"source": "lj-nve-demo-with-viz", "action": "critique", "score": 0.06, "consequence": "review", "command": "discover critique \u003cinv> lj-nve-demo-with-viz --from \u003creport.yaml>"}, {"source": "lj-nve-demo-with-viz", "action": "revise", "score": 0.03, "consequence": "review", "command": "\u003caddress the validator's recommendation>; discover resolve \u003cinv> validation_finding lj-nve-demo-with-viz --rationale '…'"}], "suggestions": [], "validator_census": {"failed": 4, "passed": 1}, "drift": {"divergences": 0, "stale_validations": 0}}, "synthesis": {"studies_index": [{"slug": "lj-nve-demo", "title": "Lj nve demo", "stage": "lj-nve-demo", "run_status": "planned", "grade": "pending", "claim_status": "pending", "variant": false, "one_line": "TBD — describe what pbg_lammps.composites.lj-nve-demo is expected to demonstrate."}, {"slug": "lj-nve-demo-with-viz", "title": "Lj nve demo with viz", "stage": "lj-nve-demo-with-viz", "run_status": "planned", "grade": "pending", "claim_status": "pending", "variant": false, "one_line": "TBD — describe what pbg_lammps.composites.lj-nve-demo-with-viz is expected to demonstrate."}], "stages": [{"key": "lj-nve-demo", "label": "Lj nve demo", "studies": [{"slug": "lj-nve-demo", "title": "Lj nve demo", "grade": "pending", "claim_status": "pending", "variant": false, "one_line": "TBD — describe what pbg_lammps.composites.lj-nve-demo is expected to demonstrate.", "run_status": "planned"}], "model_dependence": false, "findings": []}, {"key": "lj-nve-demo-with-viz", "label": "Lj nve demo with viz", "studies": [{"slug": "lj-nve-demo-with-viz", "title": "Lj nve demo with viz", "grade": "pending", "claim_status": "pending", "variant": false, "one_line": "TBD — describe what pbg_lammps.composites.lj-nve-demo-with-viz is expected to demonstrate.", "run_status": "planned"}], "model_dependence": false, "findings": []}], "claim_evidence": [], "contradictions": [], "continuity": {"edges": [{"from": "lj-nve-demo", "to": "lj-nve-demo-with-viz"}], "external_inputs": []}, "quantitative": [], "roadmap": [{"priority": "P1", "item": "Lj nve demo", "basis": "TBD — describe what pbg_lammps.composites.lj-nve-demo is expected to demonstrate.", "source": "lj-nve-demo"}, {"priority": "P1", "item": "Lj nve demo with viz", "basis": "TBD — describe what pbg_lammps.composites.lj-nve-demo-with-viz is expected to demonstrate.", "source": "lj-nve-demo-with-viz"}], "figures_ranked": [{"slug": "lj-nve-demo", "study_title": "Lj nve demo", "name": "report_card", "caption": null, "score": 1}, {"slug": "lj-nve-demo-with-viz", "study_title": "Lj nve demo with viz", "name": "report_card", "caption": null, "score": 1}], "headline": [], "counts": {"total": 2, "supported": 0, "qualified": 0, "refuted": 0, "planned": 2}, "validation": {"investigation": "lammps-lennard-jones-molecular-dynamics", "items": [{"kind": "diagnostic_branch_needed", "severity": "high", "study": "lj-nve-demo", "ref": "lj-nve-demo", "title": "Study 'lj-nve-demo' verdict is 'needs_calibration' with no diagnostic study seeded", "detail": "roll_up_verdict result is 'needs_calibration' but no conclusion_logic.if_primary_tests_fail.diagnose entry has a seeded_study.", "action_hint": "seed a diagnostic study"}, {"kind": "diagnostic_branch_needed", "severity": "high", "study": "lj-nve-demo-with-viz", "ref": "lj-nve-demo-with-viz", "title": "Study 'lj-nve-demo-with-viz' verdict is 'needs_calibration' with no diagnostic study seeded", "detail": "roll_up_verdict result is 'needs_calibration' but no conclusion_logic.if_primary_tests_fail.diagnose entry has a seeded_study.", "action_hint": "seed a diagnostic study"}, {"kind": "viz_broken", "severity": "medium", "study": "lj-nve-demo-with-viz", "ref": "fig:lj-nve-demo-with-viz/lj-nve-demo-with-viz-decision", "title": "Figure declared but not renderable", "detail": "declared with no address, chart or render — not renderable by any path (`rendered:` is read by nothing)", "action_hint": "set `address: html:viz/lj-nve-demo-with-viz-decision.html` (a matching file exists) and a `render:` recipe so it can be refreshed"}, {"kind": "viz_broken", "severity": "medium", "study": "lj-nve-demo-with-viz", "ref": "fig:lj-nve-demo-with-viz/lj-nve-demo-with-viz-mechanism", "title": "Figure declared but not renderable", "detail": "declared with no address, chart or render — not renderable by any path (`rendered:` is read by nothing)", "action_hint": "set `address: html:viz/lj-nve-demo-with-viz-mechanism.html` (a matching file exists) and a `render:` recipe so it can be refreshed"}, {"kind": "viz_broken", "severity": "medium", "study": "lj-nve-demo-with-viz", "ref": "fig:lj-nve-demo-with-viz/lj-nve-demo-with-viz-world", "title": "Figure declared but not renderable", "detail": "declared with no address, chart or render — not renderable by any path (`rendered:` is read by nothing)", "action_hint": "set `address: html:viz/lj-nve-demo-with-viz-world.html` (a matching file exists) and a `render:` recipe so it can be refreshed"}, {"kind": "viz_broken", "severity": "medium", "study": "lj-nve-demo", "ref": "fig:lj-nve-demo/lj-nve-demo-decision", "title": "Figure declared but not renderable", "detail": "declared with no address, chart or render — not renderable by any path (`rendered:` is read by nothing)", "action_hint": "set `address: html:viz/lj-nve-demo-decision.html` (a matching file exists) and a `render:` recipe so it can be refreshed"}, {"kind": "viz_broken", "severity": "medium", "study": "lj-nve-demo", "ref": "fig:lj-nve-demo/lj-nve-demo-mechanism", "title": "Figure declared but not renderable", "detail": "declared with no address, chart or render — not renderable by any path (`rendered:` is read by nothing)", "action_hint": "set `address: html:viz/lj-nve-demo-mechanism.html` (a matching file exists) and a `render:` recipe so it can be refreshed"}, {"kind": "viz_broken", "severity": "medium", "study": "lj-nve-demo", "ref": "fig:lj-nve-demo/lj-nve-demo-world", "title": "Figure declared but not renderable", "detail": "declared with no address, chart or render — not renderable by any path (`rendered:` is read by nothing)", "action_hint": "set `address: html:viz/lj-nve-demo-world.html` (a matching file exists) and a `render:` recipe so it can be refreshed"}], "summary": {"by_severity": {"high": 2, "medium": 6, "low": 0}, "by_kind": {"diagnostic_branch_needed": 2, "viz_broken": 6}, "total": 8, "member_count": 2, "ac_total": 2, "ac_covered": 2, "evaluated_count": 2}, "checks": [{"kind": "uncovered_ac", "label": "Acceptance criteria covered", "mode": "coverage", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "unresolved_composite", "label": "Composites resolve in the registry", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "verdict_divergence", "label": "Verdicts match the authored gate", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "hard_gate", "label": "Hard gates passing", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "test_regression", "label": "No behavior-test regressions", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "diagnostic_branch_needed", "label": "Failed verdicts have a diagnostic study", "mode": "studies", "flagged": 2, "examined": 2, "passing": 0}, {"kind": "invariant_regression", "label": "No invariant regressions", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "open_feedback", "label": "Expert feedback addressed", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "param_drift", "label": "No parameter drift", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "unregistered_confirmatory", "label": "Confirmatory studies registered", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "stale_finding", "label": "No stale findings", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "env_stale", "label": "Run environments current", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}, {"kind": "nondeterministic", "label": "Runs reproducible", "mode": "studies", "flagged": 0, "examined": 2, "passing": 2}], "report_lint": [{"study": "lj-nve-demo", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'behavior_tests[0].description'. Either fill in the content or remove the placeholder before publishing.", "field_path": "behavior_tests[0].description"}, {"study": "lj-nve-demo", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'behavior_tests[0].measure.field'. Either fill in the content or remove the placeholder before publishing.", "field_path": "behavior_tests[0].measure.field"}, {"study": "lj-nve-demo", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'experiment'. Either fill in the content or remove the placeholder before publishing.", "field_path": "experiment"}, {"study": "lj-nve-demo", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'question'. Either fill in the content or remove the placeholder before publishing.", "field_path": "question"}, {"study": "lj-nve-demo", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'runs[0].computed_outcomes.lj-nve-demo-behaves.reason'. Either fill in the content or remove the placeholder before publishing.", "field_path": "runs[0].computed_outcomes.lj-nve-demo-behaves.reason"}, {"study": "lj-nve-demo", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'runs[0].outcomes.lj-nve-demo-behaves.note'. Either fill in the content or remove the placeholder before publishing.", "field_path": "runs[0].outcomes.lj-nve-demo-behaves.note"}, {"study": "lj-nve-demo", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'runs[1].computed_outcomes.lj-nve-demo-behaves.reason'. Either fill in the content or remove the placeholder before publishing.", "field_path": "runs[1].computed_outcomes.lj-nve-demo-behaves.reason"}, {"study": "lj-nve-demo", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'runs[2].computed_outcomes.lj-nve-demo-behaves.reason'. Either fill in the content or remove the placeholder before publishing.", "field_path": "runs[2].computed_outcomes.lj-nve-demo-behaves.reason"}, {"study": "lj-nve-demo", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'runs[3].computed_outcomes.lj-nve-demo-behaves.reason'. Either fill in the content or remove the placeholder before publishing.", "field_path": "runs[3].computed_outcomes.lj-nve-demo-behaves.reason"}, {"study": "lj-nve-demo", "check": "status_out_of_date_vs_runs", "severity": "error", "message": "status: headline 'planned' still says planning, but the study has completed runs (1 completed run(s))", "field_path": "status"}, {"study": "lj-nve-demo-with-viz", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'behavior_tests[0].description'. Either fill in the content or remove the placeholder before publishing.", "field_path": "behavior_tests[0].description"}, {"study": "lj-nve-demo-with-viz", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'behavior_tests[0].measure.field'. Either fill in the content or remove the placeholder before publishing.", "field_path": "behavior_tests[0].measure.field"}, {"study": "lj-nve-demo-with-viz", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'experiment'. Either fill in the content or remove the placeholder before publishing.", "field_path": "experiment"}, {"study": "lj-nve-demo-with-viz", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'question'. Either fill in the content or remove the placeholder before publishing.", "field_path": "question"}, {"study": "lj-nve-demo-with-viz", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'runs[0].computed_outcomes.lj-nve-demo-with-viz-behaves.reason'. Either fill in the content or remove the placeholder before publishing.", "field_path": "runs[0].computed_outcomes.lj-nve-demo-with-viz-behaves.reason"}, {"study": "lj-nve-demo-with-viz", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'runs[0].outcomes.lj-nve-demo-with-viz-behaves.note'. Either fill in the content or remove the placeholder before publishing.", "field_path": "runs[0].outcomes.lj-nve-demo-with-viz-behaves.note"}, {"study": "lj-nve-demo-with-viz", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'runs[1].computed_outcomes.lj-nve-demo-with-viz-behaves.reason'. Either fill in the content or remove the placeholder before publishing.", "field_path": "runs[1].computed_outcomes.lj-nve-demo-with-viz-behaves.reason"}, {"study": "lj-nve-demo-with-viz", "check": "unresolved_placeholders", "severity": "error", "message": "Unresolved placeholder 'TBD' in field 'runs[2].computed_outcomes.lj-nve-demo-with-viz-behaves.reason'. Either fill in the content or remove the placeholder before publishing.", "field_path": "runs[2].computed_outcomes.lj-nve-demo-with-viz-behaves.reason"}, {"study": "lj-nve-demo-with-viz", "check": "status_out_of_date_vs_runs", "severity": "error", "message": "status: headline 'planned' still says planning, but the study has completed runs (1 completed run(s))", "field_path": "status"}, {"study": "lammps-lennard-jones-molecular-dynamics", "check": "investigation_narrative_spine_required", "severity": "warning", "message": "Investigation is missing the REQUIRED narrative section 'Biology — the mechanism' (`biological_story`). Author it for a reviewer-ready report, or — for a genuinely slim investigation — explicitly opt out by adding 'biological_story' to `narrative_spine_skip: [...]` (optionally with `narrative_spine_skip_reason`).", "field_path": "biological_story"}, {"study": "lj-nve-demo", "check": "gate_class_missing", "severity": "warning", "message": "behavior_test 'lj-nve-demo-behaves' has no gate_class. Declare `gate_class: regression_pin | acceptance_criterion` — a threshold set AFTER seeing the run is a regression_pin (it pins current behavior and is never counted as acceptance evidence); a pre-stated directional prior committed BEFORE the run is an acceptance_criterion. The linter does not infer this — only the author knows whether the threshold predated the run.", "field_path": "behavior_tests[0].gate_class"}, {"study": "lj-nve-demo", "check": "reviewer_clarity_ambiguity", "severity": "warning", "message": "reviewer-facing clarity: ran, but every test renders 'pending' — no run outcomes recorded (add runs[].outcomes so the tests show pass/fail)", "field_path": "runs[].outcomes"}, {"study": "lj-nve-demo", "check": "status_legacy_only", "severity": "warning", "message": "Study uses the legacy `status: 'planned'` field with no multi-axis status set. The canonical fields are the six Pass A axes (design_status, implementation_status, simulation_status, evaluation_status, gate_status, expert_review_status). The dashboard still reads `status` as a back-compat fallback, but the legacy enum can't carry the orthogonal-axes semantics — e.g. a study can be simulation_status:ran AND evaluation_status:failed_evaluation simultaneously, which `status` alone cannot express.", "field_path": "status"}, {"study": "lj-nve-demo-with-viz", "check": "gate_class_missing", "severity": "warning", "message": "behavior_test 'lj-nve-demo-with-viz-behaves' has no gate_class. Declare `gate_class: regression_pin | acceptance_criterion` — a threshold set AFTER seeing the run is a regression_pin (it pins current behavior and is never counted as acceptance evidence); a pre-stated directional prior committed BEFORE the run is an acceptance_criterion. The linter does not infer this — only the author knows whether the threshold predated the run.", "field_path": "behavior_tests[0].gate_class"}, {"study": "lj-nve-demo-with-viz", "check": "reviewer_clarity_ambiguity", "severity": "warning", "message": "reviewer-facing clarity: ran, but every test renders 'pending' — no run outcomes recorded (add runs[].outcomes so the tests show pass/fail)", "field_path": "runs[].outcomes"}, {"study": "lj-nve-demo-with-viz", "check": "status_legacy_only", "severity": "warning", "message": "Study uses the legacy `status: 'planned'` field with no multi-axis status set. The canonical fields are the six Pass A axes (design_status, implementation_status, simulation_status, evaluation_status, gate_status, expert_review_status). The dashboard still reads `status` as a back-compat fallback, but the legacy enum can't carry the orthogonal-axes semantics — e.g. a study can be simulation_status:ran AND evaluation_status:failed_evaluation simultaneously, which `status` alone cannot express.", "field_path": "status"}, {"study": "lj-nve-demo", "check": "narrative_spine_completeness", "severity": "info", "message": "narrative incomplete: 11 of 15 v4 sections missing. ★ study_card, readouts, conclusion_verdicts · other: runtime, assumptions, enforced_params, biological_summary, literature_anchors, model_change, implementation_requirements, design_pivot_required. See docs/concepts/vivarium-workbench-model.md#v4-narrative-spine for the full pattern, or /viva-study fill-overview \u003cslug> --include-narrative to draft them from plan + expert PDFs.", "field_path": "(narrative spine)"}, {"study": "lj-nve-demo", "check": "missing_conditions_block", "severity": "info", "message": "Study has no `conditions:` block (or legacy `model_change` / `implementation_requirements`). The dashboard's study-detail Build tab renders from `conditions.{baseline,variants,model_settings}`. Without it the Build tab is BLANK for this study, even if v3 `baseline:` + `variants:` are populated. Add at minimum a `conditions.baseline.composite` value; see the study lint-checks + data-model reference in docs/concepts/vivarium-workbench-model.md.", "field_path": "conditions"}, {"study": "lj-nve-demo", "check": "baseline_config_carry", "severity": "info", "message": "the viewer shows composite defaults, not a reproducible spec; Run will not reproduce this study — add conditions.baseline.config_file or fill conditions.baseline.params", "field_path": "conditions.baseline"}, {"study": "lj-nve-demo", "check": "missing_readouts", "severity": "info", "message": "Study has no readouts declared. Describe what the study actually measures (the observables the expected_behavior tests evaluate against) so the expert reviewer has anchors for the test rows. Free-form string or list of strings.", "field_path": "readouts"}, {"study": "lj-nve-demo", "check": "missing_variants", "severity": "info", "message": "Study has no variants declared. Variants are the planned perturbations / configurations to be tested (parameter sweeps, alternative conditions, perturbation experiments). A study with no variants reads to a reviewer as 'design incomplete'. Scaffold ≥1 variant via /viva-study variant-add — even a single 'reference' variant with the published parameters is better than an empty list.", "field_path": "variants"}, {"study": "lj-nve-demo", "check": "visualization_address_missing", "severity": "info", "message": "Visualization 'lj-nve-demo-world' is a design-stage stub with no `address:` yet. Wire it to a class in \u003cpackage>/visualizations/ (address: local:\u003cClassName>) as the study is built, then drop `status: stub`.", "field_path": "visualizations[0].address"}, {"study": "lj-nve-demo", "check": "visualization_address_missing", "severity": "info", "message": "Visualization 'lj-nve-demo-mechanism' is a design-stage stub with no `address:` yet. Wire it to a class in \u003cpackage>/visualizations/ (address: local:\u003cClassName>) as the study is built, then drop `status: stub`.", "field_path": "visualizations[1].address"}, {"study": "lj-nve-demo", "check": "visualization_address_missing", "severity": "info", "message": "Visualization 'lj-nve-demo-decision' is a design-stage stub with no `address:` yet. Wire it to a class in \u003cpackage>/visualizations/ (address: local:\u003cClassName>) as the study is built, then drop `status: stub`.", "field_path": "visualizations[2].address"}, {"study": "lj-nve-demo-with-viz", "check": "narrative_spine_completeness", "severity": "info", "message": "narrative incomplete: 11 of 15 v4 sections missing. ★ study_card, readouts, conclusion_verdicts · other: runtime, assumptions, enforced_params, biological_summary, literature_anchors, model_change, implementation_requirements, design_pivot_required. See docs/concepts/vivarium-workbench-model.md#v4-narrative-spine for the full pattern, or /viva-study fill-overview \u003cslug> --include-narrative to draft them from plan + expert PDFs.", "field_path": "(narrative spine)"}, {"study": "lj-nve-demo-with-viz", "check": "missing_conditions_block", "severity": "info", "message": "Study has no `conditions:` block (or legacy `model_change` / `implementation_requirements`). The dashboard's study-detail Build tab renders from `conditions.{baseline,variants,model_settings}`. Without it the Build tab is BLANK for this study, even if v3 `baseline:` + `variants:` are populated. Add at minimum a `conditions.baseline.composite` value; see the study lint-checks + data-model reference in docs/concepts/vivarium-workbench-model.md.", "field_path": "conditions"}, {"study": "lj-nve-demo-with-viz", "check": "baseline_config_carry", "severity": "info", "message": "the viewer shows composite defaults, not a reproducible spec; Run will not reproduce this study — add conditions.baseline.config_file or fill conditions.baseline.params", "field_path": "conditions.baseline"}, {"study": "lj-nve-demo-with-viz", "check": "missing_readouts", "severity": "info", "message": "Study has no readouts declared. Describe what the study actually measures (the observables the expected_behavior tests evaluate against) so the expert reviewer has anchors for the test rows. Free-form string or list of strings.", "field_path": "readouts"}, {"study": "lj-nve-demo-with-viz", "check": "missing_variants", "severity": "info", "message": "Study has no variants declared. Variants are the planned perturbations / configurations to be tested (parameter sweeps, alternative conditions, perturbation experiments). A study with no variants reads to a reviewer as 'design incomplete'. Scaffold ≥1 variant via /viva-study variant-add — even a single 'reference' variant with the published parameters is better than an empty list.", "field_path": "variants"}, {"study": "lj-nve-demo-with-viz", "check": "visualization_address_missing", "severity": "info", "message": "Visualization 'lj-nve-demo-with-viz-world' is a design-stage stub with no `address:` yet. Wire it to a class in \u003cpackage>/visualizations/ (address: local:\u003cClassName>) as the study is built, then drop `status: stub`.", "field_path": "visualizations[0].address"}, {"study": "lj-nve-demo-with-viz", "check": "visualization_address_missing", "severity": "info", "message": "Visualization 'lj-nve-demo-with-viz-mechanism' is a design-stage stub with no `address:` yet. Wire it to a class in \u003cpackage>/visualizations/ (address: local:\u003cClassName>) as the study is built, then drop `status: stub`.", "field_path": "visualizations[1].address"}, {"study": "lj-nve-demo-with-viz", "check": "visualization_address_missing", "severity": "info", "message": "Visualization 'lj-nve-demo-with-viz-decision' is a design-stage stub with no `address:` yet. Wire it to a class in \u003cpackage>/visualizations/ (address: local:\u003cClassName>) as the study is built, then drop `status: stub`.", "field_path": "visualizations[2].address"}]}}, "references": {}, "inv_references": null, "catalog": null, "workspace": "viva-lammps", "provenance": "investigations/lammps-lennard-jones-molecular-dynamics/investigation.yaml · studies/*/study.yaml · loop-trajectory JSON", "studies": [{"title": "Lj nve demo", "confidence": "Planned", "question": "TBD — what question does this study answer?", "baseline": [{"name": "baseline", "composite": "pbg_lammps.composites.lj-nve-demo", "params": {}}], "behavior_tests": [{"name": "lj-nve-demo-behaves", "classification": "primary", "description": "TBD — plain-language statement of the expected behavior.", "measure": {"kind": "derived_scalar", "field": "TBD"}, "pass_if": {"op": "\u003c", "value": null}, "requires_simulation": "baseline"}], "runs": [{"name": "pbg_lammps.composites.lj-nve-demo__1793127237__568462", "status": "completed", "timestamp": 1793127239.776614, "emitter": {"kind": "unknown"}, "env_id": "d5e083da8024d420", "params": "{}", "computed_outcomes": {"lj-nve-demo-behaves": {"evaluated_by": "agent", "reason": "observable 'TBD' not resolvable", "reconcile": "no_authored"}}, "provenance": {"params": {"n_steps": {"value": 20, "source": "resolved"}}, "params_captured_at": "2026-10-27", "params_source": "dashboard-runner"}, "outcomes": {"lj-nve-demo-behaves": {"result": "SKIP", "evaluated_by": "agent", "note": "observable 'TBD' not resolvable", "auto_evaluated": true}}}, {"name": "pbg_lammps.composites.lj-nve-demo__1793127221__cd67a7", "status": "failed", "timestamp": 1793127223.7133582, "emitter": {"kind": "unknown"}, "env_id": "d5e083da8024d420", "params": "{}", "computed_outcomes": {"lj-nve-demo-behaves": {"evaluated_by": "agent", "reason": "observable 'TBD' not resolvable", "reconcile": "no_authored"}}}, {"name": "pbg_lammps.composites.lj-nve-demo__1793127207__1c4df0", "status": "failed", "timestamp": 1793127209.9974148, "emitter": {"kind": "unknown"}, "env_id": "d5e083da8024d420", "params": "{}", "computed_outcomes": {"lj-nve-demo-behaves": {"evaluated_by": "agent", "reason": "observable 'TBD' not resolvable", "reconcile": "no_authored"}}}, {"name": "pbg_lammps.composites.lj-nve-demo__1793127198__fb799e", "status": "failed", "timestamp": 1793127200.402314, "emitter": {"kind": "unknown"}, "env_id": "d5e083da8024d420", "params": "{}", "computed_outcomes": {"lj-nve-demo-behaves": {"evaluated_by": "agent", "reason": "observable 'TBD' not resolvable", "reconcile": "no_authored"}}}], "findings": [], "pipeline_gate": {"prerequisites": [], "enables": [], "gate_evaluator": {"result": "blocked", "blocked_by": ["lj-nve-demo-behaves"], "evaluated_by": "code", "diverges_from_authored": false}}, "experiment": "TBD — describe what pbg_lammps.composites.lj-nve-demo is expected to demonstrate.", "phase": "Design", "status": "planned", "slug": "lj-nve-demo", "execution_status": "planned", "sci_verdict": "qualified", "baseline_composite": "pbg_lammps.composites.lj-nve-demo", "tests_counts": {"passed": 0, "skipped": 1, "failed": 0}, "figures_embedded": [{"name": "report_card", "display": "primary", "report_card": {"verdict": {"count_split": {"acceptance_criteria": {"fail": 0, "pass": 0, "total": 0}, "committed_rerunnable": 1, "expected_fail": {"behaved": 0, "total": 0}, "label": "pins: 0/0; acceptance: 0/0; unclassified: 1", "narrated": 0, "regression_pins": {"fail": 0, "pass": 0, "total": 0}, "unclassified": 1}, "n_fail": 0, "n_pass": 0, "n_total": 1, "overall": "drift", "schema": "behavior_test_card/v1", "tests": [{"band": "", "band_basis": "", "cites": [], "detail": "observable 'TBD' not resolvable", "en": "TBD — plain-language statement of the expected behavior.", "expected_fail": false, "gate_class": null, "margin": null, "measured_value": null, "meter": null, "name": "lj-nve-demo-behaves", "result": "SKIP", "severity": null, "units": "", "verdict": null}]}, "charts": []}}, {"name": "Lj nve demo decision", "html": "\u003cp style=\"color:#991b1b\">Failed to render \u003ccode>lj-nve-demo-decision\u003c/code>: \u003ccode>KeyError: 'address'\u003c/code>\u003c/p>"}, {"name": "Lj nve demo mechanism", "html": "\u003cp style=\"color:#991b1b\">Failed to render \u003ccode>lj-nve-demo-mechanism\u003c/code>: \u003ccode>KeyError: 'address'\u003c/code>\u003c/p>"}, {"name": "Lj nve demo world", "html": "\u003cp style=\"color:#991b1b\">Failed to render \u003ccode>lj-nve-demo-world\u003c/code>: \u003ccode>KeyError: 'address'\u003c/code>\u003c/p>"}], "model_topology": {"processes": [{"name": "lammps", "kind": "process", "address": "local:LAMMPSProcess", "inputs": [], "outputs": ["temperature", "potential_energy", "kinetic_energy", "total_energy", "pressure", "volume"], "doc": "", "compartments": ["stores"]}, {"name": "emitter", "kind": "step", "address": "local:RAMEmitter", "inputs": ["temperature", "potential_energy", "kinetic_energy", "total_energy", "pressure", "volume"], "outputs": [], "doc": "", "compartments": ["stores"]}], "stores": [{"name": "stores", "type": null, "children": []}], "edges": [{"p": "lammps", "c": "stores", "s": "temperature"}, {"p": "lammps", "c": "stores", "s": "potential_energy"}, {"p": "lammps", "c": "stores", "s": "kinetic_energy"}, {"p": "lammps", "c": "stores", "s": "total_energy"}, {"p": "lammps", "c": "stores", "s": "pressure"}, {"p": "lammps", "c": "stores", "s": "volume"}, {"p": "emitter", "c": "stores", "s": "temperature"}, {"p": "emitter", "c": "stores", "s": "potential_energy"}, {"p": "emitter", "c": "stores", "s": "kinetic_energy"}, {"p": "emitter", "c": "stores", "s": "total_energy"}, {"p": "emitter", "c": "stores", "s": "pressure"}, {"p": "emitter", "c": "stores", "s": "volume"}], "composite": "pbg_lammps.composites.lj-nve-demo"}, "verdict": "blocked", "verdict_counts": {"passed": 0, "skipped": 1, "failed": 0}, "computed_gate_verdict": {"result": "blocked", "blocked_by": ["lj-nve-demo-behaves"], "evaluated_by": "code", "diverges_from_authored": false}, "run_commands": {"baseline": "vwb run study lj-nve-demo", "variants": [], "simulations": [{"name": "baseline-baseline", "cmd": "vwb run study lj-nve-demo"}], "rerun_hint": "vwb rerun \u003crun-id>"}}, {"title": "Lj nve demo with viz", "confidence": "Planned", "question": "TBD — what question does this study answer?", "baseline": [{"name": "baseline", "composite": "pbg_lammps.composites.lj-nve-demo-with-viz", "params": {}}], "behavior_tests": [{"name": "lj-nve-demo-with-viz-behaves", "classification": "primary", "description": "TBD — plain-language statement of the expected behavior.", "measure": {"kind": "derived_scalar", "field": "TBD"}, "pass_if": {"op": "\u003c", "value": null}, "requires_simulation": "baseline"}], "runs": [{"name": "pbg_lammps.composites.lj-nve-demo-with-viz__1793127242__462fac", "status": "completed", "timestamp": 1793127244.857385, "emitter": {"kind": "unknown"}, "env_id": "d5e083da8024d420", "params": "{}", "computed_outcomes": {"lj-nve-demo-with-viz-behaves": {"evaluated_by": "agent", "reason": "observable 'TBD' not resolvable", "reconcile": "no_authored"}}, "provenance": {"params": {"n_steps": {"value": 20, "source": "resolved"}}, "params_captured_at": "2026-10-27", "params_source": "dashboard-runner"}, "outcomes": {"lj-nve-demo-with-viz-behaves": {"result": "SKIP", "evaluated_by": "agent", "note": "observable 'TBD' not resolvable", "auto_evaluated": true}}}, {"name": "pbg_lammps.composites.lj-nve-demo-with-viz__1793127224__00415c", "status": "failed", "timestamp": 1793127226.5760362, "emitter": {"kind": "unknown"}, "env_id": "d5e083da8024d420", "params": "{}", "computed_outcomes": {"lj-nve-demo-with-viz-behaves": {"evaluated_by": "agent", "reason": "observable 'TBD' not resolvable", "reconcile": "no_authored"}}}, {"name": "pbg_lammps.composites.lj-nve-demo-with-viz__1793127201__853470", "status": "failed", "timestamp": 1793127203.301557, "emitter": {"kind": "unknown"}, "env_id": "d5e083da8024d420", "params": "{}", "computed_outcomes": {"lj-nve-demo-with-viz-behaves": {"evaluated_by": "agent", "reason": "observable 'TBD' not resolvable", "reconcile": "no_authored"}}}], "findings": [], "pipeline_gate": {"prerequisites": [{"study": "lj-nve-demo", "condition": "tests-passed", "relation": "builds-on"}], "enables": [], "gate_evaluator": {"result": "blocked", "blocked_by": ["lj-nve-demo-with-viz-behaves"], "evaluated_by": "code", "diverges_from_authored": false}}, "experiment": "TBD — describe what pbg_lammps.composites.lj-nve-demo-with-viz is expected to demonstrate.", "phase": "Design", "status": "planned", "slug": "lj-nve-demo-with-viz", "execution_status": "planned", "sci_verdict": "qualified", "baseline_composite": "pbg_lammps.composites.lj-nve-demo-with-viz", "tests_counts": {"passed": 0, "skipped": 1, "failed": 0}, "figures_embedded": [{"name": "report_card", "display": "primary", "report_card": {"verdict": {"count_split": {"acceptance_criteria": {"fail": 0, "pass": 0, "total": 0}, "committed_rerunnable": 1, "expected_fail": {"behaved": 0, "total": 0}, "label": "pins: 0/0; acceptance: 0/0; unclassified: 1", "narrated": 0, "regression_pins": {"fail": 0, "pass": 0, "total": 0}, "unclassified": 1}, "n_fail": 0, "n_pass": 0, "n_total": 1, "overall": "drift", "schema": "behavior_test_card/v1", "tests": [{"band": "", "band_basis": "", "cites": [], "detail": "observable 'TBD' not resolvable", "en": "TBD — plain-language statement of the expected behavior.", "expected_fail": false, "gate_class": null, "margin": null, "measured_value": null, "meter": null, "name": "lj-nve-demo-with-viz-behaves", "result": "SKIP", "severity": null, "units": "", "verdict": null}]}, "charts": []}}, {"name": "Lj nve demo with viz decision", "html": "\u003cp style=\"color:#991b1b\">Failed to render \u003ccode>lj-nve-demo-with-viz-decision\u003c/code>: \u003ccode>KeyError: 'address'\u003c/code>\u003c/p>"}, {"name": "Lj nve demo with viz mechanism", "html": "\u003cp style=\"color:#991b1b\">Failed to render \u003ccode>lj-nve-demo-with-viz-mechanism\u003c/code>: \u003ccode>KeyError: 'address'\u003c/code>\u003c/p>"}, {"name": "Lj nve demo with viz world", "html": "\u003cp style=\"color:#991b1b\">Failed to render \u003ccode>lj-nve-demo-with-viz-world\u003c/code>: \u003ccode>KeyError: 'address'\u003c/code>\u003c/p>"}, {"name": "Viz", "html": "\u003cdiv id=\"ltp\" style=\"height:380px\">\u003c/div>\u003cscript>Plotly.newPlot(\"ltp\",[{\"x\":[0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 16.0, 16.5, 17.0, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0],\"y\":[0.0, 1.0421788377254166, 1.055338472301479, 0.8463777769078876, 1.0738922352317315, 1.04620647548748, 1.1828921554477745, 1.052287620195811, 0.875250823696922, 1.0717966627937572, 0.8803658294111509, 0.8745795181154443, 1.0693778489134105, 1.000268535917996, 0.9901086085509303, 1.0738374449655939, 0.8883295319033669, 1.0275982788473201, 0.97810064835419, 0.949880665254853, 0.9012474533359065, 0.861746887241382, 1.0137422832985952, 1.0368416256820652, 1.109845485394988, 0.9820038837279489, 0.9686956588452771, 1.018411414424236, 1.1304262887868726, 0.9456903794376228, 1.0180817829583386, 1.0913861530699551, 1.0668940276710577, 1.168798582001356, 0.7775926070130538, 0.9143380859953997, 0.9909501211790033, 0.949069254834773, 1.0348217277167377, 1.0971204322085182, 1.1083163826156122],\"type\":\"scatter\",\"mode\":\"lines\",\"name\":\"temperature\"},{\"x\":[0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 16.0, 16.5, 17.0, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0],\"y\":[0.0, -2.9729020542400133, -2.99146428632025, -2.689780877045865, -3.0188511654895525, -2.978645105149062, -3.175763561834929, -2.987004767690487, -2.732133800919948, -3.0153296350253918, -2.7394380862042027, -2.7305257421370976, -3.0119545053354653, -2.912615621669774, -2.897739472308566, -3.0189246024685703, -2.7507819926412163, -2.9518367454698025, -2.8801866092705555, -2.8394797489881793, -2.768833018915273, -2.7116773730048243, -2.931834857077195, -2.9655265996904245, -3.0706820913185964, -2.8864050577594376, -2.8668427864028936, -2.9385826460090905, -3.100437418835454, -2.8337206448671357, -2.9382818486827653, -3.044461765652298, -3.0089640985662744, -3.155865459370208, -2.5901491451301504, -2.788398659941602, -2.899076945206279, -2.839273468845645, -2.962628000414851, -3.0528020114605927, -3.068676148339636],\"type\":\"scatter\",\"mode\":\"lines\",\"name\":\"potential_energy\"},{\"x\":[0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 16.0, 16.5, 17.0, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0],\"y\":[0.0, 1.5053694322700464, 1.5243777933243583, 1.2225456777558377, 1.551177673112501, 1.5111871312596934, 1.708622002313452, 1.5199710069495045, 1.2642511897844428, 1.5481507351465382, 1.2716395313716626, 1.263281526166753, 1.5446568928749262, 1.4448323296593275, 1.4301568790180104, 1.551098531616969, 1.2831426571937523, 1.4843086250016848, 1.412812047622719, 1.3720498498125655, 1.3018018770407538, 1.2447455037931074, 1.464294409209082, 1.4976601259852051, 1.603110145570538, 1.418450054273704, 1.3992270627765113, 1.4710387097238964, 1.6328379726921494, 1.3659972147432329, 1.4705625753842668, 1.5764466655454907, 1.5410691510804166, 1.6882646184464032, 1.1231893212410777, 1.3207105686600218, 1.4313723972585604, 1.3708778125391166, 1.4947424955908433, 1.5847295131900818, 1.6009014415558842],\"type\":\"scatter\",\"mode\":\"lines\",\"name\":\"kinetic_energy\"},{\"x\":[0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 16.0, 16.5, 17.0, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0],\"y\":[0.0, -1.467532621969967, -1.4670864929958916, -1.4672351992900274, -1.4676734923770514, -1.4674579738893687, -1.4671415595214772, -1.4670337607409825, -1.467882611135505, -1.4671788998788535, -1.46779855483254, -1.4672442159703447, -1.467297612460539, -1.4677832920104465, -1.4675825932905557, -1.4678260708516013, -1.467639335447464, -1.4675281204681176, -1.4673745616478364, -1.4674298991756138, -1.467031141874519, -1.4669318692117168, -1.4675404478681129, -1.4678664737052194, -1.4675719457480583, -1.4679550034857336, -1.4676157236263823, -1.467543936285194, -1.4675994461433048, -1.4677234301239028, -1.4677192732984985, -1.4680151001068074, -1.4678949474858578, -1.4676008409238048, -1.4669598238890726, -1.4676880912815804, -1.4677045479477187, -1.4683956563065284, -1.4678855048240076, -1.468072498270511, -1.4677747067837519],\"type\":\"scatter\",\"mode\":\"lines\",\"name\":\"total_energy\"},{\"x\":[0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 16.0, 16.5, 17.0, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0],\"y\":[0.0, -0.45715736689525066, -0.2733934967946559, 0.8728128097249892, -0.33406495080684684, -0.27031350609727084, -0.14873679568813955, -0.40109119527820825, 0.6531182183605184, -0.1455548246633923, 0.011233647479277341, -0.04856184827784315, -0.6813558708784059, -0.2230521343504435, 0.07999542527926479, -0.20025298087145046, 0.13416727274684564, 0.4056546716374944, 0.4613473029386895, -0.20766126623234732, -0.1582627756990901, 0.021953357133902607, 0.09873316962242532, 0.176894458412121, -0.3997559479542094, 0.2276030812146424, -0.0035792752704693342, 0.07297519294790004, -0.34238364783647113, 0.9285888187676754, 0.0675494783359588, -0.031190303279525957, 0.6985201946987128, -0.9552026353460035, 0.5664149641037114, -0.04531615320114428, -0.6044075987393478, -0.22499051071906212, -0.2046627573155912, -0.4364977235189227, -0.3247714518725222],\"type\":\"scatter\",\"mode\":\"lines\",\"name\":\"pressure\"}],{title:\"LAMMPS LJ NVE thermodynamics\",margin:{l:55,r:15,t:35,b:40},xaxis:{title:\"time\"},legend:{orientation:\"h\",y:-0.2}},{responsive:true,displayModeBar:false});\u003c/script>", "interactive": true}], "model_topology": {"processes": [{"name": "lammps", "kind": "process", "address": "local:LAMMPSProcess", "inputs": [], "outputs": ["temperature", "potential_energy", "kinetic_energy", "total_energy", "pressure", "volume"], "doc": "", "compartments": ["stores"]}, {"name": "viz", "kind": "step", "address": "local:LAMMPSThermoPlots", "inputs": ["temperature", "potential_energy", "kinetic_energy", "total_energy", "pressure", "time"], "outputs": ["html"], "doc": "", "compartments": ["stores"]}, {"name": "emitter", "kind": "step", "address": "local:RAMEmitter", "inputs": ["temperature", "potential_energy", "kinetic_energy", "total_energy", "pressure", "volume"], "outputs": [], "doc": "", "compartments": ["stores"]}], "stores": [{"name": "stores", "type": null, "children": []}], "edges": [{"p": "lammps", "c": "stores", "s": "temperature"}, {"p": "lammps", "c": "stores", "s": "potential_energy"}, {"p": "lammps", "c": "stores", "s": "kinetic_energy"}, {"p": "lammps", "c": "stores", "s": "total_energy"}, {"p": "lammps", "c": "stores", "s": "pressure"}, {"p": "lammps", "c": "stores", "s": "volume"}, {"p": "viz", "c": "stores", "s": "temperature"}, {"p": "viz", "c": "stores", "s": "potential_energy"}, {"p": "viz", "c": "stores", "s": "kinetic_energy"}, {"p": "viz", "c": "stores", "s": "total_energy"}, {"p": "viz", "c": "stores", "s": "pressure"}, {"p": "viz", "c": "stores", "s": "viz_html"}, {"p": "emitter", "c": "stores", "s": "temperature"}, {"p": "emitter", "c": "stores", "s": "potential_energy"}, {"p": "emitter", "c": "stores", "s": "kinetic_energy"}, {"p": "emitter", "c": "stores", "s": "total_energy"}, {"p": "emitter", "c": "stores", "s": "pressure"}, {"p": "emitter", "c": "stores", "s": "volume"}], "composite": "pbg_lammps.composites.lj-nve-demo-with-viz"}, "verdict": "blocked", "verdict_counts": {"passed": 0, "skipped": 1, "failed": 0}, "computed_gate_verdict": {"result": "blocked", "blocked_by": ["lj-nve-demo-with-viz-behaves"], "evaluated_by": "code", "diverges_from_authored": false}, "run_commands": {"baseline": "vwb run study lj-nve-demo-with-viz", "variants": [], "simulations": [{"name": "baseline-baseline", "cmd": "vwb run study lj-nve-demo-with-viz"}], "rerun_hint": "vwb rerun \u003crun-id>"}}], "loom_embed": {"loom": "../bigraph-loom/index.html", "state": "../api/composite-state/"}}</script>
 <script>
 const INV = JSON.parse(document.getElementById('data').textContent);
 const esc = s => (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -4665,24 +5555,62 @@ function testsTable(tests, traj){
     const cls=t.classification;
     const fin=finals[name]; const v=fin?(fin.v==='within_tol'?'pass':'fail'):null;
     const exp=(fin&&fin.exp)||(prov[name]&&prov[name].exp)||(t.pass_if&&(t.pass_if.op+' '+t.pass_if.value))||'';
-    const pv=provText((prov[name]&&prov[name].provenance))||provText(t.pass_if&&t.pass_if.provenance)||(t.measure&&t.measure.kind==='audit-axis'?('audit axis '+meas):'');
     const obs=(fin&&fin.obs!=null)?`observed ${fmt(fin.obs)}`:'';
     const mg=(fin&&fin.m!=null)?` · margin ${fmt(fin.m)}`:'';
-    return `<tr id="test-${esc(name)}"><td class="tname">${esc(desc||name)}
-        <div class="texp mono">${esc(name)}${cls?' · '+esc(cls):''}${meas?' · '+esc(meas):''}</div>
-        ${pv?`<div class="kv rationale" style="font-size:12px;margin-top:3px">${esc(pv)}</div>`:''}</td>
-      <td class="tv"><div>${exp?`<span class="mono texp">${esc(exp)}</span>`:''} ${v?`<span class="chip ${v}" style="margin-left:6px">${v==='pass'?'✓ pass':'✗ fail'}</span>`:'<span class="chip">pending</span>'}</div>
-        ${obs?`<div class="texp mono" style="margin-top:3px">${esc(obs)}${esc(mg)}</div>`:''}</td></tr>`;
+    const chip=v?`<span class="chip ${v}">${v==='pass'?'✓ pass':'✗ fail'}</span>`:'<span class="chip">pending</span>';
+    const meta=[`<span class="mono">${esc(name)}</span>${cls?' · '+esc(cls):''}${meas?' · '+esc(meas):''}`];
+    if(exp) meta.push(esc(exp));
+    if(obs) meta.push(esc(obs)+esc(mg));
+    return `<div class="test-row" id="test-${esc(name)}">
+      <div class="test-head"><span class="test-desc">${esc(desc||name)}</span>${chip}</div>
+      <div class="fmeta">${meta.join(' <span class="sep">·</span> ')}</div></div>`;
   }).join('');
-  return `<table class="ttable">${rows}</table>`;
+  return `<div class="tests-list">${rows}</div>`;
 }
 function fmt(n){ if(typeof n!=='number') return esc(n); return Number.isInteger(n)?n:(Math.abs(n)<0.01?n.toExponential(1):n.toFixed(2)); }
+// Report card (SIM vs EXPT): render the structured per-axis verdict table +
+// the inlined SVG comparison charts (extracted server-side in
+// investigation_report._embed_report_card). Inline, so it paginates in a PDF —
+// the full-page report-card HTML can't (iframes don't paginate / print).
+function _rcVerdictChip(v){
+  v=String(v||'').toLowerCase(); if(v==='within_tol') v='pass';
+  const glyph={pass:'✓',warn:'≈',fail:'✗',ungraded:'–'}[v]||esc(v||'–');
+  const cls={pass:'pass',warn:'warn',fail:'fail'}[v]||'';
+  return `<span class="chip ${cls}" title="${esc(v)}">${glyph}</span>`;
+}
+function _rcHumanize(s){ return String(s||'').replace(/[_-]+/g,' ').replace(/\b\w/g,c=>c.toUpperCase()); }
+function reportCardFig(rc){
+  const v=rc.verdict||{}, charts=rc.charts||[], groups=v.groups||{};
+  const ref=v.reference_model?`<div class="texp" style="color:var(--ink-3);margin-bottom:6px">model vs <b>${esc(v.reference_model)}</b></div>`:'';
+  const tally={pass:0,warn:0,fail:0,ungraded:0};
+  Object.values(groups).forEach(g=>((g&&g.axes)||[]).forEach(a=>{ let k=String(a.verdict||'ungraded').toLowerCase(); if(k==='within_tol')k='pass'; if(tally[k]==null)k='ungraded'; tally[k]++; }));
+  const badge=`<div class="rc-badge"><b>${esc(String(v.overall||'').toUpperCase()||'—')}</b> · ${tally.pass}✓ ${tally.warn}≈ ${tally.fail}✗ ${tally.ungraded}–</div>`;
+  let rows='';
+  Object.keys(groups).forEach(gk=>{
+    const axes=((groups[gk]||{}).axes)||[]; if(!axes.length) return;
+    rows+=`<tr class="rc-grp"><td colspan="2">${esc(_rcHumanize(gk))}</td></tr>`;
+    axes.forEach(a=>{
+      // `meter` is the human-readable summary ("R² 0.645 — 3979 genes"); `detail`
+      // is a raw dict, so prefer meter and never stringify an object.
+      const meter=(typeof a.meter==='string')?a.meter:((typeof a.detail==='string')?a.detail:'');
+      rows+=`<tr><td class="rc-ax">${esc(a.label||a.id||'')}</td><td class="rc-vd">${_rcVerdictChip(a.verdict)}${meter?` <span class="rc-meter">${esc(meter)}</span>`:''}</td></tr>`;
+    });
+  });
+  const table=rows?`<table class="rc-table"><thead><tr><th>Axis</th><th>Assessment</th></tr></thead><tbody>${rows}</tbody></table>`:'';
+  const gallery=charts.length?`<div class="rc-charts">${charts.map(svg=>`<figure class="rc-chart">${svg}</figure>`).join('')}</div>`:'';
+  if(!table && !gallery) return '';
+  return `<div class="report-card"><div class="kicker" style="margin-bottom:4px">Report card — SIM vs EXPT</div>${ref}${badge}${table}${gallery}</div>`;
+}
 // provenance may be a plain string OR an object ({kind, note, ...}); render a
 // readable line, never a stringified object ("[object Object]").
 function provText(p){ if(!p) return ''; if(typeof p==='string') return p;
   if(typeof p==='object') return String(p.note||p.rationale||p.kind||Object.values(p).filter(v=>typeof v==='string').join(' · ')||''); return String(p); }
 
-function fbBubble(key,label){ return `<button class="fbbubble ${FB[key]?'has':''}" data-fb="${esc(key)}" data-fblabel="${esc(label)}" title="Add feedback to this section" aria-label="Add feedback to ${esc(label)}">💬</button>`; }
+// Legacy inline bubble — superseded by the shared feedback engine
+// (static/study-feedback.js, inlined near the end of this document), which
+// decorates every `.fbsection` / study card with a hover-corner. Kept as a
+// no-op so the render markup (which still calls it) stays intact.
+function fbBubble(key,label){ return ''; }
 function part(label, body, key, klabel){ if(!body) return '';
   return `<div class="substage fbsection">${key?fbBubble(key,klabel||label):''}<div class="slabel">${label}</div>${body}</div>`; }
 
@@ -4797,35 +5725,46 @@ function renderStudy(s, inv, idx){
   // before any model / implementation detail (falls back to purpose.question,
   // then the claim, so a question-less study still leads with something).
   const pq = s.purpose && s.purpose.question, pm = s.purpose && s.purpose.mechanism;
-  const question = s.question || pq || s.claim;
-  const claimLine = question? `<div class="claim">${esc(question)}</div>` : '';
+  const question = s.question || pq;
+  const claimLine = question? `<div class="claim">${esc(question)}</div>` : (s.claim?`<div class="claim">${esc(s.claim)}</div>`:'');
+  // human-readable overview under the question — the study's claim (its thesis)
+  // then any biological background. Mirrors the live study Overview; cd2-style
+  // studies carry `claim` + `experiment` but no `biological_summary`, so without
+  // this the card showed only the question.
   const bioText = s.biological_summary || pm;
-  const overview = bioText?`<div class="biology">${esc(bioText)}</div>`:'';
+  const thesis = (question && s.claim && String(s.claim).trim()) ? s.claim : '';
+  const resultText = (s.result && String(s.result).trim()) ? s.result : '';
+  let overview = '';
+  if(thesis) overview += `<div class="study-thesis">${mdLite(thesis)}</div>`;
+  if(bioText) overview += `<div class="biology">${esc(bioText)}</div>`;
+  // the study's RESULT — a human-readable summary of what it found, mirroring the
+  // live study Overview's Result section.
+  if(resultText) overview += `<div class="study-result"><div class="ov-k">Result</div>${mdLite(resultText)}</div>`;
 
-  // MODEL — prefer a pre-rendered bigraph-loom image (offline-safe, config
-  // loaded, from `vivarium-workbench render-loom`); else the live loom iframe;
-  // else the re-drawn static topology / viz.
+  // MODEL — a COMPACT model card: the composite id + topology counts
+  // (processes · compartments · links) + the sourcing decision. The full
+  // interactive 46-process bigraph is NOT drawn in the static report/PDF — it
+  // otherwise spanned pages and repeated verbatim for every study that shares
+  // the composite. The whole diagram lives in the live workbench's loom explorer.
   const bl=(s.baseline||[])[0];
   const _mcid=(s.model_topology&&s.model_topology.composite)||(bl&&bl.composite)||'';
-  const loomRendered = s.model_loom
-    ? `<figure class="loom-embed"><div class="loom-frame" style="height:auto;max-height:640px;overflow:auto">
-         <img src="${s.model_loom}" alt="bigraph-loom view of ${esc(_mcid)}" style="width:100%;display:block"/></div>
-       <figcaption><b>bigraph-loom</b> view of <span class="mono">${esc(_mcid)}</span> — the composite's bigraph with its config loaded.</figcaption></figure>`
-    : '';
-  // The report is a self-contained document (often opened from disk / a static
-  // bundle), so the Model section uses only renderings that need no network:
-  // the pre-rendered bigraph-loom PNG (render-loom) when the composite has one,
-  // else the static bigraph topology drawn from model_topology, then a plain viz.
-  // (The live loom iframe and the re-drawn interactive-SVG loom were both removed:
-  // the iframe failed offline, and the interactive SVG kept recurring in place of
-  // a real loom figure.)
-  let modelBody = loomRendered || (s.model_topology ? loomTopoSVG(s.model_topology) : '') || vizModelSVG(s,inv);
+  const _topo=s.model_topology;
+  let modelBody='';
+  if(_mcid) modelBody+=`<div class="kv"><span class="kv-k">Composite</span> <span class="mono">${esc(_mcid)}</span></div>`;
+  if(_topo){
+    // match loomTopoSVG's counting: compartments = distinct wired compartments
+    // (edge.c) plus top-level stores; links = distinct process↔compartment pairs.
+    const np=(_topo.processes||[]).length, _edges=_topo.edges||[];
+    const _comps=new Set(), _links=new Set();
+    _edges.forEach(e=>{ if(e&&e.c!=null){ _comps.add(e.c); if(e.p!=null) _links.add(e.p+'|'+e.c); } });
+    (_topo.stores||[]).forEach(n=>{ if(n&&n.name!=null) _comps.add(n.name); });
+    const nc=_comps.size, nl=_links.size;
+    modelBody+=`<div class="texp" style="margin-top:4px">${np} process${np===1?'':'es'} · ${nc} compartment${nc===1?'':'s'} · ${nl} link${nl===1?'':'s'}</div>`;
+  }
   if(s.sourcing){
-    modelBody += `<div class="decision-line" style="margin-top:6px"><span class="chip decision">${esc(s.sourcing.decision)}</span>
+    modelBody += `<div class="decision-line" style="margin-top:8px"><span class="chip decision">${esc(s.sourcing.decision)}</span>
       ${(s.sourcing.modules||[]).map(m=>`<span class="chip mod">${esc(m)}</span>`).join(' ')||'<span class="chip mod">new module</span>'}</div>
       ${s.sourcing.rationale?`<div class="kv rationale">${esc(s.sourcing.rationale)}</div>`:''}`;
-  } else if(bl&&bl.composite){
-    modelBody += `<div class="texp mono" style="margin-top:4px">${esc(bl.composite)}</div>`;
   }
 
   // SIMULATION RUN
@@ -4833,15 +5772,27 @@ function renderStudy(s, inv, idx){
   let runBody = runs.length?runs.map(r=>{
     return `<div class="kv" style="margin:6px 0"><span class="chip ${r.status==='completed'?'pass':''}">${esc(r.status)}</span>
       <span class="mono" style="margin-left:8px;color:var(--ink-2)">${esc(r.name||r.module||'')}</span>
-      ${outcomeRows(r.outcomes)}
-      ${r.provenance?`<div class="texp mono" style="margin-top:2px">${esc(provText(r.provenance))}</div>`:''}</div>`;
+      ${outcomeRows(r.outcomes)}</div>`;
   }).join(''):'';
-  // run-command chips: how to reproduce this study + per-variant commands
+  // run-command chips: show the base reproduce command ONCE, then list the
+  // variants cleanly. The variant's `name` in the data is a long descriptive
+  // string ("iter1-0x - vio_gfp_v0_dose0x (GFP off, negative control)"), so the
+  // old per-row full `--variant <name>` command printed the description twice and
+  // was unreadable. Split "<id> - <description>" and list id — description.
   if(s.run_commands){
     const _base = s.run_commands && s.run_commands.baseline;
     if(_base) runBody += `<div class="reproduce-line texp" style="margin-top:6px">Reproduce: ${_runChip(_base)}</div>`;
     const _rcVariants = (s.run_commands && s.run_commands.variants) || [];
-    _rcVariants.forEach(_vc=>{ runBody += `<div class="texp">${esc(_vc.name)}: ${_runChip(_vc && _vc.cmd)}</div>`; });
+    if(_rcVariants.length){
+      const _vrow=(_vc)=>{
+        const nm=String((_vc&&_vc.name)||'');
+        const _i=nm.indexOf(' - ');
+        const vid=_i>0?nm.slice(0,_i):nm, vdesc=_i>0?nm.slice(_i+3):'';
+        return `<li><code class="mono">${esc(vid)}</code>${vdesc?` — ${esc(vdesc)}`:''}</li>`;
+      };
+      runBody += `<div class="texp" style="margin-top:6px">Variants <span style="color:var(--ink-3)">(append <span class="mono">--variant "&lt;name&gt;"</span>)</span>:</div>
+        <ul class="assumptions" style="margin:4px 0 0">${_rcVariants.map(_vrow).join('')}</ul>`;
+    }
   }
 
   // VISUALIZATIONS — split by the declared `display:` intent (set in the study's
@@ -4857,6 +5808,7 @@ function renderStudy(s, inv, idx){
   // single embedded-figure item → its HTML fragment (image / inline Plotly /
   // iframe HTML / skipped note), the same renderings as before.
   const _figItem=(im)=>{
+    if(im.report_card) return reportCardFig(im.report_card);
     if(im.data_uri) return `<figure><img src="${im.data_uri}" alt="${esc(im.name)}" loading="lazy"><figcaption>${esc(im.name)}</figcaption></figure>`;
     // Interactive figure (Plotly): the generator stripped its own Plotly loader
     // and handed us just the graph <div> + its Plotly.newPlot script. Render it
@@ -4867,7 +5819,7 @@ function renderStudy(s, inv, idx){
     if(im.html && im.interactive) return `<figure class="embedded-viz embedded-plotly" style="margin:12px 0"><figcaption class="kicker" style="margin-bottom:6px">${esc(im.name)}</figcaption><div class="plotly-holder">${im.html}</div></figure>`;
     // Any other committed HTML figure keeps the isolated-iframe path.
     if(im.html) return `<figure class="embedded-viz" style="margin:12px 0"><figcaption class="kicker" style="margin-bottom:6px">${esc(im.name)}</figcaption><iframe class="viz-frame" srcdoc="${esc(im.html)}" loading="lazy" onload="try{this.style.height=(this.contentWindow.document.documentElement.scrollHeight+8)+'px';}catch(e){}"></iframe></figure>`;
-    if(im.skipped) return `<div class="texp" style="color:var(--ink-3)">↪ ${esc(im.name)} — ${esc(im.reason||'not inlined')}</div>`;
+    if(im.skipped) return `<div class="texp" style="color:var(--ink-3);font-size:11.5px;font-style:italic">↪ ${esc(im.name)} — ${esc(im.reason||'not inlined')}</div>`;
     return '';
   };
   (s.figures_embedded||[]).forEach(im=>{
@@ -4914,13 +5866,18 @@ function renderStudy(s, inv, idx){
       const bandCites=(ft&&tcites[ft])||[];
       const allCites=[...new Set([...fcites,...bandCites])];
       const tier=evidenceTier(f,s);
-      return `<div class="finding-traceability" style="margin:8px 0">
-        <span class="chip ${ok?'pass':''}">${esc((f.id?f.id+' · ':'')+(f.status||'finding'))}</span>${tier?' '+etierBadge(tier):''}
+      // Narrative-forward: the statement LEADS; the marker (id + evidence tier)
+      // and the provenance (test, divergence, run ids, seeded study) collapse into
+      // one subtle, de-emphasized meta line below it.
+      const _meta=[];
+      _meta.push(`<span class="fid">${esc((f.id?f.id+' · ':'')+(f.status||'finding'))}</span>${tier?' '+etierBadge(tier):''}`);
+      if(ft) _meta.push(`from ${_traceLink('test',ft)}${band?` <span class="pass_if-band mono">${esc((band.op||'')+' '+(band.value!=null?band.value:''))}</span>`:''}${bandCites.length?' '+citeRow(bandCites,'band'):''}`);
+      if(dv!=null) _meta.push(`<span class="finding-divergence">divergence ${esc(dv)}× vs expected</span>`);
+      if(runIds.length) _meta.push(`run ${runIds.map(r=>`<code>${esc(r)}</code>`).join(', ')}`);
+      if(f.seeded_study) _meta.push(`<span class="finding-seeded">seeded ${_traceLink('s',f.seeded_study)}</span>`);
+      return `<div class="finding-traceability">
         <div class="kv rationale">${esc(f.statement||'')}${allCites.length?' '+citeRow(allCites):''}</div>
-        ${ft?`<div class="texp">from test: ${_traceLink('test',ft)}${band?` <span class="pass_if-band mono">${esc((band.op||'')+' '+(band.value!=null?band.value:''))}</span>`:''}${bandCites.length?' '+citeRow(bandCites,'band'):''}</div>`:''}
-        ${dv!=null?`<div class="finding-divergence texp">divergence ${esc(dv)}× vs expected</div>`:''}
-        ${runIds.length?`<div class="texp">runs: ${runIds.map(r=>`<code>${esc(r)}</code>`).join(' ')}</div>`:''}
-        ${f.seeded_study?`<div class="finding-seeded texp">seeded study: ${_traceLink('s',f.seeded_study)}</div>`:''}</div>`;
+        <div class="fmeta">${_meta.join(' <span class="sep">·</span> ')}</div></div>`;
     }).join('');
   }
 
@@ -5005,6 +5962,14 @@ function renderStudy(s, inv, idx){
   let modelSlot=methodsSimsBlock(s);
   if(has(s.key_assumptions)) modelSlot+=`<div class="kicker" style="margin:12px 0 4px">Key assumptions</div><ul class="assumptions">${s.key_assumptions.map(a=>`<li>${esc(a)}</li>`).join('')}</ul>`;
 
+  // Background — the study's conceptual context (study.yaml `concept`), surfaced inline
+  // as its own always-present section so the reader has the framing before the result.
+  const bgBody = (s.concept && String(s.concept).trim()) ? `<div class="sp-v">${mdLite(s.concept)}</div>` : '';
+  // Model & approach — the model (composite + key assumptions) AND how the study tests it
+  // (hypothesis + model experiment + observable + discriminating control), consolidated into
+  // one section instead of two separate slots. Model first, then how it is exercised.
+  const modelApproachBody = modelSlot + hypoBody;
+
   // slot 7 — primary limitation (realized study), else the scaffold's honest caveat
   const limText = s.primary_limitation || s.honest_caveat || '';
   const limSlot = limText?`<div class="card-limitation">${mdLite(limText)}</div>`:'';
@@ -5029,8 +5994,10 @@ function renderStudy(s, inv, idx){
     + part('Tests', testsBody, 'study:'+s.slug+'/tests', s.title+' · Tests')
     + part('Provenance & anchors', anchorsBody, 'study:'+s.slug+'/provenance', s.title+' · Provenance')
     + part('Limitations & follow-ups', debtsBody, 'study:'+s.slug+'/debts', s.title+' · Limitations');
+  // Shown inline as part of the study (no collapsible dropdown) — the supporting
+  // record stays visible rather than hidden behind a "Technical record" expander.
   const techRecord = techInner.trim()
-    ? `<details class="exp tech-record"><summary>Technical record — model internals, full figure set, tests, provenance &amp; follow-ups</summary><div class="body">${techInner}</div></details>`
+    ? `<div class="tech-record-inline"><div class="sec-sub">Technical record</div><div class="body">${techInner}</div></div>`
     : '';
 
   // card badge uses the SAME status derivation as the graph + ladder (workbench
@@ -5047,12 +6014,14 @@ function renderStudy(s, inv, idx){
     ${claimLine}${overview}
     <div class="study-summary">${studySummary(s,inv)}</div>
     <div class="study-detail">
-      ${part('Hypothesis & discriminating control', hypoBody, 'study:'+s.slug+'/hypothesis', s.title+' · Hypothesis')}
-      ${part('Model & key assumptions', modelSlot, 'study:'+s.slug+'/model-assumptions', s.title+' · Model & assumptions')}
+      <!-- ANSWER-FORWARD: lead with the verdict + finding + the decisive figure,
+           then the setup (hypothesis/model/assumptions), then the technical record. -->
+      ${part('Background', bgBody, 'study:'+s.slug+'/background', s.title+' · Background')}
+      ${part('Verdict', decisionBody, 'study:'+s.slug+'/decision', s.title+' · Verdict')}
       ${anyFigFlagged?part('Decisive figure', decisiveFigBody, 'study:'+s.slug+'/decisive-figure', s.title+' · Decisive figure')
                     :part('Visualizations', techFigHtml, 'study:'+s.slug+'/visualizations', s.title+' · Visualizations')}
       ${part('Finding', findingsBody, 'study:'+s.slug+'/findings', s.title+' · Finding')}
-      ${part('Verdict', decisionBody, 'study:'+s.slug+'/decision', s.title+' · Verdict')}
+      ${part('Model & approach', modelApproachBody, 'study:'+s.slug+'/model-approach', s.title+' · Model & approach')}
       ${part('Primary limitation', limSlot, 'study:'+s.slug+'/limitation', s.title+' · Primary limitation')}
       ${part('Downstream state-transfer', handoffBody, 'study:'+s.slug+'/handoff', s.title+' · Handoff')}
       ${techRecord}
@@ -5140,7 +6109,7 @@ function renderDiscovery(inv){
   }).join('');
   return `<div class="fbsection measure" id="discovery">
     <div class="sec-h"><h2>Discovery — what to do next</h2><span class="rule"></span></div>
-    <p style="color:var(--ink-2);font-size:14px">${d.closed?'Closed':'Open'} · frontier ${d.frontier_size} · validator pass-rate ${prTxt} · diagnosis: ${flags}${na?` · next: <b>${esc(na.op)}</b> on ${esc(String(na.target).slice(0,60))}`:''}</p>
+    <p style="color:var(--ink-2);font-size:14px">${d.closed?`Closed — acceptance criteria met${d.frontier_size?` · ${d.frontier_size} residual (hardening, non-blocking)`:''}`:`Open · ${d.closure_blocking!=null?`${d.closure_blocking} blocking closure · `:''}frontier ${d.frontier_size}`} · validator pass-rate ${prTxt} · diagnosis: ${flags}${na?` · next: <b>${esc(na.op)}</b> on ${esc(String(na.target).slice(0,60))}`:''}</p>
     <h3 style="margin:14px 0 6px">Most valuable to investigate <span class="mono" style="color:var(--ink-2);font-weight:400">(value-ranked)</span></h3>
     <table class="ttable"><tbody><tr><th>score</th><th>action</th><th>target</th><th>why</th></tr>${opps}</tbody></table>
     ${awaiting.length?`<h3 style="margin:14px 0 6px">Suggested new studies <span class="mono" style="color:var(--ink-2);font-weight:400">(awaiting expert input)</span></h3><ul style="margin:0;padding-left:18px">${suggRows}</ul>`:''}
@@ -5243,15 +6212,9 @@ function setFB(key,patch){ FB[key]={...(FB[key]||{}),...patch};
   if(!FB[key].note && !FB[key].disp) delete FB[key]; saveFB(); }
 function fbCount(){ return Object.keys(FB).length; }
 function updateCount(){ const el=document.getElementById('fbcnt'); if(el) el.textContent=fbCount(); }
-function feedbackRow(key,label){ const f=FB[key]||{};
-  return `<div class="fbrow" data-fbkey="${esc(key)}">
-    <span class="fblabel">Feedback · ${esc(label)}</span>
-    <div class="fbdisp">
-      <button data-disp="ok" class="${f.disp==='ok'?'on-ok':''}">👍 Looks right</button>
-      <button data-disp="revise" class="${f.disp==='revise'?'on-rev':''}">✏️ Needs revision</button>
-    </div>
-    <input class="fbnote" placeholder="Add a note…" value="${esc(f.note||'')}"></div>`;
-}
+// Legacy inline editor row — superseded by the shared feedback engine's popover.
+// No-op so render markup that calls feedbackRow('overall', …) stays intact.
+function feedbackRow(key,label){ return ''; }
 function yq(s){ return '"'+String(s).replace(/\\/g,'\\\\').replace(/"/g,'\\"').replace(/\n/g,' ')+'"'; }
 function genYaml(inv){
   const L=['feedback_report:','  investigation: '+inv.slug,'  title: '+yq(inv.title),
@@ -5284,7 +6247,6 @@ function toc(inv){
   if(inv.spine) front.push('<a href="#spine-presentation">Map</a>');
   if((inv.studies||[]).length) front.push('<a href="#studies">Studies</a>');
   if((syn.quantitative||[]).length||(syn.contradictions||[]).length||(syn.roadmap||[]).length||(Array.isArray(exv.decisions_needed)&&exv.decisions_needed.length)) front.push('<a href="#synthesis-gaps">Synthesis &amp; gaps</a>');
-  if(((syn.validation||{}).items||[]).length!==undefined) front.push('<a href="#validation">Validation</a>');
   if((syn.claim_evidence||[]).length) front.push('<a href="#claim-evidence">Claim–evidence</a>');
   if((syn.studies_index||[]).length) front.push('<a href="#evidence-register">Register</a>');
   if(inv.references&&Object.keys(inv.references).length) front.push('<a href="#references">References</a>');
@@ -5295,11 +6257,9 @@ function toc(inv){
   const _ndl=(href,label)=>`<a class="nd-link" href="${href}">${label}</a>`;
   const mainLinks=[
     ['#exec-summary','Summary',true],
-    ['#discovery','Discovery — what to do next',!!inv.discovery],
     ['#spine-presentation','Investigation map',!!inv.spine],
     ['#studies','Studies',(inv.studies||[]).length],
     ['#synthesis-gaps','Synthesis & gaps',(syn.quantitative||[]).length||(syn.contradictions||[]).length||(syn.roadmap||[]).length||(Array.isArray(exv.decisions_needed)&&exv.decisions_needed.length)],
-    ['#validation','Validation & reproducibility',((syn.validation||{}).items||[]).length!==undefined],
     ['#claim-evidence','Claim–evidence map',(syn.claim_evidence||[]).length],
     ['#evidence-register','Evidence register (all studies)',(syn.studies_index||[]).length],
     ['#references','References',inv.references&&Object.keys(inv.references).length],
@@ -5308,6 +6268,7 @@ function toc(inv){
     ['#inv-viz','Investigation visualizations',!!renderInvViz(inv)],
     ['#glossary','Glossary',has(inv.glossary)],
     ['#appendix','Appendix',!!inv.catalog],
+    ['#discovery','Discovery — what to do next',!!inv.discovery],
   ].filter(x=>x[2]).map(x=>_ndl(x[0],x[1])).join('');
   const nStudies=(inv.studies||[]).length;
   const studyLinks=(inv.studies||[]).map(s=>_ndl('#s-'+esc(s.slug), esc(s.title||s.slug))).join('');
@@ -5344,7 +6305,7 @@ function spy(){
   const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
     links.forEach(l=>l.classList.remove('active')); const l=map[e.target.id]; if(l)l.classList.add('active');}});},
     {rootMargin:'-30% 0px -60% 0px'});
-  document.querySelectorAll('#exec-summary,#spine-presentation,#studies,#synthesis-gaps,#validation,#claim-evidence,#evidence-register,#references').forEach(el=>{if(el.id)obs.observe(el);});
+  document.querySelectorAll('#exec-summary,#spine-presentation,#studies,#synthesis-gaps,#claim-evidence,#evidence-register,#references').forEach(el=>{if(el.id)obs.observe(el);});
 }
 
 /* ---------- spine presentation: investigation graph (verdict-badged DAG) ---------- */
@@ -5380,16 +6341,29 @@ function _verdictDagHtml(sp){
     <figcaption>Member studies as a dependency DAG (edges from <span class="mono">parent_studies</span>), each badged with its code-computed gate verdict.</figcaption></div>`;
 }
 function renderSpine(inv){
-  // The graph REUSES the workbench's investigation-DAG rendering (ported), so the
-  // report's graph matches the SPA the user drives. Acceptance-criteria gating
-  // (the gating matrix + the authored acceptance-criteria list) was removed from
-  // the report on request — the spine DATA is untouched, only this rendering.
-  const graph=workbenchDag(inv);
-  if(!graph) return '';
-  return `<div id="spine-presentation" class="fbsection">${fbBubble('spine','Investigation graph')}
-    <div class="sec-h"><h2>The investigation graph</h2><span class="rule"></span></div>
-    <p class="measure" style="color:var(--ink-2);font-size:13.5px;margin:2px 0 8px">The campaign as a dependency graph — each study a node badged with its code-computed status, wired to the studies it builds on.</p>
-    ${graph}</div>`;
+  // A human-digestible OVERVIEW in place of the dependency graph: a table of
+  // contents of the member studies, each with its ASK (the question it tests)
+  // and its FIND (the headline result), linking to the full study card below.
+  const studies=inv.studies||[];
+  if(!studies.length) return '';
+  const rows=studies.map((s,i)=>{
+    const sm=studyStatusMeta(s);
+    const ask=s.question||(s.purpose&&s.purpose.question)||s.claim||'';
+    const find=_whatWeLearn(s);
+    const ctrl=isControl(s);
+    return `<div class="toc-row">
+      <a class="toc-num" href="#s-${esc(s.slug)}">${String(i+1).padStart(2,'0')}</a>
+      <div class="toc-body">
+        <div class="toc-h"><a class="toc-title" href="#s-${esc(s.slug)}">${esc(s.title)}</a>${ctrl?'<span class="toc-ctrl">⚑ control</span>':''}<span class="toc-status" style="color:${sm.color}"><span class="g" style="background:${sm.color}"></span>${esc(sm.label)}</span></div>
+        ${ask?`<div class="toc-line toc-ask"><span class="toc-k">Ask</span><span>${esc(ask)}</span></div>`:''}
+        ${find?`<div class="toc-line toc-find"><span class="toc-k">Find</span><span>${esc(find)}</span></div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+  return `<div id="spine-presentation" class="fbsection">${fbBubble('spine','Overview')}
+    <div class="sec-h"><h2>Overview</h2><span class="rule"></span></div>
+    <p class="measure" style="color:var(--ink-2);font-size:13.5px;margin:2px 0 10px">Each member study — the question it asks and what it found. Jump to any study for the full record.</p>
+    <div class="toc">${rows}</div></div>`;
 }
 
 /* ---------- interactive (Plotly) figures — LAZY, visibility-driven ----------
@@ -5509,6 +6483,10 @@ window.__reportPrintPrep = function(){
     // below ensures figures inside the now-visible cards render + fit the page.
     try{ document.querySelectorAll('.card.collapsed').forEach(c=>c.classList.remove('collapsed')); }catch(e){}
     try{ document.querySelectorAll('details').forEach(d=>{ d.open=true; }); }catch(e){}
+    // The details are force-open in the PDF, so their expander summaries are just
+    // redundant headers — hide the 'Technical record' one (the live HTML keeps it
+    // as the clickable section header).
+    try{ document.querySelectorAll('.tech-record>summary').forEach(s=>{ s.style.display='none'; }); }catch(e){}
     try{ setupLazyPlotly(); }catch(e){}
     try{ document.querySelectorAll('figure.embedded-plotly').forEach(f=>{ try{ renderPlotlyFigure(f); }catch(e){} }); }catch(e){}
     // Re-fit every Plotly figure to its container (page) width. The saved figures
@@ -5541,12 +6519,19 @@ window.__reportPrintPrep = function(){
       const proms=[];
       try{
         if(!(window.Plotly && Plotly.toImage)) return proms;
+        // Rasterize EVERY rendered Plotly figure to a static PNG (not only the
+        // WebGL/canvas ones): a canvas doesn't capture in the headless print
+        // surface, and a figure that never got a real-width layout renders as a
+        // tall BLANK bordered box. toImage gives a PNG that always prints; if it
+        // fails (a figure that never actually drew), hide the empty holder so it
+        // leaves no blank space. SVG→PNG at scale 2 is crisp enough for an A4 PDF.
         document.querySelectorAll('figure.embedded-plotly .plotly-graph-div, figure.embedded-plotly .js-plotly-plot').forEach(gd=>{
           try{
-            if(!gd.querySelector('canvas')) return;   // SVG figure already prints
             const holder=gd.closest('.plotly-holder')||gd.parentElement;
             const w=Math.max(220, ((holder&&holder.clientWidth)||680)-14);
             const h=Math.max(220, gd.clientHeight||gd.offsetHeight||440);
+            const _hideFig=function(){ try{ const fig=gd.closest('figure.embedded-plotly'); if(fig) fig.style.display='none'; }catch(e){} };
+            if(!gd.data || !gd.data.length){ _hideFig(); return; }  // never drew → no blank box
             proms.push(Plotly.toImage(gd,{format:'png', width:w, height:h, scale:2}).then(function(uri){
               try{
                 const img=document.createElement('img');
@@ -5554,7 +6539,7 @@ window.__reportPrintPrep = function(){
                 img.style.width='100%'; img.style.height='auto'; img.style.display='block';
                 if(gd.parentNode) gd.parentNode.replaceChild(img, gd);
               }catch(e){}
-            }).catch(function(){}));
+            }).catch(_hideFig));
           }catch(e){}
         });
       }catch(e){}
@@ -5586,7 +6571,29 @@ window.__reportPrintPrep = function(){
     }catch(e){}
     // Settle (figures + graph laid out), THEN rasterize WebGL figures and resolve
     // once every static snapshot has been swapped in.
-    const _finish=()=>{ try{ Promise.all(_rasterizePlotly()).then(function(){setTimeout(resolve,500);}, function(){setTimeout(resolve,500);}); }catch(e){ setTimeout(resolve,700); } };
+    // Inline-ify committed-HTML / local: viz figures: they render in a viz-frame
+    // <iframe> that collapses to a thin strip in a static PDF. Pull each iframe's
+    // SVG into the page so it prints (colony vizzes, committed SVG charts). A
+    // figure whose iframe has no SVG is left as-is.
+    function _inlineVizFrames(){
+      try{
+        document.querySelectorAll('iframe.viz-frame').forEach(function(fr){
+          try{
+            var doc=fr.contentDocument; if(!doc) return;
+            var svgs=doc.querySelectorAll('svg'); if(!svgs.length) return;
+            var wrap=document.createElement('div'); wrap.className='viz-inlined';
+            svgs.forEach(function(sv){
+              var c=sv.cloneNode(true);
+              c.removeAttribute('height'); c.removeAttribute('width');
+              c.style.width='100%'; c.style.height='auto'; c.style.display='block'; c.style.margin='6px 0';
+              wrap.appendChild(c);
+            });
+            if(fr.parentNode) fr.parentNode.replaceChild(wrap, fr);
+          }catch(e){}
+        });
+      }catch(e){}
+    }
+    const _finish=()=>{ try{ _inlineVizFrames(); }catch(e){} try{ Promise.all(_rasterizePlotly()).then(function(){setTimeout(resolve,500);}, function(){setTimeout(resolve,500);}); }catch(e){ setTimeout(resolve,700); } };
     let n=0; const tick=()=>{ if(++n<6){ try{requestAnimationFrame(tick);}catch(e){setTimeout(tick,16);} } else { _finish(); } };
     try{ requestAnimationFrame(tick); }catch(e){ _finish(); }
   });
@@ -6493,17 +7500,16 @@ function render(inv){
     toc(inv)+
     `<div class="wrap">
     ${execSummary(inv)}
-    ${renderDiscovery(inv)}
     ${renderSpine(inv)}
     ${renderStudies(inv)}
     ${synthesisAndGaps(inv)}
-    ${validationSection(inv)}
     ${claimEvidenceMap(inv)}
     ${evidenceRegister(inv)}
     ${renderReferences(inv)}
     ${renderInvViz(inv)}
     ${renderGlossary(inv)}
-    ${renderAppendix(inv)}</div>`+
+    ${renderAppendix(inv)}
+    ${renderDiscovery(inv)}</div>`+
     `<div class="wrap">
       <div class="sec-h" id="report-feedback"><h2>Report feedback</h2><span class="rule"></span></div>
       <p style="color:var(--ink-2);font-size:14px;max-width:none">Leave an overall note, and per-study notes on each study card. Then <b>Review &amp; export</b> assembles them into a YAML feedback report.</p>
@@ -6569,27 +7575,8 @@ app.addEventListener('click',e=>{
   const head=e.target.closest('.card-h');
   if(head){ head.closest('.card').classList.toggle('collapsed'); }
 });
-// modal
-const modalbg=document.getElementById('modalbg');
-// "Review & export" downloads the YAML feedback report straight to the downloads
-// folder (no modal). A Blob + transient <a download> — works in the served page.
-document.getElementById('fbfloat').onclick=()=>{
-  const yaml=genYaml(INV);
-  const blob=new Blob([yaml],{type:'application/x-yaml'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  a.href=url; a.download='feedback-'+(INV.slug||'investigation')+'.yaml';
-  document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(()=>URL.revokeObjectURL(url),1000);
-  const btn=document.getElementById('fbfloat');
-  const prev=btn.innerHTML; btn.innerHTML='Downloaded ✓';
-  setTimeout(()=>{btn.innerHTML=prev;},1600);
-};
-document.getElementById('fbclose').onclick=()=>modalbg.classList.remove('open');
-modalbg.onclick=e=>{ if(e.target===modalbg) modalbg.classList.remove('open'); };
-document.getElementById('fbcopy').onclick=()=>{ const ta=document.getElementById('fbyaml'); ta.select();
-  try{ navigator.clipboard.writeText(ta.value); }catch(e){ document.execCommand&&document.execCommand('copy'); }
-  document.getElementById('fbcopy').textContent='Copied ✓'; setTimeout(()=>document.getElementById('fbcopy').textContent='Copy YAML',1500); };
+// (Legacy export button + modal removed — the shared feedback engine
+// [static/study-feedback.js, inlined] now owns collection + export.)
 render(INV);
 </script>
 </body>

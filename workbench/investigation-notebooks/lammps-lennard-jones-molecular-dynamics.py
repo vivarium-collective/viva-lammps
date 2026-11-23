@@ -263,7 +263,7 @@ def _render_one(address, config, runs_db, study_yaml, overrides=None):
 
 # **Composite `pbg_lammps.composites.lj-nve-demo`** — `spec_pbg_lammps_composites_lj_nve_demo` (static spec file, editable dict)
 
-from viva_superpowers.composite_spec import load_spec
+from discovery_engine.composite_spec import load_spec
 spec_pbg_lammps_composites_lj_nve_demo = load_spec(REPO / 'pbg_lammps/composites/lj-nve-demo.composite.yaml')
 describe_spec(spec_pbg_lammps_composites_lj_nve_demo)
 
@@ -304,7 +304,7 @@ if RERUN:
     from process_bigraph import Composite
     try:
         with quiet():  # keep per-step stdout out of the notebook
-            from viva_superpowers.composite_spec import build_composite_from_spec
+            from discovery_engine.composite_spec import build_composite_from_spec
             _comp = build_composite_from_spec(spec_pbg_lammps_composites_lj_nve_demo, {'interval': INTERVAL_baseline}, core=core)
             _comp.run(STEPS_baseline)
         print('ran', 'baseline', f'(pbg_lammps.composites.lj-nve-demo) for', STEPS_baseline, 'steps')
@@ -312,7 +312,7 @@ if RERUN:
         print(f"baseline not runnable yet: {type(_e).__name__}: {_e}")
     try:
         with quiet():  # keep per-step stdout out of the notebook
-            from viva_superpowers.composite_spec import build_composite_from_spec
+            from discovery_engine.composite_spec import build_composite_from_spec
             _comp = build_composite_from_spec(spec_pbg_lammps_composites_lj_nve_demo, {'interval': INTERVAL_baseline}, core=core)
             _comp.run(STEPS_baseline)
         print('ran', 'baseline', f'(pbg_lammps.composites.lj-nve-demo) for', STEPS_baseline, 'steps')
@@ -320,7 +320,7 @@ if RERUN:
         print(f"baseline not runnable yet: {type(_e).__name__}: {_e}")
     try:
         with quiet():  # keep per-step stdout out of the notebook
-            from viva_superpowers.composite_spec import build_composite_from_spec
+            from discovery_engine.composite_spec import build_composite_from_spec
             _comp = build_composite_from_spec(spec_pbg_lammps_composites_lj_nve_demo, {'interval': INTERVAL_baseline}, core=core)
             _comp.run(STEPS_baseline)
         print('ran', 'baseline', f'(pbg_lammps.composites.lj-nve-demo) for', STEPS_baseline, 'steps')
@@ -328,7 +328,7 @@ if RERUN:
         print(f"baseline not runnable yet: {type(_e).__name__}: {_e}")
     try:
         with quiet():  # keep per-step stdout out of the notebook
-            from viva_superpowers.composite_spec import build_composite_from_spec
+            from discovery_engine.composite_spec import build_composite_from_spec
             _comp = build_composite_from_spec(spec_pbg_lammps_composites_lj_nve_demo, {'interval': INTERVAL_baseline}, core=core)
             _comp.run(STEPS_baseline)
         print('ran', 'baseline', f'(pbg_lammps.composites.lj-nve-demo) for', STEPS_baseline, 'steps')
@@ -390,7 +390,7 @@ _save_viz('lj-nve-demo', 'lj-nve-demo-decision', _render_one('', {}, RUNS_DB, ST
 
 # **Composite `pbg_lammps.composites.lj-nve-demo-with-viz`** — `spec_pbg_lammps_composites_lj_nve_demo_with_viz` (static spec file, editable dict)
 
-from viva_superpowers.composite_spec import load_spec
+from discovery_engine.composite_spec import load_spec
 spec_pbg_lammps_composites_lj_nve_demo_with_viz = load_spec(REPO / 'pbg_lammps/composites/lj-nve-demo-with-viz.composite.yaml')
 describe_spec(spec_pbg_lammps_composites_lj_nve_demo_with_viz)
 
@@ -430,7 +430,7 @@ if RERUN:
     from process_bigraph import Composite
     try:
         with quiet():  # keep per-step stdout out of the notebook
-            from viva_superpowers.composite_spec import build_composite_from_spec
+            from discovery_engine.composite_spec import build_composite_from_spec
             _comp = build_composite_from_spec(spec_pbg_lammps_composites_lj_nve_demo_with_viz, {'interval': INTERVAL_baseline}, core=core)
             _comp.run(STEPS_baseline)
         print('ran', 'baseline', f'(pbg_lammps.composites.lj-nve-demo-with-viz) for', STEPS_baseline, 'steps')
@@ -438,7 +438,7 @@ if RERUN:
         print(f"baseline not runnable yet: {type(_e).__name__}: {_e}")
     try:
         with quiet():  # keep per-step stdout out of the notebook
-            from viva_superpowers.composite_spec import build_composite_from_spec
+            from discovery_engine.composite_spec import build_composite_from_spec
             _comp = build_composite_from_spec(spec_pbg_lammps_composites_lj_nve_demo_with_viz, {'interval': INTERVAL_baseline}, core=core)
             _comp.run(STEPS_baseline)
         print('ran', 'baseline', f'(pbg_lammps.composites.lj-nve-demo-with-viz) for', STEPS_baseline, 'steps')
@@ -446,7 +446,7 @@ if RERUN:
         print(f"baseline not runnable yet: {type(_e).__name__}: {_e}")
     try:
         with quiet():  # keep per-step stdout out of the notebook
-            from viva_superpowers.composite_spec import build_composite_from_spec
+            from discovery_engine.composite_spec import build_composite_from_spec
             _comp = build_composite_from_spec(spec_pbg_lammps_composites_lj_nve_demo_with_viz, {'interval': INTERVAL_baseline}, core=core)
             _comp.run(STEPS_baseline)
         print('ran', 'baseline', f'(pbg_lammps.composites.lj-nve-demo-with-viz) for', STEPS_baseline, 'steps')
