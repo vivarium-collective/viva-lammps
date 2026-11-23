@@ -8,7 +8,7 @@
 # re-scaffolding, or by copying the current source from
 #   vivarium-collective/viva-template/template/.github/workflows/<template>
 # template: publish-dashboard.yml
-# sha256: e77ce1b1c54b1880312c6762f6134aff41c9d9c5b455cb2229f679a4ecb4eb8a
+# sha256: a9caa6b4568bdfd3ed3878cec90f0e716e2c13f754b9e16b2166a0be4f807b33
 # <<< viva-template-provenance <<<
 
 name: Publish read-only workbench
@@ -49,11 +49,34 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    # Force UTF-8 so file reads don't fall back to the runner's ASCII locale.
+    # Without this, rendering/notebook-export of any investigation whose content
+    # contains non-ASCII bytes (e.g. an em-dash, 0xe2) raises UnicodeDecodeError
+    # and the report HTML is silently dropped from the bundle.
+    env:
+      PYTHONUTF8: "1"
+      PYTHONIOENCODING: "utf-8"
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
     steps:
-      - uses: actions/checkout@v4
-
+      # >>> workspace-local >>>
+      # Repo-local CI steps preserved across viva-template syncs by
+      # scripts/sync-workspace-workflows.py. Add workspace-specific steps
+      # (e.g. simulator system-dep installs) between these markers; the
+      # rest of this file is regenerated from viva-template.
       - name: Install MPICH runtime (the lammps wheel links libmpi.so.12)
         run: sudo apt-get update -qq && sudo apt-get install -y -qq libmpich12
+
+      # <<< workspace-local <<<
+      - uses: actions/checkout@v4
+        with:
+          # Workspaces commonly vendor ecosystem deps as git submodules under
+          # external/ and declare them as editable path deps in pyproject
+          # ([tool.uv.sources] … { path = "external/<pkg>", editable = true }).
+          # Without this, the submodule dir is empty, so `uv sync` fails with
+          # "Failed to generate package metadata for <pkg>==0.0.0". A repo with
+          # no submodules treats this as a harmless no-op.
+          submodules: recursive
 
       - name: Install uv
         uses: astral-sh/setup-uv@v5
