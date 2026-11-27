@@ -7,7 +7,7 @@ engine-driving modules are skipped so the structural/API tests still gate the PR
 """
 import pytest
 
-_ENGINE_MODULES = ("test_composites", "test_processes")
+_ENGINE_MODULES = ("test_composites", "test_processes", "test_model_seam")
 
 
 def _lammps_available() -> bool:
