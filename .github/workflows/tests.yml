@@ -1,0 +1,36 @@
+name: Tests
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]" || python -m pip install -e .
+
+      - name: Import check
+        run: python -c "import pbg_lammps"
+
+      # The `lammps` engine (native binary / Python bindings) is not pip-installable
+      # on a vanilla Ubuntu runner, so tests that actually drive a simulation will
+      # skip or fail here. The import check above plus the collected package tests
+      # guard the wrapper's API; full engine tests need the lammps binary installed.
+      - name: Run tests
+        run: pytest -q
